@@ -104,8 +104,6 @@ class _State extends State<AddProduct> {
     'saturated': null,
     'arbohydrates': null,
     'kilocalories': null,
-
-    //   'category':null
   };
 
   Future<void> _selectDate(BuildContext context) async {
