@@ -19,11 +19,9 @@ class AddProduct extends StatefulWidget {
 class _State extends State<AddProduct> {
   @override
   void initState() {
-
-    if(widget.editAble==null){
+    if (widget.editAble == null) {
       return;
-    }
-else{
+    } else {
       loadProduct();
     }
     super.initState();
@@ -39,17 +37,17 @@ else{
           .doc(widget.editAble)
           .get()
           .then((data) => {
-                print("0000000000000000000000000${data['name'].toString()}"),
+        print("0000000000000000000000000${data['name'].toString()}"),
 
-                _controllerName.text = data['name'].toString(),
-                _controllerProduct.text = data['price'].toString(),
-                _controllerDescroption.text = data['descp'].toString(),
-                _controllerWeight.text = data['weight'].toString()
+        _controllerName.text = data['name'].toString(),
+        _controllerProduct.text = data['price'].toString(),
+        _controllerDescroption.text = data['descp'].toString(),
+        _controllerWeight.text = data['weight'].toString()
 
-                // _controllerNameLast.text = data['lName'],
-                // _controllerMob.text = data['MobileNo'],
-                // _controllerPhone.text = data['PhoneNo'],
-              });
+        // _controllerNameLast.text = data['lName'],
+        // _controllerMob.text = data['MobileNo'],
+        // _controllerPhone.text = data['PhoneNo'],
+      });
       print('loading++++++++++++++++++++++++++++');
 
       setState(() {
@@ -185,7 +183,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Product Name',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -212,7 +210,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Product Price',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -240,7 +238,7 @@ else{
                               //helperMaxLines:
                               hintText: 'Product description ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -266,7 +264,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Fiber in percentage',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -293,7 +291,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Sugar in percentage ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -320,7 +318,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Cholesterol in percentage ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -347,7 +345,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Monosaturated in percentage ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -374,7 +372,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Polysaturated in percentage ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -402,7 +400,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Saturated Fat in percentage ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -429,7 +427,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Carbohydrates in percentage ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -452,44 +450,12 @@ else{
                             thickness: 2,
                           ),
                         ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: ImageInput(),
-                      ),
-
-                      InkWell(
-                        onTap: () async{
-                          if (!_formKey.currentState!.validate()) {
-                            return;
-                          }
-
-                          _formKey.currentState!.save();
-                          formValues['uID']=user!.uid.toString();
-                       if(widget.editAble==null){
-                         await   pp.addProduct(formValues).then((value) => {
-
-                           if(value){
-                             Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) => forntscreenR()))
-                           }
-                           else
-                             print('nahiUpload hoa')
-
-                         });
-                       }
-                       else{
-                            pp.updateProduct(formValues, widget.editAble).then((value) => {
-
 
                         TextFormField(
                             decoration: InputDecoration(
                               hintText: 'Kilocalories in percentage ',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -516,7 +482,7 @@ else{
                             decoration: InputDecoration(
                               hintText: 'Weight',
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, top: 15),
+                              EdgeInsets.only(left: 15.0, top: 15),
                               border: InputBorder.none,
                             ),
                             inputFormatters: [
@@ -636,7 +602,7 @@ else{
                         ),
                         Padding(
                           padding:
-                              const EdgeInsets.only(left: 10.0, right: 10.0),
+                          const EdgeInsets.only(left: 10.0, right: 10.0),
                           child: ImageInput(),
                         ),
 
@@ -651,32 +617,32 @@ else{
                             print(formValues);
                             if (widget.editAble == null) {
                               await pp.addProduct(formValues).then((value) => {
-                                    if (value)
-                                      {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    forntscreenR()))
-                                      }
-                                    else
-                                      print('nahiUpload hoa')
-                                  });
+                                if (value)
+                                  {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                forntscreenR()))
+                                  }
+                                else
+                                  print('nahiUpload hoa')
+                              });
                             } else {
                               pp
                                   .updateProduct(formValues, widget.editAble)
                                   .then((value) => {
-                                        if (value)
-                                          {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        forntscreenR()))
-                                          }
-                                        else
-                                          print('nahiUpload hoa')
-                                      });
+                                if (value)
+                                  {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                forntscreenR()))
+                                  }
+                                else
+                                  print('nahiUpload hoa')
+                              });
                             }
                           },
                           child: Container(
@@ -685,12 +651,12 @@ else{
                             width: MediaQuery.of(context).size.width / 1.1,
                             child: Center(
                                 child: Text(
-                              "Upload",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w600),
-                            )),
+                                  "Upload",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17.sp,
+                                      fontWeight: FontWeight.w600),
+                                )),
                             color: Colors.lightGreen,
                           ),
                         ),
