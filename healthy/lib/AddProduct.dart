@@ -19,12 +19,11 @@ class AddProduct extends StatefulWidget {
 class _State extends State<AddProduct> {
   @override
   void initState() {
-    if(widget.editAble!.isNotEmpty){
-      loadProduct();
-
+    if(widget.editAble==null){
+      return;
     }
-    else{
-
+else{
+      loadProduct();
     }
     super.initState();
   }
@@ -562,7 +561,7 @@ class _State extends State<AddProduct> {
 
                           _formKey.currentState!.save();
                           formValues['uID']=user!.uid.toString();
-                       if(widget.editAble!.isEmpty){
+                       if(widget.editAble==null){
                          await   pp.addProduct(formValues).then((value) => {
 
                            if(value){
