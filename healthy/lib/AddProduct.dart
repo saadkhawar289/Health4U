@@ -19,9 +19,11 @@ class AddProduct extends StatefulWidget {
 class _State extends State<AddProduct> {
   @override
   void initState() {
-    if (widget.editAble == null) {
+
+    if(widget.editAble==null){
       return;
-    } else {
+    }
+else{
       loadProduct();
     }
     super.initState();
@@ -450,6 +452,38 @@ class _State extends State<AddProduct> {
                             thickness: 2,
                           ),
                         ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: ImageInput(),
+                      ),
+
+                      InkWell(
+                        onTap: () async{
+                          if (!_formKey.currentState!.validate()) {
+                            return;
+                          }
+
+                          _formKey.currentState!.save();
+                          formValues['uID']=user!.uid.toString();
+                       if(widget.editAble==null){
+                         await   pp.addProduct(formValues).then((value) => {
+
+                           if(value){
+                             Navigator.push(
+                                 context,
+                                 MaterialPageRoute(
+                                     builder: (context) => forntscreenR()))
+                           }
+                           else
+                             print('nahiUpload hoa')
+
+                         });
+                       }
+                       else{
+                            pp.updateProduct(formValues, widget.editAble).then((value) => {
+
 
                         TextFormField(
                             decoration: InputDecoration(
