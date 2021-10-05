@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:healthy/setting.dart';
 
 class contactus extends StatefulWidget {
   @override
@@ -20,7 +19,8 @@ class _State extends State<contactus> {
               children: [
                 InkWell(
                   onTap: () {
-Navigator.of(context).pop();                  },
+                    Navigator.of(context).pop();
+                  },
                   child: Container(
                     margin: EdgeInsets.only(left: 10, top: 60),
                     height: 20,
