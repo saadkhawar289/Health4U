@@ -47,7 +47,9 @@ class _SymptomsTestState extends State<SymptomsTest> {
     'uID': null
   };
 
-  Future<bool> SaveSymptomsResult(Map<String, dynamic> data) async {
+  Future<bool> saveSymptomsResult(Map<String, dynamic> data) async {
+    print('iiiiiiiiiiiiiiiiiiiiiiiii');
+    print(symptomsTest);
     try {
       User? user = FirebaseAuth.instance.currentUser;
       symptomsTest['uID'] = user!.uid;
@@ -646,35 +648,40 @@ class _SymptomsTestState extends State<SymptomsTest> {
 
                   Center(
                     child:InkWell(
-                      onTap: (){
+                      onTap: ()async{
                         if (!_formKey.currentState!.validate()) {
                           print('sssssss');
+
                           return;
-                        } else {
+                        }
+
+
+                        else {
+                          symptomsTest['FootHealth'] = footHealth;
+                          symptomsTest['EyeHealth'] = eyeHealth;
+                          symptomsTest['KidneyHealth'] = kidneyHealth;
+                          symptomsTest['HbA1c'] = controller.text;
                           if (widget.navigation == 'doctor') {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DoctorLandingScreen()));
-                          } else {
-                            symptomsTest['FootHealth'] = footHealth;
-                            symptomsTest['EyeHealth'] = eyeHealth;
-                            symptomsTest['KidneyHealth'] = kidneyHealth;
-                            symptomsTest['HbA1c'] = controller.text;
-                            print(symptomsTest);
-                            SaveSymptomsResult(symptomsTest).then((value) => {
+
+                            saveSymptomsResult(symptomsTest).then((value) => {
                               if (value)
                                 {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              forntscreen()))
+                                              DoctorLandingScreen()))
                                 }
                               else
                                 {_showSnackBar('Something went wrong')}
                             });
+
+                          } else {
+                            symptomsTest['FootHealth'] = footHealth;
+                            symptomsTest['EyeHealth'] = eyeHealth;
+                            symptomsTest['KidneyHealth'] = kidneyHealth;
+                            symptomsTest['HbA1c'] = controller.text;
+                            print(symptomsTest);
                           }
                         }
                       },

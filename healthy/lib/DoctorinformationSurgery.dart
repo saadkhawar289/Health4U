@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/DoctorLandingScreen.dart';
+import 'package:healthy/Model/Doctor.dart';
 
 class DoctorinformationSirgery extends StatefulWidget {
   @override
@@ -14,8 +16,16 @@ class _State extends State<DoctorinformationSirgery> {
   TextEditingController _controllerName = TextEditingController();
   TextEditingController _controllerphone = TextEditingController();
   TextEditingController _controllercode = TextEditingController();
+  Map<String, dynamic> formValues = {
+    'uID': null,
+    'surgeryName': null,
+    'surgeryPostCode': null,
+  };
+  User? user = FirebaseAuth.instance.currentUser;
+  DoctorHelper docHelper = DoctorHelper();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +68,9 @@ class _State extends State<DoctorinformationSirgery> {
                         if (val!.isEmpty) {
                           return "Please Enter the Surgery Name";
                         }
+                      },
+                      onSaved: (value) {
+                        formValues['surgeryName'] = value;
                       }),
 
                   Padding(
@@ -83,6 +96,9 @@ class _State extends State<DoctorinformationSirgery> {
                         if (val!.isEmpty || val.length > 8 || val.length < 6) {
                           return "Please enter code";
                         }
+                      },
+                      onSaved: (value) {
+                        formValues['surgeryPostCode'] = value;
                       }),
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
@@ -90,38 +106,26 @@ class _State extends State<DoctorinformationSirgery> {
                       thickness: 2,
                     ),
                   ),
-                  // TextFormField(
-                  //     decoration: InputDecoration(
-                  //       hintText: 'Landline number (01274272388)',
-                  //       contentPadding: EdgeInsets.only(left: 15.0, top: 15),
-                  //       border: InputBorder.none,
-                  //     ),
-                  //     controller: _controllerphone,
-                  //     inputFormatters: [
-                  //       LengthLimitingTextInputFormatter(11),
-                  //       FilteringTextInputFormatter.allow(RegExp("[0-9 ]"))
-                  //     ],
-                  //     validator: (val) {
-                  //       if (val!.isEmpty || val.length != 11) {
-                  //         return "Please enter Contact number";
-                  //       }
-                  //     }),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10, right: 10),
-                  //   child: Divider(
-                  //     thickness: 2,
-                  //   ),
-                  // ),
 
                   InkWell(
                     onTap: () {
                       if (!_formKey.currentState!.validate()) {
                         return;
                       }
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DoctorLandingScreen()));
+                      _formKey.currentState!.save();
+                      formValues['uID'] = user!.uid;
+                      docHelper.addDocInfo(formValues).then((value) => {
+                            if (value)
+                              {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DoctorLandingScreen()))
+                              }
+                            else
+                              {}
+                          });
                     },
                     child: Container(
                       margin: EdgeInsets.only(top: 20),
@@ -131,7 +135,9 @@ class _State extends State<DoctorinformationSirgery> {
                           child: Text(
                         "Next",
                         style: TextStyle(
-                            fontSize: 17.sp, fontWeight: FontWeight.w600,color: Colors.white),
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
                       )),
                       color: Colors.lightGreen,
                     ),
