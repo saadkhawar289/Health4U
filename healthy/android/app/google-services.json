@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "668500858241",
+    "project_id": "healthy-1c12c",
+    "storage_bucket": "healthy-1c12c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668500858241:android:a16e99b340c2a7e9714480",
+        "android_client_info": {
+          "package_name": "com.ishfaq.healthy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668500858241-4g6c7q5051b20th22vtj5jgpumuo9nsi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ishfaq.healthy",
+            "certificate_hash": "cbbf91dc6375a10354b6495a6ac955193150d04f"
+          }
+        },
+        {
+          "client_id": "668500858241-rt3becuhmm54c2mhbiann4hec1i316vn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZO71lOat12Id_lb4zuX_gqNcApLphHVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668500858241-rt3becuhmm54c2mhbiann4hec1i316vn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
