@@ -163,6 +163,28 @@ print('done');
     return true;
   }
 
+  Future<bool> updateProduct(Map<String, dynamic> data,String? id) async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      DocumentReference ref =  FirebaseFirestore.instance.collection("Product").doc(id);
+      ref.update(data);
+
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+    return true;
+
+  }
 
 
 

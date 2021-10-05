@@ -19,7 +19,13 @@ class AddProduct extends StatefulWidget {
 class _State extends State<AddProduct> {
   @override
   void initState() {
-    loadProduct();
+    if(widget.editAble!.isNotEmpty){
+      loadProduct();
+
+    }
+    else{
+
+    }
     super.initState();
   }
 
@@ -35,9 +41,13 @@ class _State extends State<AddProduct> {
           .doc(widget.editAble)
           .get()
           .then((data) => {
+          print("0000000000000000000000000${data['name'].toString()}"),
 
+        _controllerName.text = data['name'].toString(),
+        _controllerProduct.text=data['price'].toString(),
+        _controllerDescroption.text=data['descp'].toString(),
+        _controllerWeight.text=data['weight'].toString()
 
-        _controllerName.text = data['name'],
         // _controllerNameLast.text = data['lName'],
         // _controllerMob.text = data['MobileNo'],
         // _controllerPhone.text = data['PhoneNo'],
@@ -552,18 +562,34 @@ class _State extends State<AddProduct> {
 
                           _formKey.currentState!.save();
                           formValues['uID']=user!.uid.toString();
-                       await   pp.addProduct(formValues).then((value) => {
+                       if(widget.editAble!.isEmpty){
+                         await   pp.addProduct(formValues).then((value) => {
 
-                            if(value){
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => forntscreenR()))
-                            }
-                            else
-                              print('nahiUpload hoa')
+                           if(value){
+                             Navigator.push(
+                                 context,
+                                 MaterialPageRoute(
+                                     builder: (context) => forntscreenR()))
+                           }
+                           else
+                             print('nahiUpload hoa')
 
-                          });
+                         });
+                       }
+                       else{
+                            pp.updateProduct(formValues, widget.editAble).then((value) => {
+
+                              if(value){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => forntscreenR()))
+                              }
+                              else
+                                print('nahiUpload hoa')
+
+                            });
+                       }
 
 
                         },

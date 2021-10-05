@@ -167,7 +167,7 @@ class UserTile extends StatelessWidget {
                 height: 5,
               ),
               InkWell(radius: 30, onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AddProduct(editAble: 'yes',)));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AddProduct(editAble: snapshot!.reference.id,)));
               }, child: Icon(Icons.edit)),
             ],
           ),
