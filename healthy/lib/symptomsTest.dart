@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/DoctorLandingScreen.dart';
-
-import 'forntscreen.dart';
+import 'package:healthy/forntscreen.dart';
 
 class SymptomsTest extends StatefulWidget {
   final String navigation;
@@ -332,7 +331,8 @@ class _SymptomsTestState extends State<SymptomsTest> {
                         children: [
                           Row(
                             children: [
-                              Checkbox(activeColor: Colors.green,
+                              Checkbox(
+                                activeColor: Colors.green,
                                 value: worseningVision,
                                 onChanged: (bool? value) {
                                   // This is where we update the state when the checkbox is tapped
@@ -647,41 +647,48 @@ class _SymptomsTestState extends State<SymptomsTest> {
                   ),
 
                   Center(
-                    child:InkWell(
-                      onTap: ()async{
+                    child: InkWell(
+                      onTap: () async {
                         if (!_formKey.currentState!.validate()) {
                           print('sssssss');
 
                           return;
-                        }
-
-
-                        else {
+                        } else {
                           symptomsTest['FootHealth'] = footHealth;
                           symptomsTest['EyeHealth'] = eyeHealth;
                           symptomsTest['KidneyHealth'] = kidneyHealth;
                           symptomsTest['HbA1c'] = controller.text;
                           if (widget.navigation == 'doctor') {
-
                             saveSymptomsResult(symptomsTest).then((value) => {
-                              if (value)
-                                {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DoctorLandingScreen()))
-                                }
-                              else
-                                {_showSnackBar('Something went wrong')}
-                            });
-
+                                  if (value)
+                                    {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DoctorLandingScreen()))
+                                    }
+                                  else
+                                    {_showSnackBar('Something went wrong')}
+                                });
                           } else {
                             symptomsTest['FootHealth'] = footHealth;
                             symptomsTest['EyeHealth'] = eyeHealth;
                             symptomsTest['KidneyHealth'] = kidneyHealth;
                             symptomsTest['HbA1c'] = controller.text;
                             print(symptomsTest);
+                            saveSymptomsResult(symptomsTest).then((value) => {
+                                  if (value)
+                                    {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  forntscreen()))
+                                    }
+                                  else
+                                    {_showSnackBar('Something went wrong')}
+                                });
                           }
                         }
                       },
@@ -689,13 +696,18 @@ class _SymptomsTestState extends State<SymptomsTest> {
                         margin: EdgeInsets.only(top: 12),
                         height: 43,
                         width: MediaQuery.of(context).size.width / 1.1,
-                        child:Center(child: Text("Finish",style: TextStyle(fontSize: 17.sp,fontWeight: FontWeight.w600,color: Colors.white),)),
+                        child: Center(
+                            child: Text(
+                          "Finish",
+                          style: TextStyle(
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white),
+                        )),
                         color: Colors.lightGreen,
                       ),
-                    ),),
-
-
-
+                    ),
+                  ),
 
                   // Center(
                   //   child: RaisedButton(
