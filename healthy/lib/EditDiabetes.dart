@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/Editmedication.dart';
@@ -26,6 +28,37 @@ class _State extends State<editdiabetes> {
     sKey.currentState!.showSnackBar(snackBar);
   }
 
+  User? user = FirebaseAuth.instance.currentUser;
+
+  Map<String, dynamic> patient = {
+    'name': null,
+    'doctorID': null,
+    'uID': null,
+    'symptomsTest': [],
+    'medicines': [],
+    'pills': [],
+    'typeOfDiabetes': null,
+  };
+  Future<bool> addPatientRecord(Map<String, dynamic> data) async {
+    try {
+      DocumentReference ref =
+          FirebaseFirestore.instance.collection("Patient").doc();
+      ref.set(data);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+
+    return true;
+  }
 //  // Future<bool> SaveSurgeryInfo(Map<String, dynamic> data) async {
   //   //   try {
   //   //     User? user = FirebaseAuth.instance.currentUser;
@@ -77,10 +110,19 @@ class _State extends State<editdiabetes> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => editmedication()));
+                  patient['typeOfDiabetes'] = 'Type1';
+                  patient['uID'] = user!.uid;
+                  addPatientRecord(patient).then((value) => {
+                        if (value)
+                          {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => editmedication()))
+                          }
+                        else
+                          {_showSnackBar("some thing went worng")}
+                      });
                 },
                 child: Row(
                   children: [
@@ -100,13 +142,19 @@ class _State extends State<editdiabetes> {
                         setState(() {
                           _value = val;
                           Timer(Duration(seconds: 1), () async {
-                            SharedPreferences pref =
-                                await SharedPreferences.getInstance();
-                            pref.setString('TypeOfDiabetes', 'type1');
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => editmedication()));
+                            patient['typeOfDiabetes'] = 'Type1';
+                            addPatientRecord(patient).then((value) => {
+                                  if (value)
+                                    {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  editmedication()))
+                                    }
+                                  else
+                                    {_showSnackBar('some thing went worng')}
+                                });
                           });
                         });
                       },
@@ -116,8 +164,18 @@ class _State extends State<editdiabetes> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => selectpills()));
+                  patient['typeOfDiabetes'] = 'Type2';
+                  addPatientRecord(patient).then((value) => {
+                        if (value)
+                          {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => selectpills()))
+                          }
+                        else
+                          {_showSnackBar("some thing went worng")}
+                      });
                 },
                 child: Row(
                   children: [
@@ -138,13 +196,19 @@ class _State extends State<editdiabetes> {
                           _value = val;
 
                           Timer(Duration(seconds: 1), () async {
-                            SharedPreferences pref =
-                                await SharedPreferences.getInstance();
-                            pref.setString('TypeOfDiabetes', 'type2');
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => selectpills()));
+                            patient['typeOfDiabetes'] = 'Type2';
+                            addPatientRecord(patient).then((value) => {
+                                  if (value)
+                                    {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  selectpills()))
+                                    }
+                                  else
+                                    {_showSnackBar("some thing went worng")}
+                                });
                           });
                         });
                       },
@@ -154,6 +218,18 @@ class _State extends State<editdiabetes> {
               ),
               InkWell(
                 onTap: () {
+                  patient["typeOfDiabetes"] = 'Gestational';
+                  addPatientRecord(patient).then((value) => {
+                        if (value)
+                          {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => selectpills3()))
+                          }
+                        else
+                          {_showSnackBar("some thing went worng")}
+                      });
                   // Navigator.push(context,
                   //     MaterialPageRoute(builder: (context) => selectpills3()));
                 },
@@ -179,10 +255,19 @@ class _State extends State<editdiabetes> {
                             SharedPreferences pref =
                                 await SharedPreferences.getInstance();
                             pref.setString('TypeOfDiabetes', 'Gestational');
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => selectpills3()));
+                            patient["typeOfDiabetes"] = 'Gestational';
+                            addPatientRecord(patient).then((value) => {
+                                  if (value)
+                                    {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  selectpills3()))
+                                    }
+                                  else
+                                    {}
+                                });
                           });
                         });
                       },
@@ -194,12 +279,26 @@ class _State extends State<editdiabetes> {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SymptomsTest(
-                            navigation: 'user',
-                          )));
+              patient['typeOfDiabetes'] = 'Prediabetes';
+              addPatientRecord(patient).then((value) => {
+                    if (value)
+                      {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SymptomsTest(
+                                      navigation: 'user',
+                                    )))
+                      }
+                    else
+                      {_showSnackBar("some thing is worng")}
+                  });
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => SymptomsTest(
+              //               navigation: 'user',
+              //             )));
             },
             child: Row(
               children: [
@@ -222,12 +321,20 @@ class _State extends State<editdiabetes> {
                         SharedPreferences pref =
                             await SharedPreferences.getInstance();
                         pref.setString('TypeOfDiabetes', 'Prediabetes');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SymptomsTest(
-                                      navigation: 'user',
-                                    )));
+                        patient['typeOfDiabetes'] = 'Prediabetes';
+                        addPatientRecord(patient).then((value) => {
+                              if (value)
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SymptomsTest(
+                                                navigation: 'user',
+                                              )))
+                                }
+                              else
+                                {_showSnackBar("some thing is worng")}
+                            });
                       });
                     });
                   },
@@ -261,10 +368,18 @@ class _State extends State<editdiabetes> {
                         SharedPreferences pref =
                             await SharedPreferences.getInstance();
                         pref.setString('TypeOfDiabetes', "don't Know");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DiabitiesSym()));
+                        patient['typeOfDiabetes'] = "don't Know";
+                        addPatientRecord(patient).then((value) => {
+                              if (value)
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DiabitiesSym()))
+                                }
+                              else
+                                {_showSnackBar('some thing went worng')}
+                            });
                       });
                     });
                   },

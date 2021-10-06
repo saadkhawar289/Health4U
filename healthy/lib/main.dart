@@ -3,8 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy/barCodeGenrater.dart';
-import 'package:healthy/splash.dart';
+import 'package:healthy/instore.dart';
 
 import 'home.dart';
 
@@ -16,13 +15,10 @@ Future<void> main() async {
           enabled: false,
           builder: (context) => MaterialApp(
                 debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primaryColor: Colors.green
-
-            ),
+                theme: ThemeData(primaryColor: Colors.green),
                 // home: Splash(),
                 routes: {
-                  '/': (BuildContext context) => BarCodeGenrator(),
+                  '/': (BuildContext context) => store(),
                   '/homeScreen': (BuildContext context) => HomeScreen()
                 },
               ))));

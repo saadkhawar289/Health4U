@@ -1,5 +1,7 @@
- import 'package:flutter/material.dart';
-import 'package:healthy/checkingitem.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:healthy/SelectProduct.dart';
 
 class store extends StatefulWidget {
   @override
@@ -7,6 +9,35 @@ class store extends StatefulWidget {
 }
 
 class _State extends State<store> {
+  Future<void> scanBarcodeNormal() async {
+    String barcodeScanRes;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      print('=====================$barcodeScanRes');
+      if (barcodeScanRes.toString().isNotEmpty) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    SelectedProduct(barcodeScanRes.toString())));
+      } else {}
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    } catch (e) {
+      print('==================$e');
+    }
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    // setState(() {
+    //   _scanBarcode = barcodeScanRes;
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,28 +100,22 @@ class _State extends State<store> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 35),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CheckItems()));
-                        },
-                        child: Container(
-                          height: 50,
-                          width: 50,
-
-                          //color: Colors.cyan,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(70)),
-                              color: const Color(0xFFC4C4C4),
-                              image: DecorationImage(
-                                  image: AssetImage("assets/35438.png"))),
-                        ),
-                      ),
-                    )
+                        padding: const EdgeInsets.only(bottom: 35),
+                        child: InkWell(
+                          onTap: () {
+                            scanBarcodeNormal();
+                          },
+                          child: Container(
+                            height: 38,
+                            width: 150,
+                            child: Center(child: Text("Scan Your Product")),
+                            //color: Colors.cyan,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                color: Colors.lightGreen),
+                          ),
+                        ))
                   ],
                 ),
               ],
