@@ -191,13 +191,17 @@
 // }
 // // import 'package:flutter/cupertino.dart';
 // // import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/Cart.dart';
 
 class CheckOutCartTile extends StatelessWidget {
   final int index;
-  const CheckOutCartTile(this.index);
+  final Map<String,dynamic> productValues;
+
+  const CheckOutCartTile(this.index,this.productValues);
 
   @override
   Widget build(BuildContext context) {
@@ -209,12 +213,12 @@ class CheckOutCartTile extends StatelessWidget {
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
-          title: Text('Sunflower Oil',
+          title: Text(productValues['name'],
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('5L',
+              Text(productValues['weight'],
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w400,
@@ -222,7 +226,7 @@ class CheckOutCartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text('£ 0.80',
+              Text('£ ${productValues['price']}',
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -247,13 +251,60 @@ class CheckOutCartTile extends StatelessWidget {
 }
 
 class SelectedProduct extends StatefulWidget {
-  const SelectedProduct({Key? key}) : super(key: key);
+  final  String productID;
+
+  SelectedProduct(this.productID) : super();
 
   @override
   _SelectedProductState createState() => _SelectedProductState();
 }
 
 class _SelectedProductState extends State<SelectedProduct> {
+  @override
+  void initState() {
+    loadProduct(widget.productID);
+    super.initState();
+  }
+
+ Map<String,dynamic> productValues={
+    'name':null,
+   'weight':null,
+   'price':null,
+   'image':null
+
+
+ };
+
+
+  Future<bool> loadProduct(String id) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection("Product")
+          .doc(id)
+          .get()
+          .then((data) => {
+        productValues['name']=data['name'],
+        productValues['weight']=data['weight'],
+        productValues['price']=data['price']
+
+
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -352,7 +403,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                 ),
                 Container(
                   color: Colors.grey[300],
-                  child: CheckOutCartTile(1),
+                  child: CheckOutCartTile(1,productValues),
                 ),
                 SizedBox(
                   height: 0.06.sh,

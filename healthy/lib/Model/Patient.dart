@@ -28,7 +28,7 @@ class Patient {
   Map<String, dynamic> toJson() {
     return {
       'name': name,
-      
+
     };
   }
 }

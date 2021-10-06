@@ -19,8 +19,8 @@ class _CheckItemsState extends State<CheckItems> {
 
   void startTimer() {
     Timer(Duration(seconds: 6), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => SelectedProduct()));
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => SelectedProduct()));
     });
   }
 

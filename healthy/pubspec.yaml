@@ -41,6 +41,7 @@ dependencies:
   image_picker:
   qr_code_scanner: ^0.5.2
   introduction_screen: ^2.1.0
+  barcode_widget: ^2.0.1
 
 dev_dependencies:
   flutter_test:
