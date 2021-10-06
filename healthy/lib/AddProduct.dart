@@ -659,13 +659,7 @@ class _State extends State<AddProduct> {
                             color: Colors.lightGreen,
                           ),
                         ),
-                        // Container(
-                        //     margin: EdgeInsets.only(top: 20),
-                        //     height: 5,
-                        //     width: 160,
-                        //     decoration: BoxDecoration(
-                        //         color: Colors.black,
-                        //         borderRadius: BorderRadius.all(Radius.circular(10)))),
+
                       ],
                     ),
                   )
