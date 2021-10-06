@@ -16,16 +16,17 @@ class _BarCodeGenratorState extends State<BarCodeGenrator> {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(),
+          backgroundColor: Colors.white,
           body:Stack(
             alignment: Alignment.center,
             children: [
-              BarcodeWidget(
-                barcode: Barcode.code128(
+              Center(
+                child: BarcodeWidget(
+                  barcode: Barcode.code128(),
+                  data: 'Sxagmn1ZpVlNP95k3sTq',
+                  width: 300,
+                  height: 200,
                 ),
-                data: 'Sxagmn1ZpVlNP95k3sTq',
-                width: 200,
-                height: 200,
               ),
 
             ],

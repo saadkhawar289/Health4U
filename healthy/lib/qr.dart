@@ -38,7 +38,7 @@ class _QRViewExampleState extends State<QRViewExample> {
               children: <Widget>[
                 if (result != null)
                   Text(
-                      'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!}')
+                      'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
                 else
                   Padding(
                     padding: const EdgeInsets.all(18.0),
@@ -93,6 +93,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+
         controller.stopCamera();
 
 

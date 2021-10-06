@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healthy/barCodeGenrater.dart';
 import 'package:healthy/splash.dart';
 
 import 'home.dart';
@@ -21,7 +22,7 @@ Future<void> main() async {
             ),
                 // home: Splash(),
                 routes: {
-                  '/': (BuildContext context) => Splash(),
+                  '/': (BuildContext context) => BarCodeGenrator(),
                   '/homeScreen': (BuildContext context) => HomeScreen()
                 },
               ))));
