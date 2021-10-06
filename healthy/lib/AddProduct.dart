@@ -26,7 +26,6 @@ class _State extends State<AddProduct> {
     }
     super.initState();
   }
-
   Future<bool> loadProduct() async {
     try {
       // loader = true;
