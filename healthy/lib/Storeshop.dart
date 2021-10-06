@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/onlinesite.dart';
-import 'package:healthy/qr.dart';
 
 class storeshop extends StatefulWidget {
   @override
@@ -39,11 +38,13 @@ class _State extends State<storeshop> {
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [InkWell(
-                        onTap:(){
-                          Navigator.of(context).pop();
-                },
-                        child: Image.asset("assets/35438.png"))],
+                    children: [
+                      InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Image.asset("assets/35438.png"))
+                    ],
                   ),
                 ),
                 Row(
@@ -56,10 +57,10 @@ class _State extends State<storeshop> {
           Column(
             children: [
               InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QRViewExample()));
-                },
+                // onTap: () {
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => QRViewExample()));
+                // },
                 child: Container(
                   margin: EdgeInsets.only(top: 40),
                   height: 75,
