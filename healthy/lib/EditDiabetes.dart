@@ -31,7 +31,6 @@ class _State extends State<editdiabetes> {
   User? user = FirebaseAuth.instance.currentUser;
 
   Map<String, dynamic> patient = {
-    'name': null,
     'doctorID': null,
     'uID': null,
     'symptomsTest': [],
@@ -41,8 +40,10 @@ class _State extends State<editdiabetes> {
   };
   Future<bool> addPatientRecord(Map<String, dynamic> data) async {
     try {
+      User? user = FirebaseAuth.instance.currentUser;
+
       DocumentReference ref =
-          FirebaseFirestore.instance.collection("Patient").doc();
+          FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
       ref.set(data);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

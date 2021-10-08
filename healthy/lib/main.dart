@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/instore.dart';
+import 'package:healthy/splash.dart';
 
 import 'home.dart';
 
@@ -18,7 +19,7 @@ Future<void> main() async {
                 theme: ThemeData(primaryColor: Colors.green),
                 // home: Splash(),
                 routes: {
-                  '/': (BuildContext context) => store(),
+                  '/': (BuildContext context) => Splash(),
                   '/homeScreen': (BuildContext context) => HomeScreen()
                 },
               ))));
