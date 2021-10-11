@@ -6,6 +6,8 @@ import 'package:healthy/setting.dart';
 import 'package:healthy/shops.dart';
 import 'package:healthy/sugeryinformation.dart';
 
+import 'OnlinePractitioner.dart';
+
 class forntscreen extends StatefulWidget {
   @override
   _State createState() => _State();
@@ -71,7 +73,7 @@ class _State extends State<forntscreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SugeryInformation()));
+                        builder: (context) => OnlinePractitioner()));
               },
             ),
             Divider(),
