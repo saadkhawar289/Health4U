@@ -249,6 +249,7 @@ class _SelectedProductState extends State<SelectedProduct> {
   double? foodScore;
   double? hba1cScore;
   double? foodScoreResult;
+  bool isScan=true;
 
   @override
   void initState() {
@@ -282,16 +283,25 @@ class _SelectedProductState extends State<SelectedProduct> {
           .doc(id)
           .get()
           .then((data) => {
-                productValues['name'] = data['name'],
-                productValues['weight'] = data['weight'],
-                productValues['price'] = data['price'],
-                sugar = double.tryParse(data['sugar'])!,
-                foodScore = (h1Abc! * sugar),
-                print('fffffffffffffffffff$foodScore'),
-                print('#############$sugar'),
-                print('#############$h1Abc'),
-                foodScoreResult = ((foodScore!) / 6),
-                print('oooooooooooooo$foodScoreResult')
+                if (data != null)
+                  {
+                    productValues['name'] = data['name'],
+                    productValues['weight'] = data['weight'],
+                    productValues['price'] = data['price'],
+                    sugar = double.tryParse(data['sugar'])!,
+                    foodScore = (h1Abc! * sugar),
+                    print('fffffffffffffffffff$foodScore'),
+                    print('#############$sugar'),
+                    print('#############$h1Abc'),
+                    foodScoreResult = ((foodScore!) / 6),
+                    print('oooooooooooooo$foodScoreResult')
+                  }
+                else{
+          setState(() {
+            isScan=false;
+          })
+
+                }
               });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -345,7 +355,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                   child: CircularProgressIndicator(
                   color: Colors.green,
                 ))
-              : Padding(
+              :isScan? Padding(
                   padding: EdgeInsets.all(0.0.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -565,7 +575,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                       )
                     ],
                   ),
-                ),
+                ):Center(child: Text('Sorry product not found scan again'),),
         ),
       ),
     );

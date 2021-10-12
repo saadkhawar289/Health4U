@@ -270,9 +270,7 @@ class _QRState extends State<QRViewExample> {
                         height: 10,
                       ),
                       Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.lightGreen,
-                        ),
+                        child:Text('Checking item')
                       )
                     ],
                   ),
@@ -284,7 +282,7 @@ class _QRState extends State<QRViewExample> {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      SelectedProduct('MEUdPIY9MfwJ1k22noxq')));
+                      SelectedProduct(barcodeScanRes)));
         });
       } else {}
     } on PlatformException {
