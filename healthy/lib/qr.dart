@@ -368,7 +368,7 @@ class _QRState extends State<QRViewExample> {
                           child: Container(
                             height: 38,
                             width: 150,
-                            child: Center(child: Text("Scan Your Product")),
+                            child: Center(child: Text("Scan Your Product",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
                             //color: Colors.cyan,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -376,7 +376,7 @@ class _QRState extends State<QRViewExample> {
                                 color: Colors.lightGreen),
                           ),
                         )),
-                    
+
                   ],
                 ),
               ],
