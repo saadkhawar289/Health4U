@@ -263,8 +263,13 @@ class _QRState extends State<QRViewExample> {
                   child: Column(
                     children: [
                       Center(child: Image.asset("assets/ic_logo.png")),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Center(
-                        child: CircularProgressIndicator(color: Colors.lightGreen,),
+                        child: CircularProgressIndicator(
+                          color: Colors.lightGreen,
+                        ),
                       )
                     ],
                   ),
