@@ -266,7 +266,7 @@ class _QRState extends State<QRViewExample> {
                         child: Image.asset("assets/ic_logo.png")
                         ),
                       Center(
-                        child: Text('Loading item...'),
+                        child: CircularProgressIndicator(color: Colors.lightGreen,),
                       )
                     ],
                   ),
