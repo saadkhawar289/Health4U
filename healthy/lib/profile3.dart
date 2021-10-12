@@ -5,6 +5,7 @@ import 'package:healthy/PatientVasulization.dart';
 import 'package:healthy/purchase%20history.dart';
 import 'package:healthy/signup.dart';
 import 'package:healthy/sugeryinformation.dart';
+import 'package:healthy/symptomsTest.dart';
 
 import 'EditDiabetes.dart';
 import 'diabitiesSymptoms.dart';
@@ -165,7 +166,7 @@ class _State extends State<profile3> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PatientVisualization()));
+                          builder: (context) => SymptomsTest(navigation: 'v',)));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

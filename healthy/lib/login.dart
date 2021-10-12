@@ -4,10 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healthy/Model/Patient.dart';
 import 'package:healthy/forntscreen.dart';
 import 'package:healthy/frontscreenRetail.dart';
 import 'package:healthy/newpassword.dart';
 import 'package:healthy/selectAccount.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'DoctorLandingScreen.dart';
 
@@ -17,6 +19,7 @@ class Login extends StatefulWidget {
 }
 
 class _State extends State<Login> {
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final scaffKey =
       GlobalKey<ScaffoldState>(debugLabel: "scaffold-get-phone");
@@ -60,18 +63,29 @@ class _State extends State<Login> {
 
 
   Future<bool> loadUser() async {
+    String localStorageValue;
     try {
 
-      print('loading===================================');
-      User? user = FirebaseAuth.instance.currentUser;
+       SharedPreferences sharedPreferences =
+            await SharedPreferences.getInstance();
+             User? user = FirebaseAuth.instance.currentUser;
+
+
       formValues['uID'] = user!.uid;
       await FirebaseFirestore.instance
           .collection("Users")
           .doc(user.uid)
           .get()
-          .then((data) => {
-        print("($data['type'])============================"),
+          .then((data)async => {
+
         if(data.get('type')=='Customer'){
+            await   FirebaseFirestore.instance
+                .collection("SymptomsTestResults")
+                .doc(user.uid)
+                .get().then((value) async=> {
+              localStorageValue= value['HbA1c'] ,
+           await      sharedPreferences.setString('HbA1c',localStorageValue),
+            }),
 
           Navigator.push(
           context,
@@ -112,7 +126,7 @@ class _State extends State<Login> {
         return false;
       }
     } catch (e) {
-      print(e);
+      print('-000-0-0-0-0-0-0-0-$e');
       return false;
     }
 

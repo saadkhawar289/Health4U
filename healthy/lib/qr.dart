@@ -245,6 +245,9 @@ class QRViewExample extends StatefulWidget {
 }
 
 class _QRState extends State<QRViewExample> {
+
+
+
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
     try {
@@ -281,7 +284,7 @@ class _QRState extends State<QRViewExample> {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      SelectedProduct(barcodeScanRes.toString())));
+                      SelectedProduct('MEUdPIY9MfwJ1k22noxq')));
         });
       } else {}
     } on PlatformException {

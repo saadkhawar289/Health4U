@@ -7,6 +7,7 @@ class Patient {
   String? name;
   String? doctorID;
   String? uID;
+  String? hBA1c;
   List<String> symptomsTest=[];
   List<String> medicines=[];
   List<String> pills=[];
@@ -18,6 +19,7 @@ class Patient {
   Patient({
     @required this.name,
     @required this.uID,
+    @required this.hBA1c
 
   });
 

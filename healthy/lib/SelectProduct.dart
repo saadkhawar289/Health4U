@@ -196,6 +196,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/Cart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckOutCartTile extends StatelessWidget {
   final int index;
@@ -250,6 +251,10 @@ class SelectedProduct extends StatefulWidget {
 }
 
 class _SelectedProductState extends State<SelectedProduct> {
+  double? foodScore;
+  double? hba1cScore;
+  double? foodScoreResult;
+
   @override
   void initState() {
     print('++++++++++++++++${widget.productID}');
@@ -273,6 +278,10 @@ class _SelectedProductState extends State<SelectedProduct> {
   };
 
   Future<bool> loadProduct(String id) async {
+    SharedPreferences sharedPreferences =
+    await SharedPreferences.getInstance();
+   var testValue= sharedPreferences.getString('HbA1c');
+   double val =testValue as double;
     try {
       await FirebaseFirestore.instance
           .collection("Product")
@@ -281,7 +290,9 @@ class _SelectedProductState extends State<SelectedProduct> {
           .then((data) => {
                 productValues['name'] = data['name'],
                 productValues['weight'] = data['weight'],
-                productValues['price'] = data['price']
+                productValues['price'] = data['price'],
+        foodScore=val * data['sugar'],
+        foodScoreResult =(foodScore!)/6,
               });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -346,7 +357,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                           child: Container(
                             height: 0.35.sh,
                             decoration: BoxDecoration(
-                              image: _buildServiceBoxImage('assets/pic3.jpg')
+                              image:foodScoreResult!<=20? _buildServiceBoxImage('assets/pic3.jpg'):foodScoreResult!>=30?_buildServiceBoxImage('assets/pic1.jpg'):_buildServiceBoxImage('assets/pic2.jpg')
                             ),
                             child: Column(
                               children: [

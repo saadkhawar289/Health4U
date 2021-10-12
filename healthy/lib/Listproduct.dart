@@ -102,7 +102,7 @@ class UserTile extends StatelessWidget {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
 
-    if(snapshot!.get("uID")==user!.uid){
+    if(snapshot!.get('uID')==user!.uid){
       return Column(
       children: [
         ListTile(
