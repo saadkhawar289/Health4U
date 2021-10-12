@@ -237,6 +237,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/SelectProduct.dart';
 
 class QRViewExample extends StatefulWidget {
@@ -256,21 +257,26 @@ class _QRState extends State<QRViewExample> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                elevation: 50,
-                backgroundColor: Colors.transparent,
+                elevation: 0,
+                backgroundColor: Colors.black45,
                 content: Container(
-                  height: 250,
+                  height: 1.sh,
+                  width: 1.sw,
                   child: Column(
                     children: [
-                      Center(child: Image.asset("assets/ic_logo.png")),
+                      Padding(
+                        padding: EdgeInsets.only(top: 0.35.sh),
+                        child: Center(child: Image.asset("assets/ic_logo.png")),
+                      ),
                       SizedBox(
                         height: 10,
                       ),
                       Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.lightGreen,
-                        ),
-                      )
+                          child: Text(
+                        'Checking item',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ))
                     ],
                   ),
                 ),
