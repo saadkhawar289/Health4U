@@ -17,7 +17,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(ScreenUtilInit(
       builder: () => DevicePreview(
-          enabled: true,
+          enabled: false,
           builder: (context) => MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(primaryColor: Colors.green),
