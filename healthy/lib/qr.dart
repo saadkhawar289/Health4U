@@ -232,6 +232,7 @@
 //   }
 // }
 
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -246,26 +247,49 @@ class QRViewExample extends StatefulWidget {
 class _QRState extends State<QRViewExample> {
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       print('=====================$barcodeScanRes');
       if (barcodeScanRes.toString().isNotEmpty) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    SelectedProduct(barcodeScanRes.toString())));
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                elevation: 50,
+                backgroundColor: Colors.transparent,
+                content: Container(
+                  height: 250,
+                  child: Column(
+                    children: [
+                      Center(child: Image.asset("assets/ic_logo.png")),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.lightGreen,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            });
+        Timer(Duration(seconds: 3), () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      SelectedProduct(barcodeScanRes.toString())));
+        });
       } else {}
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     } catch (e) {
       print('==================$e');
     }
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
+
     if (!mounted) return;
 
     // setState(() {
@@ -347,7 +371,7 @@ class _QRState extends State<QRViewExample> {
                             //color: Colors.cyan,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(20)),
                                 color: Colors.lightGreen),
                           ),
                         ))
