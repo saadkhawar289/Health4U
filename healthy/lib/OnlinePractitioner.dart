@@ -59,7 +59,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                             ],
                           ),
                           width: MediaQuery.of(context).size.width * 0.90,
-                          height: 80.h,
+                          height: 85.h,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 25.0),
                             child: Row(
@@ -87,7 +87,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                               child: Text('Hi Aman',
                                                   style: TextStyle(
                                                       fontWeight:
-                                                      FontWeight.w500))),
+                                                      FontWeight.w500,fontSize: 14.sp))),
                                           SizedBox(
                                             height: 3,
                                           ),
@@ -108,7 +108,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                 'Book an appointment',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w500,
-                                                   ),
+                                                   fontSize: 14.sp),
                                               ))
                                         ],
                                       ),
