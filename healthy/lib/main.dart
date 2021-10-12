@@ -8,7 +8,6 @@ import 'package:healthy/splash.dart';
 
 import 'OnlinePractitioner.dart';
 import 'SelectDoctor.dart';
-import 'SelectProduct.dart';
 import 'TimeDateReservation.dart';
 import 'appointConfirmation.dart';
 import 'home.dart';
