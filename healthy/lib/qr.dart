@@ -375,7 +375,8 @@ class _QRState extends State<QRViewExample> {
                                     BorderRadius.all(Radius.circular(20)),
                                 color: Colors.lightGreen),
                           ),
-                        ))
+                        )),
+                    
                   ],
                 ),
               ],
