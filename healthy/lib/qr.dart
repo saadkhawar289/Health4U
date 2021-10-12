@@ -270,9 +270,7 @@ class _QRState extends State<QRViewExample> {
                         height: 10,
                       ),
                       Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.lightGreen,
-                        ),
+                        child:Text('Checking item')
                       )
                     ],
                   ),
