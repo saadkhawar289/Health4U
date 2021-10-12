@@ -153,7 +153,9 @@ class _BookPractitionerState extends State<BookPractitioner> {
                                     padding:
                                     const EdgeInsets.only(right: 12.0),
                                     child: InkWell(
-                                      onTap: (){},
+                                      onTap: (){
+                                        Navigator.pushNamed(context,'/selectDoctor');
+                                      },
                                       child: Icon(
                                         Icons.arrow_forward,
                                         size: 33,

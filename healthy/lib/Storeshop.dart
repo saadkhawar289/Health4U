@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/onlinesite.dart';
+import 'package:healthy/qr.dart';
 
 class storeshop extends StatefulWidget {
   @override
@@ -57,10 +58,10 @@ class _State extends State<storeshop> {
           Column(
             children: [
               InkWell(
-                // onTap: () {
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (context) => QRViewExample()));
-                // },
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => QRViewExample()));
+                },
                 child: Container(
                   margin: EdgeInsets.only(top: 40),
                   height: 75,
@@ -89,7 +90,7 @@ class _State extends State<storeshop> {
                           child: Center(
                               child: Text(
                             "In Store",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                             style: TextStyle(fontWeight: FontWeight.bold),
                           )),
                         ),
                         Container(

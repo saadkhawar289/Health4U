@@ -8,6 +8,8 @@ import 'package:healthy/shops.dart';
 import 'package:healthy/sugeryinformation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'OnlinePractitioner.dart';
+
 
 class CustomDrawer extends StatelessWidget {
  final int vis;
@@ -82,7 +84,7 @@ class CustomDrawer extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SugeryInformation()));
+                        builder: (context) => OnlinePractitioner()));
               },
             ),
             Divider(),
