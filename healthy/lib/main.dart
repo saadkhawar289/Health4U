@@ -4,13 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/PractitionerBooking.dart';
-import 'package:healthy/instore.dart';
-import 'package:healthy/splash.dart';
-import 'package:healthy/widgets/textFormField.dart';
+import 'package:healthy/qr.dart';
 
 import 'OnlinePractitioner.dart';
 import 'SelectDoctor.dart';
-import 'SelectProduct.dart';
 import 'TimeDateReservation.dart';
 import 'appointConfirmation.dart';
 import 'home.dart';
@@ -26,13 +23,15 @@ Future<void> main() async {
                 theme: ThemeData(primaryColor: Colors.green),
                 // home: Splash(),
                 routes: {
-                  '/': (BuildContext context) => Splash(),
-                  '/onlinePractitioner': (BuildContext context) => OnlinePractitioner(),
+                  '/': (BuildContext context) => QRViewExample(),
+                  '/onlinePractitioner': (BuildContext context) =>
+                      OnlinePractitioner(),
                   '/homeScreen': (BuildContext context) => HomeScreen(),
-                  '/BookPractitioner': (BuildContext context) => BookPractitioner(),
-                  '/selectDoctor':(BuildContext context) =>SelectDoctor(),
-                  '/timeReservation':(BuildContext context) =>Resolution(),
-                  '/confirmation':(BuildContext context) =>Confirmation()
+                  '/BookPractitioner': (BuildContext context) =>
+                      BookPractitioner(),
+                  '/selectDoctor': (BuildContext context) => SelectDoctor(),
+                  '/timeReservation': (BuildContext context) => Resolution(),
+                  '/confirmation': (BuildContext context) => Confirmation()
                 },
               ))));
 }

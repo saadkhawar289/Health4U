@@ -232,7 +232,6 @@
 //   }
 // }
 
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -255,33 +254,30 @@ class _QRState extends State<QRViewExample> {
       if (barcodeScanRes.toString().isNotEmpty) {
         showDialog(
             context: context,
-            builder:
-                (BuildContext context) {
+            builder: (BuildContext context) {
               return AlertDialog(
+                elevation: 50,
+                backgroundColor: Colors.transparent,
                 content: Container(
                   height: 250,
                   child: Column(
                     children: [
-                      Center(
-                        child: Image.asset("assets/ic_logo.png")
-                        ),
+                      Center(child: Image.asset("assets/ic_logo.png")),
                       Center(
                         child: Text('Loading item...'),
                       )
                     ],
                   ),
                 ),
-
               );
             });
-        Timer(Duration(seconds: 3),(){
+        Timer(Duration(seconds: 3), () {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
                       SelectedProduct(barcodeScanRes.toString())));
         });
-
       } else {}
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
@@ -370,7 +366,7 @@ class _QRState extends State<QRViewExample> {
                             //color: Colors.cyan,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(20)),
                                 color: Colors.lightGreen),
                           ),
                         ))
