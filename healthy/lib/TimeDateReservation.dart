@@ -161,6 +161,7 @@ class _ResolutionState extends State<Resolution> {
                                 setState(() {
                                   isEnable = isEnable ? false : true;
                                   Enable = false;
+                                  isable = false;
                                 });
                               },
                               child: Container(
@@ -183,6 +184,7 @@ class _ResolutionState extends State<Resolution> {
                                 setState(() {
                                   Enable = Enable ? false : true;
                                   isEnable = false;
+                                  isable = false;
                                 });
                               },
                               child: Container(
@@ -384,7 +386,10 @@ class _ResolutionState extends State<Resolution> {
                                 decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
+                                  //  color: const Color(0xFFF7F7F7),
+                                  color: isable == true
+                                      ? Colors.lightGreen
+                                      : Color(0xFFF7F7F7),
                                 ),
                                 child: Center(child: Text("09:45"))),
                           ],
@@ -729,7 +734,7 @@ class _ResolutionState extends State<Resolution> {
                           child: Container(
                             width: 0.45.sw,
                             height: 0.06.sh,
-                            color: isEnable || Enable == true
+                            color: isEnable || Enable || isable == true
                                 ? Colors.lightGreen
                                 : Color(0xFFF7F7F7),
                             child: Center(child: Text("Book")),
