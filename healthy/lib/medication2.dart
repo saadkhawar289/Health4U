@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
-// //import 'package:healthy/symptomsTest.dart';
+// //import 'package:healthy/forntscreen.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:healthy/symptomsTest.dart';
+// import 'package:healthy/forntscreen.dart';
 //
 // class editmedication2 extends StatefulWidget {
 //   @override
@@ -275,7 +275,7 @@
 //               Navigator.push(
 //                   context,
 //                   MaterialPageRoute(
-//                       builder: (context) => SymptomsTest(
+//                       builder: (context) => forntscreen(
 //                             navigation: 'patient',
 //                           )));
 //             },
@@ -308,8 +308,7 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy/selectpils2.dart';
-import 'package:healthy/symptomsTest.dart';
+import 'package:healthy/forntscreen.dart';
 
 class editmedication2 extends StatefulWidget {
   @override
@@ -368,7 +367,7 @@ class _State extends State<editmedication2> {
             height: 60,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              //  color: Colors.red,
+                //  color: Colors.red,
                 border: Border(
                     bottom: BorderSide(color: Colors.black26, width: 1))),
             child: Text(
@@ -385,10 +384,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Humalog",
                           style: TextStyle(
@@ -410,10 +409,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Lantus",
                           style: TextStyle(
@@ -435,10 +434,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Levemir",
                           style: TextStyle(
@@ -460,10 +459,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Novorapid",
                           style: TextStyle(
@@ -485,10 +484,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Insuman",
                           style: TextStyle(
@@ -510,10 +509,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Insulatard",
                           style: TextStyle(
@@ -588,7 +587,7 @@ class _State extends State<editmedication2> {
           InkWell(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SymptomsTest(navigation: '',)));
+                  MaterialPageRoute(builder: (context) => forntscreen()));
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),
@@ -597,10 +596,9 @@ class _State extends State<editmedication2> {
               child: Center(
                   child: Text("Next",
                       style: TextStyle(
-                        fontSize: 17.sp,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600
-                      ))),
+                          fontSize: 17.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600))),
               color: Colors.lightGreen,
             ),
           ),
