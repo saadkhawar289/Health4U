@@ -209,7 +209,7 @@ class CheckOutCartTile extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          leading: Image.asset('assets/ic_logo.png'),
+          leading: Image.network(productValues['image']),
           title: Text(productValues['name'],
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
