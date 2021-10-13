@@ -9,11 +9,11 @@ class OnlinePractitioner extends StatefulWidget {
 }
 
 class _OnlinePractitionerState extends State<OnlinePractitioner> {
-  Color? cl1=Colors.lightGreen;
-  Color? cl2=Colors.transparent;
-  Color? textClr=Colors.black;
-  Color? textClr2=Colors.white;
-  bool past=false;
+  Color? cl1 = Colors.lightGreen;
+  Color? cl2 = Colors.transparent;
+  Color? textClr = Colors.black;
+  Color? textClr2 = Colors.white;
+  bool past = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                 children: [
                   Center(
                     child: Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 10.0.w),
+                      padding: EdgeInsets.symmetric(horizontal: 10.0.w),
                       child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -59,7 +59,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                             ],
                           ),
                           width: MediaQuery.of(context).size.width * 0.90,
-                          height: 85.h,
+                          height: 90.h,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 25.0),
                             child: Row(
@@ -78,8 +78,8 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                 Expanded(
                                     flex: 3,
                                     child: Padding(
-                                      padding:  EdgeInsets.only(
-                                          top: 16.0, left: 8),
+                                      padding:
+                                          EdgeInsets.only(top: 16.0, left: 8),
                                       child: Column(
                                         children: [
                                           Align(
@@ -87,7 +87,8 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                               child: Text('Hi Aman',
                                                   style: TextStyle(
                                                       fontWeight:
-                                                      FontWeight.w500,fontSize: 14.sp))),
+                                                          FontWeight.w500,
+                                                      fontSize: 12.sp))),
                                           SizedBox(
                                             height: 3,
                                           ),
@@ -97,7 +98,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                 'How can we help?',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    fontSize: 18.sp),
+                                                    fontSize: 16.sp),
                                               )),
                                           SizedBox(
                                             height: 3,
@@ -108,7 +109,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                 'Book an appointment',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w500,
-                                                   fontSize: 14.sp),
+                                                    fontSize: 12.sp),
                                               ))
                                         ],
                                       ),
@@ -118,11 +119,12 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                     child: Align(
                                         alignment: Alignment.centerRight,
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 12.0),
+                                          padding: const EdgeInsets.only(
+                                              right: 12.0),
                                           child: InkWell(
-                                            onTap: (){
-                                              Navigator.of(context).pushNamed('/BookPractitioner');
+                                            onTap: () {
+                                              Navigator.of(context).pushNamed(
+                                                  '/BookPractitioner');
                                             },
                                             child: Icon(
                                               Icons.arrow_forward,
@@ -143,13 +145,13 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                     child: Row(
                       children: [
                         InkWell(
-                          onTap:(){
+                          onTap: () {
                             setState(() {
-                              cl1=Colors.lightGreen;
-                              cl2=Colors.transparent;
-                              textClr=Colors.black;
-                              textClr2=Colors.white;
-                              past=false;
+                              cl1 = Colors.lightGreen;
+                              cl2 = Colors.transparent;
+                              textClr = Colors.black;
+                              textClr2 = Colors.white;
+                              past = false;
                             });
                           },
                           child: Container(
@@ -158,7 +160,6 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                             decoration: BoxDecoration(
                               color: cl1,
                               borderRadius: BorderRadius.circular(20),
-
                             ),
                             child: Center(
                                 child: Text('Upcoming',
@@ -172,13 +173,13 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                           width: 30.w,
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
-                              cl1=Colors.transparent;
-                              cl2=Colors.lightGreen;
-                              textClr=Colors.white;
-                              textClr2=Colors.black;
-                              past=true;
+                              cl1 = Colors.transparent;
+                              cl2 = Colors.lightGreen;
+                              textClr = Colors.white;
+                              textClr2 = Colors.black;
+                              past = true;
                             });
                           },
                           child: Container(
@@ -192,7 +193,9 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                 child: Text(
                               'Past',
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16.sp,color: textClr),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.sp,
+                                  color: textClr),
                             )),
                           ),
                         )
@@ -215,9 +218,12 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                             Expanded(
                               flex: 1,
                               child: CircleAvatar(
-
                                 maxRadius: 30,
-                                child: Image.asset('assets/dr1.jpg',fit: BoxFit.fill,height: 70,),
+                                child: Image.asset(
+                                  'assets/dr1.jpg',
+                                  fit: BoxFit.fill,
+                                  height: 70,
+                                ),
                                 backgroundColor: Colors.white,
                               ),
                             ),
@@ -270,36 +276,47 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                       child: Column(
                                         children: [
                                           InkWell(
-                                            onTap:(){
+                                            onTap: () {
                                               showModalBottomSheet(
-                                                shape:RoundedRectangleBorder(  borderRadius: BorderRadius.only(
-                                                  topLeft:Radius.circular(15),
-                                                  topRight: Radius.circular(15),
-                                                )),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(15),
+                                                    topRight:
+                                                        Radius.circular(15),
+                                                  )),
                                                   context: context,
-                                                  builder: (BuildContext context) {
+                                                  builder:
+                                                      (BuildContext context) {
                                                     return Container(
-
                                                         decoration: BoxDecoration(
-                                                          //  color:Colors.red,
-                                                        ),
+                                                            //  color:Colors.red,
+                                                            ),
                                                         height: 0.26.sh,
-                                                        padding: EdgeInsets.only(top: 60.0.h,),
+                                                        padding: EdgeInsets.only(
+                                                          top: 60.0.h,
+                                                        ),
                                                         child: Column(
                                                           children: [
                                                             Align(
-                                                                alignment:Alignment.centerLeft,
+                                                                alignment: Alignment
+                                                                    .centerLeft,
                                                                 child: Padding(
-                                                                  padding:  EdgeInsets.only(left: 18.0.w),
-                                                                  child: InkWell(
-                                                                    onTap: (){
+                                                                  padding: EdgeInsets.only(
+                                                                      left: 18.0
+                                                                          .w),
+                                                                  child:
+                                                                      InkWell(
+                                                                    onTap: () {
                                                                       showDialog(
-                                                                          context: context,
-                                                                          builder: (BuildContext context) {
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (BuildContext context) {
                                                                             return AlertDialog(
                                                                               title: Text('Are you sure you want to\nCancel your appointment'),
-                                                                              content: Text(
-                                                                                  'You will no be able to undo the action'),
+                                                                              content: Text('You will no be able to undo the action'),
                                                                               actions: <Widget>[
                                                                                 FlatButton(
                                                                                   onPressed: () => {
@@ -310,18 +327,23 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                                                 FlatButton(
                                                                                   onPressed: () => {
                                                                                     Navigator.of(context).pop(),
+                                                                                    Navigator.of(context).pop(),
                                                                                   },
-                                                                                  child: Text('Yes,Cancel',style: TextStyle(
-                                                                                    color: Colors.red
-                                                                                  ),),
+                                                                                  child: Text(
+                                                                                    'Yes,Cancel',
+                                                                                    style: TextStyle(color: Colors.red),
+                                                                                  ),
                                                                                 )
                                                                               ],
                                                                             );
                                                                           });
                                                                     },
-                                                                    child: Text('Cancel appointment',style: TextStyle(
-                                                                      fontWeight: FontWeight.w600
-                                                                    ),),
+                                                                    child: Text(
+                                                                      'Cancel appointment',
+                                                                      style: TextStyle(
+                                                                          fontWeight:
+                                                                              FontWeight.w600),
+                                                                    ),
                                                                   ),
                                                                 )),
                                                             SizedBox(
@@ -330,23 +352,31 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                             Divider(
                                                               height: 2,
                                                               thickness: 1,
-                                                              color: Colors.grey,
+                                                              color:
+                                                                  Colors.grey,
                                                             ),
                                                             SizedBox(
                                                               height: 15.h,
                                                             ),
                                                             Align(
-                                                                alignment:Alignment.centerLeft,
+                                                                alignment: Alignment
+                                                                    .centerLeft,
                                                                 child: Padding(
-                                                                  padding:  EdgeInsets.only(left: 18.0.w),
-                                                                  child: InkWell(
-                                                                    onTap: (){
+                                                                  padding: EdgeInsets.only(
+                                                                      left: 18.0
+                                                                          .w),
+                                                                  child:
+                                                                      InkWell(
+                                                                    onTap: () {
                                                                       Navigator.pushNamed(
-                                                                          context, '/timeReservation');
+                                                                          context,
+                                                                          '/timeReservation');
                                                                     },
-                                                                    child: Text('Change time and date',style: TextStyle(
-                                                                        fontWeight: FontWeight.w600
-                                                                    )),
+                                                                    child: Text(
+                                                                        'Change time and date',
+                                                                        style: TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w600)),
                                                                   ),
                                                                 )),
                                                             SizedBox(
@@ -355,7 +385,8 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                             Divider(
                                                               height: 2,
                                                               thickness: 1,
-                                                              color: Colors.grey,
+                                                              color:
+                                                                  Colors.grey,
                                                             ),
                                                           ],
                                                         ));
@@ -366,14 +397,9 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                               size: 33,
                                             ),
                                           ),
-                                          InkWell(
-                                            onTap:(){
-                                              Navigator.pushNamed(context, '/BookPractitioner');
-                                            },
-                                            child: Icon(
-                                              Icons.arrow_forward,
-                                              size: 33,
-                                            ),
+                                          Icon(
+                                            Icons.arrow_forward,
+                                            size: 33,
                                           ),
                                         ],
                                       ),
@@ -398,7 +424,10 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                               flex: 1,
                               child: CircleAvatar(
                                 radius: 30,
-                                child: Image.asset('assets/dr2.jpg',height: 70.h,),
+                                child: Image.asset(
+                                  'assets/dr2.jpg',
+                                  height: 70.h,
+                                ),
                                 backgroundColor: Colors.lightGreen,
                               ),
                             ),
@@ -406,7 +435,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                 flex: 3,
                                 child: Padding(
                                   padding:
-                                  const EdgeInsets.only(top: 16.0, left: 8),
+                                      const EdgeInsets.only(top: 16.0, left: 8),
                                   child: Column(
                                     children: [
                                       Align(
@@ -415,7 +444,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                               style: TextStyle(
                                                   fontSize: 17.sp,
                                                   fontWeight:
-                                                  FontWeight.bold))),
+                                                      FontWeight.bold))),
                                       SizedBox(
                                         height: 3,
                                       ),
@@ -450,9 +479,127 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                           const EdgeInsets.only(right: 12.0),
                                       child: Column(
                                         children: [
-                                          Icon(
-                                            Icons.more_horiz,
-                                            size: 33,
+                                          InkWell(
+                                            onTap: () {
+                                              showModalBottomSheet(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(15),
+                                                    topRight:
+                                                        Radius.circular(15),
+                                                  )),
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return Container(
+                                                        decoration: BoxDecoration(
+                                                            //  color:Colors.red,
+                                                            ),
+                                                        height: 0.26.sh,
+                                                        padding: EdgeInsets.only(
+                                                          top: 60.0.h,
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Align(
+                                                                alignment: Alignment
+                                                                    .centerLeft,
+                                                                child: Padding(
+                                                                  padding: EdgeInsets.only(
+                                                                      left: 18.0
+                                                                          .w),
+                                                                  child:
+                                                                      InkWell(
+                                                                    onTap: () {
+                                                                      showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (BuildContext context) {
+                                                                            return AlertDialog(
+                                                                              title: Text('Are you sure you want to\nCancel your appointment'),
+                                                                              content: Text('You will no be able to undo the action'),
+                                                                              actions: <Widget>[
+                                                                                FlatButton(
+                                                                                  onPressed: () => {
+                                                                                    Navigator.of(context).pop(),
+                                                                                  },
+                                                                                  child: Text('No'),
+                                                                                ),
+                                                                                FlatButton(
+                                                                                  onPressed: () => {
+                                                                                    Navigator.of(context).pop(),
+                                                                                    Navigator.of(context).pop(),
+                                                                                  },
+                                                                                  child: Text(
+                                                                                    'Yes,Cancel',
+                                                                                    style: TextStyle(color: Colors.red),
+                                                                                  ),
+                                                                                )
+                                                                              ],
+                                                                            );
+                                                                          });
+                                                                    },
+                                                                    child: Text(
+                                                                      'Cancel appointment',
+                                                                      style: TextStyle(
+                                                                          fontWeight:
+                                                                              FontWeight.w600),
+                                                                    ),
+                                                                  ),
+                                                                )),
+                                                            SizedBox(
+                                                              height: 10.h,
+                                                            ),
+                                                            Divider(
+                                                              height: 2,
+                                                              thickness: 1,
+                                                              color:
+                                                                  Colors.grey,
+                                                            ),
+                                                            SizedBox(
+                                                              height: 15.h,
+                                                            ),
+                                                            Align(
+                                                                alignment: Alignment
+                                                                    .centerLeft,
+                                                                child: Padding(
+                                                                  padding: EdgeInsets.only(
+                                                                      left: 18.0
+                                                                          .w),
+                                                                  child:
+                                                                      InkWell(
+                                                                    onTap: () {
+                                                                      Navigator.pushNamed(
+                                                                          context,
+                                                                          '/timeReservation');
+                                                                    },
+                                                                    child: Text(
+                                                                        'Change time and date',
+                                                                        style: TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w600)),
+                                                                  ),
+                                                                )),
+                                                            SizedBox(
+                                                              height: 10.h,
+                                                            ),
+                                                            Divider(
+                                                              height: 2,
+                                                              thickness: 1,
+                                                              color:
+                                                                  Colors.grey,
+                                                            ),
+                                                          ],
+                                                        ));
+                                                  });
+                                            },
+                                            child: Icon(
+                                              Icons.more_horiz,
+                                              size: 33,
+                                            ),
                                           ),
                                           Icon(
                                             Icons.arrow_forward,
@@ -467,86 +614,91 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                   SizedBox(
                     height: 5.h,
                   ),
-               past==true?   Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      height: 90,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 10.0.w),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: CircleAvatar(
-                                radius: 30,
-                                child: Image.asset('assets/dr3.png',height: 70.h,),
-                                backgroundColor: Colors.lightGreen,
-                              ),
-                            ),
-                            Expanded(
-                                flex: 3,
-                                child: Padding(
-                                  padding:
-                                  const EdgeInsets.only(top: 16.0, left: 8),
-                                  child: Column(
-                                    children: [
-                                      Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text('Dr Saeeda',
-                                              style: TextStyle(
-                                                  fontSize: 17.sp,
-                                                  fontWeight:
-                                                  FontWeight.bold))),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text(
-                                            'Fri Jun 19 2021',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 14.sp),
-                                          )),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text(
-                                            '15:00-15:15',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 14.sp),
-                                          ))
-                                    ],
+                  past == true
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          width: MediaQuery.of(context).size.width,
+                          height: 90,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 10.0.w),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: CircleAvatar(
+                                    radius: 30,
+                                    child: Image.asset(
+                                      'assets/dr3.png',
+                                      height: 70.h,
+                                    ),
+                                    backgroundColor: Colors.lightGreen,
                                   ),
-                                )),
-                            Expanded(
-                                flex: 2,
-                                child: Align(
-                                    alignment: Alignment.centerRight,
+                                ),
+                                Expanded(
+                                    flex: 3,
                                     child: Padding(
-                                      padding:
-                                      const EdgeInsets.only(right: 12.0),
+                                      padding: const EdgeInsets.only(
+                                          top: 16.0, left: 8),
                                       child: Column(
                                         children: [
-                                        Icon(
-                                        Icons.more_horiz,
-                                        size: 33,
-                                      ),
-                                          Icon(
-                                            Icons.arrow_forward,
-                                            size: 33,
+                                          Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text('Dr Saeeda',
+                                                  style: TextStyle(
+                                                      fontSize: 17.sp,
+                                                      fontWeight:
+                                                          FontWeight.bold))),
+                                          SizedBox(
+                                            height: 3,
                                           ),
+                                          Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text(
+                                                'Fri Jun 19 2021',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14.sp),
+                                              )),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text(
+                                                '15:00-15:15',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14.sp),
+                                              ))
                                         ],
                                       ),
-                                    )))
-                          ],
-                        ),
-                      )):Container(),
+                                    )),
+                                Expanded(
+                                    flex: 2,
+                                    child: Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 12.0),
+                                          child: Column(
+                                            children: [
+                                              Icon(
+                                                Icons.more_horiz,
+                                                size: 33,
+                                              ),
+                                              Icon(
+                                                Icons.arrow_forward,
+                                                size: 33,
+                                              ),
+                                            ],
+                                          ),
+                                        )))
+                              ],
+                            ),
+                          ))
+                      : Container(),
                 ],
               ),
             ),
