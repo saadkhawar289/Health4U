@@ -277,6 +277,7 @@ class _QRState extends State<QRViewExample> {
               );
             });
         Timer(Duration(seconds: 3), () {
+          Navigator.pop(context);
           Navigator.push(
               context,
               MaterialPageRoute(

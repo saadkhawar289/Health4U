@@ -5,6 +5,8 @@ import 'package:healthy/PatientVasulization.dart';
 import 'package:healthy/purchase%20history.dart';
 
 import 'EditDiabetes.dart';
+import 'EditProfilePatient.dart';
+import 'forntscreen.dart';
 
 class profile3 extends StatefulWidget {
   @override
@@ -25,7 +27,8 @@ class _State extends State<profile3> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).pop();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => forntscreen()));
                   },
                   child: Container(
                     margin: EdgeInsets.only(left: 10, top: 60),
@@ -84,12 +87,10 @@ class _State extends State<profile3> {
             children: [
               InkWell(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => singup(
-                  //               source: 'edit',
-                  //             )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EditProfilePatient()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
