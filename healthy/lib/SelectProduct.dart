@@ -549,7 +549,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                                             style: TextStyle(
                                                 fontSize: 20.sp,
                                                 color: Colors.black,
-                                                fontWeight: FontWeight.bold),
+                                                ),
                                           )
                                         : foodScoreResult! >= 30
                                             ? Text(
@@ -557,16 +557,15 @@ class _SelectedProductState extends State<SelectedProduct> {
                                                 style: TextStyle(
                                                     fontSize: 20.sp,
                                                     color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+
+                                                        ),
                                               )
                                             : Text(
                                                 'High in Sugar',
                                                 style: TextStyle(
                                                     fontSize: 20.sp,
                                                     color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                                    ),
                                               ),
                                   ],
                                 ),
@@ -579,18 +578,56 @@ class _SelectedProductState extends State<SelectedProduct> {
                                 child: Container(
                                   child: Row(
                                     children: [
-                                      Icon(
-                                        Icons.check_circle,
-                                        size: 25.sp,
-                                        color: Colors.green,
-                                      ),
+                                      foodScoreResult! <= 20
+                                          ? Icon(Icons.check_circle,
+                                          size: 25.sp,
+                                          color: foodScoreResult! <= 20
+                                              ? Colors.lightGreen
+                                              : foodScoreResult! >= 30
+                                              ? Colors.red
+                                              : Colors.amber)
+                                          : foodScoreResult! >= 30
+                                          ? Icon(Icons.cancel,
+                                          size: 25.sp,
+                                          color: foodScoreResult! <= 20
+                                              ? Colors.lightGreen
+                                              : foodScoreResult! >= 30
+                                              ? Colors.red
+                                              : Colors.amber)
+                                          : Icon(Icons.cancel,
+                                          size: 25.sp,
+                                          color: foodScoreResult! <= 20
+                                              ? Colors.lightGreen
+                                              : foodScoreResult! >= 30
+                                              ? Colors.red
+                                              : Colors.amber),
                                       SizedBox(
                                         width: 0.01.sw,
                                       ),
-                                      Text(
+                                      foodScoreResult! <= 20
+                                          ? Text(
                                         'High in Fiber',
-                                        style: TextStyle(fontSize: 16.sp),
+                                        style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: Colors.black,
+                                        ),
                                       )
+                                          : foodScoreResult! >= 30
+                                          ? Text(
+                                        'High in Salt',
+                                        style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: Colors.black,
+
+                                        ),
+                                      )
+                                          : Text(
+                                        'High in Salt',
+                                        style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: Colors.black,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
