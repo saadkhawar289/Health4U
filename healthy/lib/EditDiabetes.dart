@@ -5,9 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/Editmedication.dart';
+import 'package:healthy/forntscreen.dart';
 import 'package:healthy/pills3.dart';
 import 'package:healthy/selectpills.dart';
-import 'package:healthy/symptomsTest.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'diabitiesSymptoms.dart';
@@ -33,7 +33,7 @@ class _State extends State<editdiabetes> {
   Map<String, dynamic> patient = {
     'doctorID': null,
     'uID': null,
-    'symptomsTest': [],
+    'forntscreen': [],
     'medicines': [],
     'pills': [],
     'typeOfDiabetes': null,
@@ -287,9 +287,7 @@ class _State extends State<editdiabetes> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SymptomsTest(
-                                      navigation: 'user',
-                                    )))
+                                builder: (context) => forntscreen()))
                       }
                     else
                       {_showSnackBar("some thing is worng")}
@@ -297,7 +295,7 @@ class _State extends State<editdiabetes> {
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(
-              //         builder: (context) => SymptomsTest(
+              //         builder: (context) => forntscreen(
               //               navigation: 'user',
               //             )));
             },
@@ -329,9 +327,7 @@ class _State extends State<editdiabetes> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SymptomsTest(
-                                                navigation: 'user',
-                                              )))
+                                          builder: (context) => forntscreen()))
                                 }
                               else
                                 {_showSnackBar("some thing is worng")}
