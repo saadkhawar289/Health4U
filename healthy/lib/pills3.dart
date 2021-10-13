@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy/symptomsTest.dart';
+import 'package:healthy/forntscreen.dart';
 
 class selectpills3 extends StatefulWidget {
   @override
@@ -269,12 +269,8 @@ class _State extends State<selectpills3> {
 
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SymptomsTest(
-                            navigation: 'patient',
-                          )));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => forntscreen()));
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),

@@ -5,9 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/Editmedication.dart';
+import 'package:healthy/forntscreen.dart';
 import 'package:healthy/pills3.dart';
 import 'package:healthy/selectpills.dart';
-import 'package:healthy/symptomsTest.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'diabitiesSymptoms.dart';
@@ -38,6 +38,13 @@ class _State extends State<editdiabetes> {
     'pills': [],
     'typeOfDiabetes': null,
   };
+  Map<String, dynamic> symptomsTest = {
+    'HbA1c': 5,
+    'FootHealth': [],
+    'EyeHealth': [],
+    'KidneyHealth': [],
+    'uID': null
+  };
   Future<bool> addPatientRecord(Map<String, dynamic> data) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
@@ -45,6 +52,11 @@ class _State extends State<editdiabetes> {
       DocumentReference ref =
           FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
       ref.set(data);
+      symptomsTest['uID']=user.uid;
+      await FirebaseFirestore.instance
+          .collection("SymptomsTestResults")
+          .doc(user.uid)
+          .set(symptomsTest);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -58,6 +70,20 @@ class _State extends State<editdiabetes> {
       return false;
     }
 
+    return true;
+  }
+  Future<bool> saveSymptomsResult(Map<String, dynamic> data) async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      await FirebaseFirestore.instance
+          .collection("SymptomsTestResults")
+          .doc(user!.uid)
+          .set(data);
+    } catch (e) {
+      _showSnackBar(e.toString());
+      return false;
+    }
     return true;
   }
 //  // Future<bool> SaveSurgeryInfo(Map<String, dynamic> data) async {
@@ -287,9 +313,7 @@ class _State extends State<editdiabetes> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SymptomsTest(
-                                      navigation: 'user',
-                                    )))
+                                builder: (context) => forntscreen()))
                       }
                     else
                       {_showSnackBar("some thing is worng")}
@@ -297,7 +321,7 @@ class _State extends State<editdiabetes> {
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(
-              //         builder: (context) => SymptomsTest(
+              //         builder: (context) => forntscreen(
               //               navigation: 'user',
               //             )));
             },
@@ -329,9 +353,7 @@ class _State extends State<editdiabetes> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SymptomsTest(
-                                                navigation: 'user',
-                                              )))
+                                          builder: (context) => forntscreen()))
                                 }
                               else
                                 {_showSnackBar("some thing is worng")}

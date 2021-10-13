@@ -209,7 +209,7 @@ class CheckOutCartTile extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          leading: Image.asset('assets/ic_logo.png'),
+          leading: Image.network(productValues['image']),
           title: Text(productValues['name'],
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
@@ -515,19 +515,58 @@ class _SelectedProductState extends State<SelectedProduct> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(left: 8.0.w),
-                                      child: Icon(
-                                        Icons.check_circle,
-                                        size: 25.sp,
-                                        color: Colors.green,
-                                      ),
+                                      child: foodScoreResult! <= 20
+                                          ? Icon(Icons.check_circle,
+                                              size: 25.sp,
+                                              color: foodScoreResult! <= 20
+                                                  ? Colors.lightGreen
+                                                  : foodScoreResult! >= 30
+                                                      ? Colors.red
+                                                      : Colors.amber)
+                                          : foodScoreResult! >= 30
+                                              ? Icon(Icons.cancel,
+                                                  size: 25.sp,
+                                                  color: foodScoreResult! <= 20
+                                                      ? Colors.lightGreen
+                                                      : foodScoreResult! >= 30
+                                                          ? Colors.red
+                                                          : Colors.amber)
+                                              : Icon(Icons.cancel,
+                                                  size: 25.sp,
+                                                  color: foodScoreResult! <= 20
+                                                      ? Colors.lightGreen
+                                                      : foodScoreResult! >= 30
+                                                          ? Colors.red
+                                                          : Colors.amber),
                                     ),
                                     SizedBox(
                                       width: 0.02.sw,
                                     ),
-                                    Text(
-                                      'Low in sugar',
-                                      style: TextStyle(fontSize: 16.sp),
-                                    )
+                                    foodScoreResult! <= 20
+                                        ? Text(
+                                            'Low in Sugar',
+                                            style: TextStyle(
+                                                fontSize: 20.sp,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold),
+                                          )
+                                        : foodScoreResult! >= 30
+                                            ? Text(
+                                                'High in Sugar',
+                                                style: TextStyle(
+                                                    fontSize: 20.sp,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            : Text(
+                                                'High in Sugar',
+                                                style: TextStyle(
+                                                    fontSize: 20.sp,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
                                   ],
                                 ),
                               ),
