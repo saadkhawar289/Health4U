@@ -245,9 +245,6 @@ class QRViewExample extends StatefulWidget {
 }
 
 class _QRState extends State<QRViewExample> {
-
-
-
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
     try {
@@ -270,8 +267,10 @@ class _QRState extends State<QRViewExample> {
                         height: 10,
                       ),
                       Center(
-                        child:Text('Checking item')
-                      )
+                          child: Text(
+                        'Checking item',
+                        style: TextStyle(color: Colors.white),
+                      ))
                     ],
                   ),
                 ),
@@ -281,8 +280,7 @@ class _QRState extends State<QRViewExample> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      SelectedProduct(barcodeScanRes)));
+                  builder: (context) => SelectedProduct(barcodeScanRes)));
         });
       } else {}
     } on PlatformException {
@@ -368,7 +366,13 @@ class _QRState extends State<QRViewExample> {
                           child: Container(
                             height: 38,
                             width: 150,
-                            child: Center(child: Text("Scan Your Product",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                            child: Center(
+                                child: Text(
+                              "Scan Your Product",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
                             //color: Colors.cyan,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -376,7 +380,6 @@ class _QRState extends State<QRViewExample> {
                                 color: Colors.lightGreen),
                           ),
                         )),
-
                   ],
                 ),
               ],
