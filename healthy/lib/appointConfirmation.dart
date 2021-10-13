@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:healthy/OnlinePractitioner.dart';
 
 class Confirmation extends StatefulWidget {
   @override
@@ -17,10 +18,13 @@ class _ConfirmationState extends State<Confirmation> {
             toolbarHeight: 80,
             elevation: 0.7,
             backgroundColor: const Color(0xFFF7F7F7),
-           iconTheme: Theme.of(context).iconTheme,
+            iconTheme: Theme.of(context).iconTheme,
             leading: InkWell(
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => OnlinePractitioner()));
               },
               child: Container(
                 child: Icon(Icons.clear),
@@ -50,7 +54,7 @@ class _ConfirmationState extends State<Confirmation> {
                         width: 100,
                         decoration: BoxDecoration(
                           borderRadius:
-                          BorderRadius.circular(60), // radius of 10
+                              BorderRadius.circular(60), // radius of 10
                           color: Colors.lightGreen,
                         ),
                         child: Image.asset("assets/tick.jpeg")),

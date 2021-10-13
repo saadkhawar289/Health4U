@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:healthy/Editmedication.dart';
 import 'package:healthy/PatientVasulization.dart';
 import 'package:healthy/purchase%20history.dart';
-import 'package:healthy/signup.dart';
-import 'package:healthy/sugeryinformation.dart';
-import 'package:healthy/symptomsTest.dart';
 
 import 'EditDiabetes.dart';
-import 'diabitiesSymptoms.dart';
 
 class profile3 extends StatefulWidget {
   @override
@@ -114,10 +110,8 @@ class _State extends State<profile3> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => editdiabetes()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => editdiabetes()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -166,7 +160,7 @@ class _State extends State<profile3> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SymptomsTest(navigation: 'v',)));
+                          builder: (context) => PatientVisualization()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -210,8 +204,10 @@ class _State extends State<profile3> {
 
               InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => purchasehistory()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => purchasehistory()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
