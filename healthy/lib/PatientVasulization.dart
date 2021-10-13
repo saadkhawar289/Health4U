@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/chart.dart';
+import 'package:healthy/symptomsTest.dart';
 
 // ignore: must_be_immutable
 class PatientVisualization extends StatelessWidget {
@@ -262,6 +263,36 @@ class PatientVisualization extends StatelessWidget {
             ),
             SizedBox(
               height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+              child: GestureDetector(
+                onTap: () async {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SymptomsTest(
+                                navigation: 'k',
+                              )));
+                },
+                child: Container(
+                  height: 150,
+                  width: targetWidth,
+                  decoration: BoxDecoration(
+                    image: _buildServiceBoxImage('assets/Doctor.png'),
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Symptoms Test result',
+                    style: TextStyle(
+                        fontSize: 17.0.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  )),
+                ),
+              ),
             ),
           ],
         ),
