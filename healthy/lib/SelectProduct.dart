@@ -283,7 +283,7 @@ class _SelectedProductState extends State<SelectedProduct> {
           .doc(id)
           .get()
           .then((data) => {
-                if (data != null)
+                if (data.exists)
                   {
                     productValues['name'] = data['name'],
                     productValues['weight'] = data['weight'],
