@@ -12,7 +12,7 @@ import 'TimeDateReservation.dart';
 import 'appointConfirmation.dart';
 import 'home.dart';
 
-Future<void> main() async {   
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(ScreenUtilInit(
