@@ -26,14 +26,16 @@ class _ImageInputState extends State<ImageInput> {
           setState(() {
             _pickedImageFile = img;
             _imageFile = File(_pickedImageFile.path);
-
           })
         });
-    String filepath='images/${DateTime.now()}.png';
-    var snapShot= await _storage.ref().child(filepath).putFile(_imageFile).whenComplete(() => {
-      print('done')
-    });
-    var url=await snapShot.ref.getDownloadURL();
+    String filepath = 'images/${DateTime.now()}.png';
+    var snapShot = await _storage
+        .ref()
+        .child(filepath)
+        .putFile(_imageFile)
+        .whenComplete(() => {print('done')});
+    var url = await snapShot.ref.getDownloadURL();
+    print(url);
     //.then((File image) {
     //   setState(() {
     //     _imageFile = image;

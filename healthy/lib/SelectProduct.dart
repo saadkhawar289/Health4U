@@ -209,8 +209,7 @@ class CheckOutCartTile extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          leading: Image.network(
-              'https://media.istockphoto.com/photos/cheese-on-white-picture-id1127471287?k=20&m=1127471287&s=612x612&w=0&h=HaP_BjH4qa6QrpGYI0leJHx3cfXZlkjIvZ3XHvXSOKg='),
+          leading: Image.network(productValues['image']),
           title: Text(productValues['name'],
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
