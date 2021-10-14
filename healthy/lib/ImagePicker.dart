@@ -1,9 +1,8 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-
 
 class ImageInput extends StatefulWidget {
   @override
@@ -18,7 +17,7 @@ class _ImageInputState extends State<ImageInput> {
 
   void _getImage(BuildContext context, ImageSource source) async {
     File _imageFile1;
-    final _storage=FirebaseStorage.instance;
+    final _storage = FirebaseStorage.instance;
 
     // ignore: deprecated_member_use
     ImagePicker pik = ImagePicker();

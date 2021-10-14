@@ -79,7 +79,7 @@ class _ResolutionState extends State<Resolution> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text("November 2020"),
+                            Text("November 2021"),
                           ],
                         ),
                       ),
@@ -303,7 +303,23 @@ class _ResolutionState extends State<Resolution> {
                                       ? Colors.lightGreen
                                       : Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("10:45"))),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(15), // radius of 10
+                                  // color: const Color(0xFFF7F7F7),
+
+                                  color: isEnable == true
+                                      ? Colors.lightGreen
+                                      : Color(0xFFF7F7F7),
+                                ),
+                                child: Center(child: Text("11:45"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -315,19 +331,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("12:45"))),
                           ],
                         ),
                       ),
@@ -351,7 +355,7 @@ class _ResolutionState extends State<Resolution> {
                                     color: const Color(0xFFF7F7F7),
                                     // green as background color
                                   ),
-                                  child: Center(child: Text("09:45"))),
+                                  child: Center(child: Text("10:30"))),
                             ),
                             SizedBox(
                               width: 18,
@@ -364,7 +368,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("11:30"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -374,9 +378,12 @@ class _ResolutionState extends State<Resolution> {
                                 decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
+                                  // color: const Color(0xFFF7F7F7),
+                                  color: Enable == true
+                                      ? Colors.lightGreen
+                                      : Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("12:30"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -391,7 +398,7 @@ class _ResolutionState extends State<Resolution> {
                                       ? Colors.lightGreen
                                       : Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("01:30"))),
                           ],
                         ),
                       ),
@@ -415,8 +422,23 @@ class _ResolutionState extends State<Resolution> {
                                     color: const Color(0xFFF7F7F7),
                                     // green as background color
                                   ),
-                                  child: Center(child: Text("09:45"))),
+                                  child: Center(child: Text("11:15"))),
                             ),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(15), // radius of 10
+                                  //color: const Color(0xFFF7F7F7),
+                                  color: Enable == true
+                                      ? Colors.lightGreen
+                                      : Color(0xFFF7F7F7),
+                                ),
+                                child: Center(child: Text("11:00"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -428,7 +450,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("11:45"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -440,19 +462,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("03:45"))),
                           ],
                         ),
                       ),
@@ -476,7 +486,7 @@ class _ResolutionState extends State<Resolution> {
                                     color: const Color(0xFFF7F7F7),
                                     // green as background color
                                   ),
-                                  child: Center(child: Text("09:45"))),
+                                  child: Center(child: Text("04:45"))),
                             ),
                             SizedBox(
                               width: 18,
@@ -489,7 +499,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("05:00"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -501,7 +511,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("06:00"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -513,7 +523,75 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("07:00"))),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 5.0,
+                              ),
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // radius of 10
+                                    //color: const Color(0xFFF7F7F7),
+                                    color: isable == true
+                                        ? Colors.lightGreen
+                                        : Color(0xFFF7F7F7),
+                                    // green as background color
+                                  ),
+                                  child: Center(child: Text("12:00"))),
+                            ),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(15), // radius of 10
+                                  color: const Color(0xFFF7F7F7),
+                                ),
+                                child: Center(child: Text("02:00"))),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(15), // radius of 10
+                                  color: const Color(0xFFF7F7F7),
+                                ),
+                                child: Center(child: Text("03:30"))),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(15), // radius of 10
+                                  //  color: const Color(0xFFF7F7F7),
+
+                                  color: Enable == true
+                                      ? Colors.lightGreen
+                                      : Color(0xFFF7F7F7),
+                                ),
+                                child: Center(child: Text("06:00"))),
                           ],
                         ),
                       ),
@@ -537,8 +615,23 @@ class _ResolutionState extends State<Resolution> {
                                     color: const Color(0xFFF7F7F7),
                                     // green as background color
                                   ),
-                                  child: Center(child: Text("09:45"))),
+                                  child: Center(child: Text("05:00"))),
                             ),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(15), // radius of 10
+                                  //color: const Color(0xFFF7F7F7),
+                                  color: isable == true
+                                      ? Colors.lightGreen
+                                      : Color(0xFFF7F7F7),
+                                ),
+                                child: Center(child: Text("10:30"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -550,7 +643,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("12:00"))),
                             SizedBox(
                               width: 18,
                             ),
@@ -562,19 +655,7 @@ class _ResolutionState extends State<Resolution> {
                                       BorderRadius.circular(15), // radius of 10
                                   color: const Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("02:00"))),
                           ],
                         ),
                       ),
@@ -598,68 +679,7 @@ class _ResolutionState extends State<Resolution> {
                                     color: const Color(0xFFF7F7F7),
                                     // green as background color
                                   ),
-                                  child: Center(child: Text("09:45"))),
-                            ),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("09:45"))),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("09:45"))),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("09:45"))),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 5.0,
-                              ),
-                              child: Container(
-                                  height: 30,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        15), // radius of 10
-                                    color: const Color(0xFFF7F7F7),
-                                    // green as background color
-                                  ),
-                                  child: Center(child: Text("09:45"))),
+                                  child: Center(child: Text("05:50"))),
                             ),
                             SizedBox(
                               width: 18,
@@ -696,9 +716,12 @@ class _ResolutionState extends State<Resolution> {
                                 decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.circular(15), // radius of 10
-                                  color: const Color(0xFFF7F7F7),
+                                  //  color: const Color(0xFFF7F7F7),
+                                  color: isEnable == true
+                                      ? Colors.lightGreen
+                                      : Color(0xFFF7F7F7),
                                 ),
-                                child: Center(child: Text("09:45"))),
+                                child: Center(child: Text("01:00"))),
                           ],
                         ),
                       ),
