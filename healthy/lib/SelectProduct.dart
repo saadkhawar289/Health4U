@@ -196,6 +196,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/Cart.dart';
+import 'package:healthy/Model/Product.dart';
+import 'package:healthy/Provider/cart_view_model.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckOutCartTile extends StatelessWidget {
@@ -250,6 +253,7 @@ class _SelectedProductState extends State<SelectedProduct> {
   double? hba1cScore;
   double? foodScoreResult;
   bool isScan = true;
+  CartViewModel viewModel= CartViewModel();
 
   @override
   void initState() {
@@ -334,355 +338,371 @@ class _SelectedProductState extends State<SelectedProduct> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          // appBar: AppBar(
-          //   elevation: 0,
-          //   backgroundColor: Colors.white,
-          //   leading: InkWell(
-          //       onTap: () {
-          //         // Navigator.pop(context);
-          //         Navigator.pop(context);
-          //       },
-          //       child: Icon(Icons.arrow_back_ios)),
-          //   iconTheme: Theme.of(context).iconTheme,
-          // ),
-          body: loader == true
-              ? Center(
-                  child: CircularProgressIndicator(
-                  color: Colors.green,
-                ))
-              : isScan
-                  ? Padding(
-                      padding: EdgeInsets.all(0.0.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Stack(children: [
-                            Center(
-                              child: Container(
-                                height: 0.35.sh,
-                                decoration: BoxDecoration(
-                                    image: foodScoreResult! <= 20
-                                        ? _buildServiceBoxImage(
-                                            'assets/pic3.jpg')
-                                        : foodScoreResult! >= 30
-                                            ? _buildServiceBoxImage(
-                                                'assets/pic1.jpg')
-                                            : _buildServiceBoxImage(
-                                                'assets/pic2.jpg')),
-                                child: Column(
+
+    return ChangeNotifierProvider.value(
+        value: viewModel,
+        builder: (context, snapshot) {
+          return Container(
+            color: Colors.white,
+            child: SafeArea(
+              child: Scaffold(
+                backgroundColor: Colors.white,
+                // appBar: AppBar(
+                //   elevation: 0,
+                //   backgroundColor: Colors.white,
+                //   leading: InkWell(
+                //       onTap: () {
+                //         // Navigator.pop(context);
+                //         Navigator.pop(context);
+                //       },
+                //       child: Icon(Icons.arrow_back_ios)),
+                //   iconTheme: Theme.of(context).iconTheme,
+                // ),
+                body: loader == true
+                    ? Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.green,
+                    ))
+                    : isScan
+                    ? Padding(
+                  padding: EdgeInsets.all(0.0.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(children: [
+                        Center(
+                          child: Container(
+                            height: 0.35.sh,
+                            decoration: BoxDecoration(
+                                image: foodScoreResult! <= 20
+                                    ? _buildServiceBoxImage(
+                                    'assets/pic3.jpg')
+                                    : foodScoreResult! >= 30
+                                    ? _buildServiceBoxImage(
+                                    'assets/pic1.jpg')
+                                    : _buildServiceBoxImage(
+                                    'assets/pic2.jpg')),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.center,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                            height: 0.08.sh,
-                                            width: 0.12.sw,
-                                            margin:
-                                                EdgeInsets.only(top: 0.17.sh),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(0))),
-                                            child: Center(
-                                                child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.05,
-                                                    width: 0.07.sw,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.red[200],
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    25.r)))))),
-                                        SizedBox(
-                                          width: 0.04.sw,
-                                        ),
-                                        Container(
-                                            height: 0.08.sh,
-                                            width: 0.12.sw,
-                                            margin:
-                                                EdgeInsets.only(top: 0.17.sh),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(0))),
-                                            child: Center(
-                                                child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.05,
-                                                    width: 0.07.sw,
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            Colors.yellow[100],
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    25.r)))))),
-                                        SizedBox(
-                                          width: 0.04.sw,
-                                        ),
-                                        Container(
-                                            height: 0.08.sh,
-                                            width: 0.12.sw,
-                                            margin:
-                                                EdgeInsets.only(top: 0.17.sh),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(0))),
-                                            child: Center(
-                                              child: Icon(
-                                                Icons.check_circle,
-                                                size: 35.sp,
-                                                color: Colors.green,
-                                              ),
-                                            )),
-                                      ],
-                                    ),
+                                    Container(
+                                        height: 0.08.sh,
+                                        width: 0.12.sw,
+                                        margin:
+                                        EdgeInsets.only(top: 0.17.sh),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(0))),
+                                        child: Center(
+                                            child: Container(
+                                                height:
+                                                MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                    0.05,
+                                                width: 0.07.sw,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.red[200],
+                                                    borderRadius:
+                                                    BorderRadius.all(
+                                                        Radius.circular(
+                                                            25.r)))))),
                                     SizedBox(
-                                      height: 0.04.sw,
+                                      width: 0.04.sw,
                                     ),
-                                    Center(
-                                        child: foodScoreResult! <= 20
-                                            ? Text(
-                                                'Great! This is ideal for you',
-                                                style: TextStyle(
-                                                    fontSize: 20.sp,
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )
-                                            : foodScoreResult! >= 30
-                                                ? Text(
-                                                    'This item is not ideal for you',
-                                                    style: TextStyle(
-                                                        fontSize: 20.sp,
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  )
-                                                : Text(
-                                                    'This item is not ideal for you',
-                                                    style: TextStyle(
-                                                        fontSize: 20.sp,
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  )),
+                                    Container(
+                                        height: 0.08.sh,
+                                        width: 0.12.sw,
+                                        margin:
+                                        EdgeInsets.only(top: 0.17.sh),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(0))),
+                                        child: Center(
+                                            child: Container(
+                                                height:
+                                                MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                    0.05,
+                                                width: 0.07.sw,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                    Colors.yellow[100],
+                                                    borderRadius:
+                                                    BorderRadius.all(
+                                                        Radius.circular(
+                                                            25.r)))))),
+                                    SizedBox(
+                                      width: 0.04.sw,
+                                    ),
+                                    Container(
+                                        height: 0.08.sh,
+                                        width: 0.12.sw,
+                                        margin:
+                                        EdgeInsets.only(top: 0.17.sh),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(0))),
+                                        child: Center(
+                                          child: Icon(
+                                            Icons.check_circle,
+                                            size: 35.sp,
+                                            color: Colors.green,
+                                          ),
+                                        )),
                                   ],
                                 ),
-                              ),
+                                SizedBox(
+                                  height: 0.04.sw,
+                                ),
+                                Center(
+                                    child: foodScoreResult! <= 20
+                                        ? Text(
+                                      'Great! This is ideal for you',
+                                      style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: Colors.black,
+                                          fontWeight:
+                                          FontWeight.bold),
+                                    )
+                                        : foodScoreResult! >= 30
+                                        ? Text(
+                                      'This item is not ideal for you',
+                                      style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: Colors.black,
+                                          fontWeight:
+                                          FontWeight.bold),
+                                    )
+                                        : Text(
+                                      'This item is not ideal for you',
+                                      style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: Colors.black,
+                                          fontWeight:
+                                          FontWeight.bold),
+                                    )),
+                              ],
                             ),
-                            Positioned(
-                                left: 10.w,
-                                top: 30.h,
-                                child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Icon(
-                                      Icons.close,
-                                      size: 30.sp,
-                                    )))
-                          ]),
-                          SizedBox(
-                            height: 0.06.sh,
                           ),
+                        ),
+                        Positioned(
+                            left: 10.w,
+                            top: 30.h,
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(
+                                  Icons.close,
+                                  size: 30.sp,
+                                )))
+                      ]),
+                      SizedBox(
+                        height: 0.06.sh,
+                      ),
+                      Container(
+                        color: Colors.white,
+                        child: CheckOutCartTile(1, productValues),
+                      ),
+                      SizedBox(
+                        height: 0.02.sh,
+                      ),
+                      Row(
+                        children: [
                           Container(
                             color: Colors.white,
-                            child: CheckOutCartTile(1, productValues),
-                          ),
-                          SizedBox(
-                            height: 0.02.sh,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                color: Colors.white,
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 8.0.w),
-                                      child: foodScoreResult! <= 20
-                                          ? Icon(Icons.check_circle,
-                                              size: 25.sp,
-                                              color: foodScoreResult! <= 20
-                                                  ? Colors.lightGreen
-                                                  : foodScoreResult! >= 30
-                                                      ? Colors.red
-                                                      : Colors.amber)
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(left: 8.0.w),
+                                  child: foodScoreResult! <= 20
+                                      ? Icon(Icons.check_circle,
+                                      size: 25.sp,
+                                      color: foodScoreResult! <= 20
+                                          ? Colors.lightGreen
                                           : foodScoreResult! >= 30
-                                              ? Icon(Icons.cancel,
-                                                  size: 25.sp,
-                                                  color: foodScoreResult! <= 20
-                                                      ? Colors.lightGreen
-                                                      : foodScoreResult! >= 30
-                                                          ? Colors.red
-                                                          : Colors.amber)
-                                              : Icon(Icons.cancel,
-                                                  size: 25.sp,
-                                                  color: foodScoreResult! <= 20
-                                                      ? Colors.lightGreen
-                                                      : foodScoreResult! >= 30
-                                                          ? Colors.red
-                                                          : Colors.amber),
-                                    ),
-                                    SizedBox(
-                                      width: 0.02.sw,
-                                    ),
-                                    foodScoreResult! <= 20
-                                        ? Text(
-                                            'Low in Sugar',
-                                            style: TextStyle(
-                                              fontSize: 16.sp,
-                                              color: Colors.black,
-                                            ),
-                                          )
-                                        : foodScoreResult! >= 30
-                                            ? Text(
-                                                'High in Sugar',
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                  color: Colors.black,
-                                                ),
-                                              )
-                                            : Text(
-                                                'High in Sugar',
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                  ],
+                                          ? Colors.red
+                                          : Colors.amber)
+                                      : foodScoreResult! >= 30
+                                      ? Icon(Icons.cancel,
+                                      size: 25.sp,
+                                      color: foodScoreResult! <= 20
+                                          ? Colors.lightGreen
+                                          : foodScoreResult! >= 30
+                                          ? Colors.red
+                                          : Colors.amber)
+                                      : Icon(Icons.cancel,
+                                      size: 25.sp,
+                                      color: foodScoreResult! <= 20
+                                          ? Colors.lightGreen
+                                          : foodScoreResult! >= 30
+                                          ? Colors.red
+                                          : Colors.amber),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 0.05.sh,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 8.0.w),
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      foodScoreResult! <= 20
-                                          ? Icon(Icons.check_circle,
-                                              size: 25.sp,
-                                              color: foodScoreResult! <= 20
-                                                  ? Colors.lightGreen
-                                                  : foodScoreResult! >= 30
-                                                      ? Colors.red
-                                                      : Colors.amber)
-                                          : foodScoreResult! >= 30
-                                              ? Icon(Icons.cancel,
-                                                  size: 25.sp,
-                                                  color: foodScoreResult! <= 20
-                                                      ? Colors.lightGreen
-                                                      : foodScoreResult! >= 30
-                                                          ? Colors.red
-                                                          : Colors.amber)
-                                              : Icon(Icons.cancel,
-                                                  size: 25.sp,
-                                                  color: foodScoreResult! <= 20
-                                                      ? Colors.lightGreen
-                                                      : foodScoreResult! >= 30
-                                                          ? Colors.red
-                                                          : Colors.amber),
-                                      SizedBox(
-                                        width: 0.01.sw,
-                                      ),
-                                      foodScoreResult! <= 20
-                                          ? Text(
-                                              'High in Fiber',
-                                              style: TextStyle(
-                                                fontSize: 16.sp,
-                                                color: Colors.black,
-                                              ),
-                                            )
-                                          : foodScoreResult! >= 30
-                                              ? Text(
-                                                  'High in Salt',
-                                                  style: TextStyle(
-                                                    fontSize: 16.sp,
-                                                    color: Colors.black,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  'High in Salt',
-                                                  style: TextStyle(
-                                                    fontSize: 16.sp,
-                                                    color: Colors.black,
-                                                  ),
-                                                ),
-                                    ],
+                                SizedBox(
+                                  width: 0.02.sw,
+                                ),
+                                foodScoreResult! <= 20
+                                    ? Text(
+                                  'Low in Sugar',
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: Colors.black,
+                                  ),
+                                )
+                                    : foodScoreResult! >= 30
+                                    ? Text(
+                                  'High in Sugar',
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: Colors.black,
+                                  ),
+                                )
+                                    : Text(
+                                  'High in Sugar',
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: Colors.black,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 20.0.w, top: 8.h),
-                            child: Container(
-                              color: Colors.white,
-                              child: Center(
-                                  child: Text(
-                                      'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
+                              ],
                             ),
                           ),
-                          Spacer(),
-                          Center(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Cart()));
-                              },
+                          SizedBox(
+                            height: 0.05.sh,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 8.0.w),
+                            child: Container(
+                              child: Row(
+                                children: [
+                                  foodScoreResult! <= 20
+                                      ? Icon(Icons.check_circle,
+                                      size: 25.sp,
+                                      color: foodScoreResult! <= 20
+                                          ? Colors.lightGreen
+                                          : foodScoreResult! >= 30
+                                          ? Colors.red
+                                          : Colors.amber)
+                                      : foodScoreResult! >= 30
+                                      ? Icon(Icons.cancel,
+                                      size: 25.sp,
+                                      color: foodScoreResult! <= 20
+                                          ? Colors.lightGreen
+                                          : foodScoreResult! >= 30
+                                          ? Colors.red
+                                          : Colors.amber)
+                                      : Icon(Icons.cancel,
+                                      size: 25.sp,
+                                      color: foodScoreResult! <= 20
+                                          ? Colors.lightGreen
+                                          : foodScoreResult! >= 30
+                                          ? Colors.red
+                                          : Colors.amber),
+                                  SizedBox(
+                                    width: 0.01.sw,
+                                  ),
+                                  foodScoreResult! <= 20
+                                      ? Text(
+                                    'High in Fiber',
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                      : foodScoreResult! >= 30
+                                      ? Text(
+                                    'High in Salt',
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                      : Text(
+                                    'High in Salt',
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.0.w, top: 8.h),
+                        child: Container(
+                          color: Colors.white,
+                          child: Center(
+                              child: Text(
+                                  'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
+                        ),
+                      ),
+                      Spacer(),
+                      Center(
+                        child: InkWell(
+                          onTap: () {
+                            Product prod=Product(
+                                name: productValues['name'],
+                                id: '1234',
+                                price: productValues['price'],
+                                weight:productValues['weight'],
+                                descp: ' hhhj jjj jj');
+                            viewModel.addToCart(prod);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Cart(viewModel.cartItems)));
+                          },
+                          child: Container(
+                            height: 93,
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
                               child: Container(
-                                height: 93,
+                                margin: EdgeInsets.only(
+                                    top: 10.h,
+                                    bottom: 0,
+                                    left: 20.w,
+                                    right: 20.w),
+                                height: 50,
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: 10.h,
-                                        bottom: 0,
-                                        left: 20.w,
-                                        right: 20.w),
-                                    height: 50,
-                                    width: MediaQuery.of(context).size.width,
-                                    child: Center(
-                                        child: Text(
+                                    child: Text(
                                       "Add to basket",
                                       style: TextStyle(
                                           fontSize: 17.sp,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w600),
                                     )),
-                                    color: Colors.lightGreen,
-                                  ),
-                                ),
+                                color: Colors.lightGreen,
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                    )
-                  : Center(
-                      child: Text('Sorry product not found scan again'),
-                    ),
-        ),
-      ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+                    : Center(
+                  child: Text('Sorry product not found scan again'),
+                ),
+              ),
+            ),
+          );
+        }
     );
+
+
+
   }
 }

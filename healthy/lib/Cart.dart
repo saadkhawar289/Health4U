@@ -4,8 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/CheckOut.dart';
 import 'package:healthy/drawer.dart';
 
+import 'Model/Product.dart';
+
 class Cart extends StatefulWidget {
-  const Cart({Key? key}) : super(key: key);
+ final  List<Product>? lisOfProducts;
+   Cart( this.lisOfProducts);
 
   @override
   _CartState createState() => _CartState();
@@ -14,6 +17,7 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
+
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -50,10 +54,10 @@ class _CartState extends State<Cart> {
                   color: const Color(0xFFF7F7F7),
                   child: ListView.builder(
                     itemBuilder: (BuildContext context, int index) => Container(
-                      child: CartTile(index + 1),
+                      child: CartTile(index+1,widget.lisOfProducts![index]),
                     ),
                     addAutomaticKeepAlives: false,
-                    itemCount: 10,
+                    itemCount: widget.lisOfProducts!.length,
                     //cacheExtent: 100.0,
                   ),
                 ),
@@ -135,7 +139,8 @@ class _CartState extends State<Cart> {
 
 class CartTile extends StatelessWidget {
   final int index;
-  const CartTile(this.index);
+ final Product product;
+  const CartTile(this.index,this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -147,12 +152,12 @@ class CartTile extends StatelessWidget {
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
-          title: Text('Sunflower Oil',
+          title: Text(product.name.toString(),
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('5L',
+              Text(product.weight.toString(),
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w400,
@@ -160,7 +165,7 @@ class CartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text('0.80',
+              Text(product.price.toString(),
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
