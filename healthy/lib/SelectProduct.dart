@@ -253,7 +253,7 @@ class _SelectedProductState extends State<SelectedProduct> {
   double? hba1cScore;
   double? foodScoreResult;
   bool isScan = true;
-  CartViewModel viewModel= CartViewModel();
+  //var viewModel= CartViewModel();
 
   @override
   void initState() {
@@ -338,6 +338,7 @@ class _SelectedProductState extends State<SelectedProduct> {
 
   @override
   Widget build(BuildContext context) {
+    var viewModel= Provider.of<CartViewModel>(context, listen: false);
 
     return ChangeNotifierProvider.value(
         value: viewModel,
@@ -658,6 +659,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                                 price: productValues['price'],
                                 weight:productValues['weight'],
                                 descp: ' hhhj jjj jj');
+
                             viewModel.addToCart(prod);
                             Navigator.push(
                                 context,
