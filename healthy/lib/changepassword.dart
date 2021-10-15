@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/profile3.dart';
 import 'package:http/http.dart' as http;
-
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class changepassword extends StatefulWidget {
   @override
@@ -12,43 +12,61 @@ class changepassword extends StatefulWidget {
 }
 
 class _State extends State<changepassword> {
+  TextEditingController currentPassController = TextEditingController();
+  TextEditingController newPassController = TextEditingController();
+  bool show = true;
+  String? newPass;
+  final passScaffoldKeys = GlobalKey<ScaffoldState>(debugLabel: "scaffolds");
 
-
-  Future<bool>updatePass()async{
-
-    try{
-      User? user = FirebaseAuth.instance.currentUser;
-var pass ='zain1234567';
-var id= await user!.getIdToken();
-user.reload();
-      var url = Uri.parse('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDZO71lOat12Id_lb4zuX_gqNcApLphHVQ');
-      var response = await http.post(url, body: {'idToken':id,'password':pass,'returnSecureToken':'true'});
-      print(response.statusCode);
-      print(response.body);
-
-      return true;
-
-    }
-    catch(e){
-      print(e);
-      return false;
-    }
-
-
-
-
-
+  _showSnackBar(String text) {
+    final snackBar = SnackBar(
+      content: Text('$text'),
+    );
+    passScaffoldKeys.currentState!.showSnackBar(snackBar);
   }
 
 
+  Future<bool> updatePass() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var currentPass = sharedPreferences.getString('password');
 
+    if (!resetFormKey.currentState!.validate()) {
+      return false;
+    } else {
+      resetFormKey.currentState!.save();
 
+      User? user = FirebaseAuth.instance.currentUser;
+
+      var id = await user!.getIdToken();
+     await user.reload();
+
+      if (currentPassController.text == currentPass) {
+        var url = Uri.parse(
+            'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDZO71lOat12Id_lb4zuX_gqNcApLphHVQ');
+        var response = await http.post(url, body: {
+          'idToken': id,
+          'password': newPassController.text,
+          'returnSecureToken': 'true'
+        });
+        print(response.statusCode);
+        print(response.body);
+
+        return true;
+      } else {
+        _showSnackBar('password not matched');
+        return false;
+      }
+    }
+  }
+
+  final GlobalKey<FormState> resetFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: SafeArea(
         child: Scaffold(
+          key: passScaffoldKeys,
           appBar: AppBar(
             elevation: 0.7,
             backgroundColor: const Color(0xFFF7F7F7),
@@ -77,12 +95,27 @@ user.reload();
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                        hintText: 'Current Password',
-                        labelText: 'Current Password',
-                        contentPadding: EdgeInsets.only(left: 15.0, top: 15),
-                        border: InputBorder.none,
+                    Form(
+                      key: resetFormKey,
+                      child: TextFormField(
+                        obscureText: false,
+                        decoration: InputDecoration(
+
+                          hintText: 'Current Password',
+                          contentPadding: EdgeInsets.only(left: 15.0, top: 15),
+                          border: InputBorder.none,
+                        ),
+                        controller: currentPassController,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(12),
+                          FilteringTextInputFormatter.allow(
+                              RegExp("[0-9,@#*&^%?/>< a-z A-Z ]"))
+                        ],
+                        validator: (val) {
+                          if (val!.isEmpty || val.length <= 8) {
+                            return "enter a password greater then 8";
+                          }
+                        },
                       ),
                     ),
                     Padding(
@@ -92,12 +125,45 @@ user.reload();
                       ),
                     ),
                     TextFormField(
+                      obscureText: show,
                       decoration: InputDecoration(
-                        hintText: 'New Password',
-                        labelText: 'New Password',
+                        suffixIcon: show == false
+                            ? InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    show = true;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.visibility,
+                                  color: Colors.grey,
+                                ))
+                            : InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    show = false;
+                                  });
+                                },
+                                child: Icon(Icons.visibility_off,
+                                    color: Colors.grey)),
+                        hintText: 'Password',
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
+                      controller: newPassController,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(12),
+                        FilteringTextInputFormatter.allow(
+                            RegExp("[0-9,@#*&^%?/>< a-z A-Z ]"))
+                      ],
+                      validator: (val) {
+                        if (val!.isEmpty || val.length <= 8) {
+                          return "enter a password greater then 8";
+                        }
+                      },
+                      onSaved: (String? value) {
+                        newPass = value;
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
@@ -108,18 +174,16 @@ user.reload();
                     InkWell(
                       onTap: () {
                         updatePass().then((value) => {
-                          if(value){
-                            Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => profile3()))
-                          }
-                          else{
-                            print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-                          }
-
-                        });
-
+                              if (value)
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => profile3()))
+                                }
+                              else
+                                {print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrr')}
+                            });
                       },
                       child: Container(
                         margin: EdgeInsets.only(top: 70, bottom: 20),

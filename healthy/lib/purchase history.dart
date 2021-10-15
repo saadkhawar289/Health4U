@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/Provider/cart_view_model.dart';
 import 'package:healthy/purchasedProduct.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class purchasehistory extends StatefulWidget {
   @override
@@ -74,14 +77,14 @@ class _State extends State<purchasehistory> {
             ),
           ),
           Container(
-              height: 90,
+              height: 0.30.sh,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: const Color(0xFFF7F7F7),
+                  color: Colors.yellow,//const Color(0xFFF7F7F7),
                   border: Border(
                       bottom: BorderSide(color: Colors.black12, width: 1))),
               child: ListView.builder(
-                  itemCount: 1,
+                  itemCount: context.read<CartViewModel>().addedCartItems.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Column(
                       children: [
@@ -136,10 +139,10 @@ class _State extends State<purchasehistory> {
                     );
                   })),
           Container(
-            height: 50,
+            height: 40,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              // color: const Color(0xFFF7F7F7),
+               color:Colors.red, //const Color(0xFFF7F7F7),
                 border: Border(
                     bottom: BorderSide(color: Colors.black12, width: 1))),
             child: Row(
@@ -155,10 +158,10 @@ class _State extends State<purchasehistory> {
             ),
           ),
           Container(
-              height: 90,
+              height:0.30.sh,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: const Color(0xFFF7F7F7),
+                  color:Colors.green,  //const Color(0xFFF7F7F7),
                   border: Border(
                       bottom: BorderSide(color: Colors.black12, width: 1))),
               child: ListView.builder(
@@ -211,63 +214,7 @@ class _State extends State<purchasehistory> {
                       ],
                     );
                   })),
-          Container(
-              height: 370,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  color: const Color(0xFFF7F7F7),
-                  border: Border(
-                      bottom: BorderSide(color: Colors.black12, width: 1))),
-              child: ListView.builder(
-                  itemCount: 1,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        ListTile(
-                          // leading: Text(index.toString(),
-                          //     style: TextStyle(
-                          //         fontSize: 17,
-                          //         fontWeight: FontWeight.bold,
-                          //         color: Colors.black)),
-                          leading: Image.asset('assets/5880.png'),
-                          title: Column(
-                            children: [
-                              Text('24/08/2021',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                  )),
-                            ],
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text('&0.80',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('View Detail',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black)),
-                              SizedBox(
-                                height: 10,
-                              )
-                            ],
-                          ),
-                          // trailing: Image.asset('assets/5879.png'),
-                        ),
-                        Divider(
-                          height: 5,
-                          thickness: 2,
-                        )
-                      ],
-                    );
-                  })),
+
 
           // Container(
           //     margin: EdgeInsets.only(top: 20, left: 100, right: 100),

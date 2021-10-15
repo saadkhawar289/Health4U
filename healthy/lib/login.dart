@@ -63,7 +63,7 @@ class _State extends State<Login> {
 
 
   Future<bool> loadUser() async {
-    String localStorageValue;
+    int localStorageValue;
     try {
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
@@ -81,9 +81,12 @@ class _State extends State<Login> {
                     "last_name", data.get('lName')),
                 await sharedPreferences.setString(
                     "password", data.get('password')),
+        // await sharedPreferences.setString(
+        //     "dob", data.get('date')),
                 print(data.get('fName')),
                 print("ffffffffffffffffffffffffffffffffffffffffffff"),
                 print(data.get('lName')),
+        print(data.get('password')),
                 if (data.get('type') == 'Customer')
                   {
                     await FirebaseFirestore.instance
@@ -92,7 +95,7 @@ class _State extends State<Login> {
                         .get()
                         .then((value) async => {
                               localStorageValue = value['HbA1c'],
-                              await sharedPreferences.setString(
+                              await sharedPreferences.setInt(
                                   'HbA1c', localStorageValue),
                             }),
                     Navigator.push(context,
@@ -284,9 +287,7 @@ class _State extends State<Login> {
                         margin: EdgeInsets.only(top: 12),
                         height: 43,
                         width: MediaQuery.of(context).size.width / 1.1,
-                        child: loading.value == true
-                            ? CircularProgressIndicator()
-                            : Center(
+                        child:  Center(
                                 child: Text(
                                 "Login",
                                 style: TextStyle(
