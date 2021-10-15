@@ -8,7 +8,6 @@ import 'package:healthy/splash.dart';
 
 import 'OnlinePractitioner.dart';
 import 'SelectDoctor.dart';
-import 'TimeDateReservation.dart';
 import 'appointConfirmation.dart';
 import 'home.dart';
 
@@ -30,7 +29,7 @@ Future<void> main() async {
                   '/BookPractitioner': (BuildContext context) =>
                       BookPractitioner(),
                   '/selectDoctor': (BuildContext context) => SelectDoctor(),
-                  '/timeReservation': (BuildContext context) => Resolution(),
+                  //   '/timeReservation': (BuildContext context) => Resolution(),
                   '/confirmation': (BuildContext context) => Confirmation()
                 },
               ))));
