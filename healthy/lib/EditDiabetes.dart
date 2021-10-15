@@ -20,7 +20,7 @@ class editdiabetes extends StatefulWidget {
 class _State extends State<editdiabetes> {
   int _value = 0;
   final sKey = GlobalKey<ScaffoldState>(debugLabel: "Scaffold key");
-
+  var patientt;
   _showSnackBar(String text) {
     final snackBar = SnackBar(
       content: Text('$text'),
@@ -52,7 +52,7 @@ class _State extends State<editdiabetes> {
       DocumentReference ref =
           FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
       ref.set(data);
-      symptomsTest['uID']=user.uid;
+      symptomsTest['uID'] = user.uid;
       await FirebaseFirestore.instance
           .collection("SymptomsTestResults")
           .doc(user.uid)
@@ -72,6 +72,7 @@ class _State extends State<editdiabetes> {
 
     return true;
   }
+
   Future<bool> saveSymptomsResult(Map<String, dynamic> data) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
@@ -86,6 +87,48 @@ class _State extends State<editdiabetes> {
     }
     return true;
   }
+
+  Future<bool> loadUser() async {
+    try {
+      // loader = true;
+      print('loading===================================');
+      User? user = FirebaseAuth.instance.currentUser;
+      patient['uID'] = user!.uid;
+      await FirebaseFirestore.instance
+          .collection("patient")
+          .doc(user.uid)
+          .get()
+          .then((data) => {
+                print(user.uid),
+
+                // _controllerName.text = data['fName'],
+                // _controllerNameLast.text = data['lName'],
+                // _controllerMob.text = data['MobileNo'],
+                // _controllerPhone.text = data['PhoneNo'],
+              });
+      print('loading++++++++++++++++++++++++++++');
+
+      setState(() {
+        // loader = false;
+      });
+      // print('==============================$loader');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+    // loader = false;
+
+    return true;
+  }
+
 //  // Future<bool> SaveSurgeryInfo(Map<String, dynamic> data) async {
   //   //   try {
   //   //     User? user = FirebaseAuth.instance.currentUser;
@@ -100,6 +143,12 @@ class _State extends State<editdiabetes> {
   //   //   return true;
   //   // }
   //
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadUser();
+  }
 
   @override
   Widget build(BuildContext context) {
