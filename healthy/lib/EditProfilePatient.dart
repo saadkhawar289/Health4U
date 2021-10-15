@@ -4,7 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'changepassword.dart';
 
 class EditProfilePatient extends StatefulWidget {
- final String fName,lName,dob;
+ final fName,lName,dob;
+
  EditProfilePatient({required this.lName,required this.fName,required this.dob});
 
   @override

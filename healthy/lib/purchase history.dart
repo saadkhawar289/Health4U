@@ -150,7 +150,7 @@ class _State extends State<purchasehistory> {
             height: 40,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-               color:const Color(0xFFF7F7F7),
+              // color:const Color(0xFFF7F7F7),
                 border: Border(
                     bottom: BorderSide(color: Colors.black12, width: 1))),
             child: Row(
@@ -203,11 +203,16 @@ class _State extends State<purchasehistory> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Text('View Detail',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black)),
+                              InkWell(
+                                onTap:(){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>purchasehistory2()));
+                                },
+                                child: Text('View Detail',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                              ),
                               SizedBox(
                                 height: 10,
                               )
