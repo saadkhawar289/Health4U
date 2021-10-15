@@ -21,8 +21,9 @@ class singup extends StatefulWidget {
 }
 
 final scaffoldKeys = GlobalKey<ScaffoldState>(debugLabel: "scaffolds");
-bool show=true;
-List<String> docs=['saad','haron','jawad'];
+bool show = true;
+List<String> docs = ['saad', 'haron', 'jawad'];
+
 class _State extends State<singup> {
   bool loader = false;
   String meassage = 'enter correct email';
@@ -44,7 +45,7 @@ class _State extends State<singup> {
   DateTime pickedDate = DateTime.now();
   Map<String, dynamic> formValues = {
     'fName': null,
-    'type':null,
+    'type': null,
     'lName': null,
     'date': null,
     'email': null,
@@ -52,11 +53,11 @@ class _State extends State<singup> {
     'uID': null,
     'MobileNo': null,
     'PhoneNo': null,
-    'DoctorID':null
+    'DoctorID': null
   };
   Widget DropDown() {
     return DropdownButton<String>(
-iconEnabledColor:Colors.red,
+      iconEnabledColor: Colors.red,
       iconSize: 30,
       dropdownColor: Colors.white,
       underline: Container(),
@@ -67,11 +68,8 @@ iconEnabledColor:Colors.red,
           child: Text(value),
         );
       }).toList(),
-      onChanged: ( value) {
-
-        _controllerName.text=value.toString();
-
-
+      onChanged: (value) {
+        _controllerName.text = value.toString();
       },
     );
   }
@@ -86,9 +84,12 @@ iconEnabledColor:Colors.red,
       sharedPreferences.setString("Password", _controllerPass.text);
       User? user = FirebaseAuth.instance.currentUser;
       formValues['uID'] = user!.uid;
-      formValues['type'] ='Customer';
+      formValues['type'] = 'Customer';
 
-  await    FirebaseFirestore.instance.collection("Users").doc(user.uid).set(data);
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(user.uid)
+          .set(data);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -125,8 +126,6 @@ iconEnabledColor:Colors.red,
           .doc(user.uid)
           .get()
           .then((data) => {
-
-
                 _controllerName.text = data['fName'],
                 _controllerNameLast.text = data['lName'],
                 _controllerMob.text = data['MobileNo'],
@@ -230,7 +229,7 @@ iconEnabledColor:Colors.red,
           //  appBar: AppBar(
           //  backgroundColor: Colors.white,
           //),
-          body:ListView(
+          body: ListView(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -254,12 +253,12 @@ iconEnabledColor:Colors.red,
                       child: widget.source == 'edit'
                           ? Container()
                           : Text(
-                        'Exsiting User? Log in',
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
+                              'Exsiting User? Log in',
+                              style: TextStyle(
+                                  fontSize: 14.sp,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
                     ),
                   ),
                 ],
@@ -273,15 +272,15 @@ iconEnabledColor:Colors.red,
                   children: [
                     widget.source == 'edit'
                         ? Text(
-                      'Edit your Profile',
-                      style: TextStyle(
-                          fontSize: 20.sp, fontWeight: FontWeight.bold),
-                    )
+                            'Edit your Profile',
+                            style: TextStyle(
+                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                          )
                         : Text(
-                      'Create your Profile',
-                      style: TextStyle(
-                          fontSize: 20.sp, fontWeight: FontWeight.bold),
-                    ),
+                            'Create your Profile',
+                            style: TextStyle(
+                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                          ),
                   ],
                 ),
               ),
@@ -303,8 +302,7 @@ iconEnabledColor:Colors.red,
                       //     ? "Name"
                       //     : formValues['fName'],
                       inputFormatters: [
-                        FilteringTextInputFormatter.allow(
-                            RegExp(r"[a-zA-Z, ]"))
+                        FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z, ]"))
                       ],
                       controller: _controllerName,
                       validator: (val) {
@@ -329,8 +327,7 @@ iconEnabledColor:Colors.red,
                         border: InputBorder.none,
                       ),
                       inputFormatters: [
-                        FilteringTextInputFormatter.allow(
-                            RegExp(r"[a-zA-Z, ]"))
+                        FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z, ]"))
                       ],
                       controller: _controllerNameLast,
                       validator: (val) {
@@ -351,119 +348,116 @@ iconEnabledColor:Colors.red,
                     widget.source == 'edit'
                         ? Container()
                         : TextFormField(
-                      onTap: () {
-                        _selectDate(context);
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Date of birth',
-                        contentPadding:
-                        EdgeInsets.only(left: 15.0, top: 15),
-                        border: InputBorder.none,
-                      ),
-                      controller: _controllerDate,
-                      validator: (val) {
-                        if (val!.isEmpty || !val.contains("/")) {
-                          return "Please Enter valid Date of Brith";
-                        }
-                      },
-                      onSaved: (String? value) {
-                        formValues['date'] = value;
-                      },
-                    ),
+                            onTap: () {
+                              _selectDate(context);
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Date of birth',
+                              contentPadding:
+                                  EdgeInsets.only(left: 15.0, top: 15),
+                              border: InputBorder.none,
+                            ),
+                            controller: _controllerDate,
+                            validator: (val) {
+                              if (val!.isEmpty || !val.contains("/")) {
+                                return "Please Enter valid Date of Brith";
+                              }
+                            },
+                            onSaved: (String? value) {
+                              formValues['date'] = value;
+                            },
+                          ),
                     widget.source == 'edit'
                         ? Container()
-                        :  Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Divider(
-                        thickness: 2,
-                      ),
-                    ),
+                        : Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: Divider(
+                              thickness: 2,
+                            ),
+                          ),
 
                     widget.source == 'edit'
                         ? Container()
                         : TextFormField(
-                      inputFormatters: [
-
-                        FilteringTextInputFormatter.allow(
-                            RegExp("[0-9,@,a-z,A-Z,.]"))
-                      ],
-                      decoration: InputDecoration(
-                        hintText: 'Email',
-                        contentPadding:
-                        EdgeInsets.only(left: 15.0, top: 15),
-                        border: InputBorder.none,
-                      ),
-                      controller: _controller,
-                      validator: (val) =>
-                      val!.isEmpty || !val.contains("@")
-                          ? "enter a valid eamil"
-                          : null,
-                      onSaved: (String? value) {
-                        formValues['email'] = value;
-                      },
-                    ),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                  RegExp("[0-9,@,a-z,A-Z,.]"))
+                            ],
+                            decoration: InputDecoration(
+                              hintText: 'Email',
+                              contentPadding:
+                                  EdgeInsets.only(left: 15.0, top: 15),
+                              border: InputBorder.none,
+                            ),
+                            controller: _controller,
+                            validator: (val) =>
+                                val!.isEmpty || !val.contains("@")
+                                    ? "enter a valid eamil"
+                                    : null,
+                            onSaved: (String? value) {
+                              formValues['email'] = value;
+                            },
+                          ),
                     widget.source == 'edit'
                         ? Container()
                         : Padding(
-                      padding:
-                      const EdgeInsets.only(left: 10, right: 10),
-                      child: Divider(
-                        thickness: 2,
-                      ),
-                    ),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: Divider(
+                              thickness: 2,
+                            ),
+                          ),
                     widget.source == 'edit'
                         ? Container()
                         : TextFormField(
-                      inputFormatters: [
-
-                        FilteringTextInputFormatter.allow(
-                            RegExp("[0-9,@,a-z,A-Z,.]"))
-                      ],
-                      decoration: InputDecoration(
-                        hintText: 'Confirm Email',
-                        contentPadding:
-                        EdgeInsets.only(left: 15.0, top: 15),
-                        border: InputBorder.none,
-                      ),
-                      controller: _controllerconfirm,
-                      validator: (val) => val!.isEmpty ||
-                          !val.contains("@") ||
-                          val != _controller.text
-                          ? "email not matched"
-                          : null,
-                    ),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                  RegExp("[0-9,@,a-z,A-Z,.]"))
+                            ],
+                            decoration: InputDecoration(
+                              hintText: 'Confirm Email',
+                              contentPadding:
+                                  EdgeInsets.only(left: 15.0, top: 15),
+                              border: InputBorder.none,
+                            ),
+                            controller: _controllerconfirm,
+                            validator: (val) => val!.isEmpty ||
+                                    !val.contains("@") ||
+                                    val != _controller.text
+                                ? "email not matched"
+                                : null,
+                          ),
                     widget.source == 'edit'
                         ? Container()
                         : Padding(
-                      padding:
-                      const EdgeInsets.only(left: 10, right: 10),
-                      child: Divider(
-                        thickness: 2,
-                      ),
-                    ),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: Divider(
+                              thickness: 2,
+                            ),
+                          ),
                     TextFormField(
                       obscureText: show,
                       decoration: InputDecoration(
-                        suffixIcon:show==false?
-                        InkWell(
-                            onTap: (){
-                              setState(() {
-                                show=true;
-                              });
-
-                            },
-                            child: Icon(Icons.visibility,color: Colors.grey,)):
-                        InkWell(
-                            onTap: (){
-                              setState(() {
-                                show=false;
-                              });
-
-                            },
-                            child: Icon(Icons.visibility_off,color: Colors.grey)),
+                        suffixIcon: show == false
+                            ? InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    show = true;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.visibility,
+                                  color: Colors.grey,
+                                ))
+                            : InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    show = false;
+                                  });
+                                },
+                                child: Icon(Icons.visibility_off,
+                                    color: Colors.grey)),
                         hintText: 'Password',
-                        contentPadding:
-                        EdgeInsets.only(left: 15.0, top: 15),
+                        contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
                       controller: _controllerPass,
@@ -481,9 +475,8 @@ iconEnabledColor:Colors.red,
                         formValues['password'] = value;
                       },
                     ),
-                     Padding(
-                      padding:
-                      const EdgeInsets.only(left: 10, right: 10),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Divider(
                         thickness: 2,
                       ),
@@ -546,14 +539,14 @@ iconEnabledColor:Colors.red,
                         widget.source == 'edit'
                             ? Container()
                             : Checkbox(
-                          value: isChecked,
-                          onChanged: (bool? value) {
-                            // This is where we update the state when the checkbox is tapped
-                            setState(() {
-                              isChecked = value!;
-                            });
-                          },
-                        ),
+                                value: isChecked,
+                                onChanged: (bool? value) {
+                                  // This is where we update the state when the checkbox is tapped
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                              ),
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Container(
@@ -571,7 +564,7 @@ iconEnabledColor:Colors.red,
                                 child: widget.source == 'edit'
                                     ? Container()
                                     : Center(
-                                    child: Text('Terms and Conditions'))),
+                                        child: Text('Terms and Conditions'))),
                           ),
                         ),
                       ],
@@ -592,31 +585,41 @@ iconEnabledColor:Colors.red,
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Container(
-                            height: 40,
-                            // color: Colors.red,
-                            width: 100,
-                            child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              PrivacyPolicy()));
-                                },
-                                child: widget.source == 'edit'
-                                    ? Container()
-                                    : Center(child: Text('Privacy Policy',style: TextStyle(decoration: TextDecoration.underline,color: Colors.blue,fontWeight: FontWeight.bold),),))),
-                          ),
+                              height: 40,
+                              // color: Colors.red,
+                              width: 100,
+                              child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                PrivacyPolicy()));
+                                  },
+                                  child: widget.source == 'edit'
+                                      ? Container()
+                                      : Center(
+                                          child: Text(
+                                            'Privacy Policy',
+                                            style: TextStyle(
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                color: Colors.blue,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ))),
+                        ),
                       ],
                     ),
 
                     InkWell(
                       onTap: () {
                         if (!_formKey.currentState!.validate() ||
-                            isChecked != true ) {
+                            isChecked != true) {
                           return;
                         }
-                        if(_controller.text.contains('')||_controllerconfirm.text.contains('')){
+                        if (_controller.text.contains('') ||
+                            _controllerconfirm.text.contains('')) {
                           _controller.text.trim();
                           _controllerconfirm.text.trim();
                           formValues['email'].toString().trim();
@@ -627,31 +630,31 @@ iconEnabledColor:Colors.red,
                         if (widget.source == 'edit') {
                           print('edit===================================');
                           editinfo(formValues).then((value) => {
-                            if (value)
-                              {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => profile3()))
-                              }
-                            else
-                              {print('Gando ho tm')}
-                          });
+                                if (value)
+                                  {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => profile3()))
+                                  }
+                                else
+                                  {print('Gando ho tm')}
+                              });
                         } else {
                           signUp(formValues).then((value) => {
-                            if (value)
-                              {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            editdiabetes()))
-                              }
-                            else
-                              {
-                                _showSnackBar(meassage),
-                              }
-                          });
+                                if (value)
+                                  {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                editdiabetes()))
+                                  }
+                                else
+                                  {
+                                    _showSnackBar(meassage),
+                                  }
+                              });
                         }
                       },
                       child: Container(
@@ -660,9 +663,12 @@ iconEnabledColor:Colors.red,
                         width: MediaQuery.of(context).size.width / 1.1,
                         child: Center(
                             child: Text(
-                              "Create Account",
-                              style: TextStyle(fontSize: 17.sp,color: Colors.white,fontWeight: FontWeight.w600),
-                            )),
+                          "Create Account",
+                          style: TextStyle(
+                              fontSize: 17.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
+                        )),
                         color: Colors.lightGreen,
                       ),
                     ),

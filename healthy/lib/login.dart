@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy/Model/Patient.dart';
 import 'package:healthy/forntscreen.dart';
 import 'package:healthy/frontscreenRetail.dart';
 import 'package:healthy/newpassword.dart';
@@ -19,10 +18,8 @@ class Login extends StatefulWidget {
 }
 
 class _State extends State<Login> {
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final scaffKey =
-      GlobalKey<ScaffoldState>(debugLabel: "scaffold-get-phone");
+  final scaffKey = GlobalKey<ScaffoldState>(debugLabel: "scaffold-get-phone");
   TextEditingController _controller = TextEditingController();
   TextEditingController _controllerPass = TextEditingController();
   ValueNotifier<bool> loading = ValueNotifier(false);
@@ -61,62 +58,58 @@ class _State extends State<Login> {
     }
   }
 
-
   Future<bool> loadUser() async {
     String localStorageValue;
     try {
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
 
-       SharedPreferences sharedPreferences =
-            await SharedPreferences.getInstance();
-             User? user = FirebaseAuth.instance.currentUser;
-
-
+      User? user = FirebaseAuth.instance.currentUser;
       formValues['uID'] = user!.uid;
       await FirebaseFirestore.instance
           .collection("Users")
           .doc(user.uid)
           .get()
-          .then((data)async => {
-
-        if(data.get('type')=='Customer'){
-            await   FirebaseFirestore.instance
-                .collection("SymptomsTestResults")
-                .doc(user.uid)
-                .get().then((value) async=> {
-              localStorageValue= value['HbA1c'] ,
-           await      sharedPreferences.setString('HbA1c',localStorageValue),
-            }),
-
-          Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  forntscreen()))
-        }
-        else if (data['type']=='Doctor'){
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      DoctorLandingScreen()))
-        }
-        else{
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        forntscreenR()))
-
-          }
-
-
-      });
+          .then((data) async => {
+                await sharedPreferences.setString(
+                    "first_name", data.get('fName')),
+                await sharedPreferences.setString(
+                    "last_name", data.get('lName')),
+                await sharedPreferences.setString(
+                    "password", data.get('password')),
+                print(data.get('fName')),
+                print("ffffffffffffffffffffffffffffffffffffffffffff"),
+                print(data.get('lName')),
+                if (data.get('type') == 'Customer')
+                  {
+                    await FirebaseFirestore.instance
+                        .collection("SymptomsTestResults")
+                        .doc(user.uid)
+                        .get()
+                        .then((value) async => {
+                              localStorageValue = value['HbA1c'],
+                              await sharedPreferences.setString(
+                                  'HbA1c', localStorageValue),
+                            }),
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => forntscreen()))
+                  }
+                else if (data['type'] == 'Doctor')
+                  {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DoctorLandingScreen()))
+                  }
+                else
+                  {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => forntscreenR()))
+                  }
+              });
       print('loading++++++++++++++++++++++++++++');
 
-      setState(() {
-
-      });
-
+      setState(() {});
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -129,7 +122,6 @@ class _State extends State<Login> {
       print('-000-0-0-0-0-0-0-0-$e');
       return false;
     }
-
 
     return true;
   }
@@ -274,14 +266,7 @@ class _State extends State<Login> {
                         }
                         _formKey.currentState!.save();
                         logIn(formValues).then((value) => {
-                              if (value)
-                                {
-                                  loadUser()
-                                }
-                              else
-                                {
-                                  _showSnackBar('sssss')
-                                }
+                              if (value) {loadUser()} else {_showSnackBar('')}
                             });
                       },
                       child: Container(
@@ -290,7 +275,14 @@ class _State extends State<Login> {
                         width: MediaQuery.of(context).size.width / 1.1,
                         child: loading.value == true
                             ? CircularProgressIndicator()
-                            : Center(child: Text("Login",style: TextStyle(color: Colors.white,fontSize: 17.sp,fontWeight: FontWeight.w600),)),
+                            : Center(
+                                child: Text(
+                                "Login",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17.sp,
+                                    fontWeight: FontWeight.w600),
+                              )),
                         color: Colors.lightGreen,
                       ),
                     ),
