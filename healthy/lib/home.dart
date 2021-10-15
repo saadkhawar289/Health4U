@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/IntroScreen.dart';
 import 'package:healthy/login.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy/selectAccount.dart';
+import 'package:healthy/signup.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -78,7 +78,7 @@ class _State extends State<HomeScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AccountSelection()));
+                                    builder: (context) => singup()));
                           },
                           child: Container(
                             height: 50,
@@ -86,7 +86,14 @@ class _State extends State<HomeScreen> {
                             margin: EdgeInsets.only(left: 6, right: 6),
                             //   color: const Color(0xFF97d329),
                             color: Colors.lightGreen,
-                            child: Center(child: Text("Sign up",style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white,fontSize: 17.sp),)),
+                            child: Center(
+                                child: Text(
+                              "Sign up",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 17.sp),
+                            )),
                           ),
                         ),
                         InkWell(
@@ -100,7 +107,14 @@ class _State extends State<HomeScreen> {
                             margin: EdgeInsets.only(left: 6, right: 6),
                             height: 50,
                             width: MediaQuery.of(context).size.width / 2.5,
-                            child: Center(child: Text("Log in",style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white,fontSize: 17.sp),)),
+                            child: Center(
+                                child: Text(
+                              "Log in",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 17.sp),
+                            )),
                             color: Colors.lightGreen,
                           ),
                         )

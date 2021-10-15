@@ -29,11 +29,10 @@ class _State extends State<editmedication> {
     try {
       User? user = FirebaseAuth.instance.currentUser;
       DocumentReference ref =
-      FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
+          FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
       ref.update(data);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-
         return false;
       } else if (e.code == 'email-already-in-use') {
         return false;
@@ -45,11 +44,10 @@ class _State extends State<editmedication> {
 
     return true;
   }
- // List<bool> value = [];
+
+  // List<bool> value = [];
   List<String> listOMedicines = [];
-  Map<String,dynamic> medicines={
-    'medicines':[]
-  };
+  Map<String, dynamic> medicines = {'medicines': []};
 
   @override
   Widget build(BuildContext context) {
@@ -117,15 +115,12 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             zinic = value!;
-                            if(zinic){
+                            if (zinic) {
                               listOMedicines.add('Humalog');
                               print(listOMedicines.length);
-
-                            }
-                            else{
+                            } else {
                               listOMedicines.remove('Humalog');
                               print(listOMedicines.length);
-
                             }
                             // isChecked1 = false;
                           });
@@ -153,12 +148,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             zinic1 = value!;
-                            if(zinic1){
+                            if (zinic1) {
                               listOMedicines.add('Lantus');
-                            }
-                            else{
+                            } else {
                               listOMedicines.remove('Lantus');
-
                             }
                             // isChecked1 = false;
                           });
@@ -186,12 +179,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             zinic2 = value!;
-                            if(zinic2){
+                            if (zinic2) {
                               listOMedicines.add('Levemir');
-                            }
-                            else{
+                            } else {
                               listOMedicines.remove('Levemir');
-
                             }
                           });
                         },
@@ -218,12 +209,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             zinic3 = value!;
-                            if(zinic3){
+                            if (zinic3) {
                               listOMedicines.add('Novorapid');
-                            }
-                            else{
+                            } else {
                               listOMedicines.remove('Novorapid');
-
                             }
                           });
                         },
@@ -250,12 +239,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             zinic4 = value!;
-                            if(zinic4){
-                            listOMedicines.add('Insuman');
-                            }
-                            else{
-                            listOMedicines.remove('Insuman');
-
+                            if (zinic4) {
+                              listOMedicines.add('Insuman');
+                            } else {
+                              listOMedicines.remove('Insuman');
                             }
                           });
                         },
@@ -282,12 +269,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             zinic6 = value!;
-                            if(zinic4){
+                            if (zinic4) {
                               listOMedicines.add('Insulatard');
-                            }
-                            else{
+                            } else {
                               listOMedicines.remove('Insulatard');
-
                             }
                           });
                         },
@@ -350,35 +335,33 @@ class _State extends State<editmedication> {
 
           InkWell(
             onTap: () {
-              medicines['medicines']=listOMedicines;
+              medicines['medicines'] = listOMedicines;
               addPatientMedicines(medicines).then((value) => {
-                if (value)
-                  {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => selectpills2()))
-                  }
-                else
-                  {SnackBar(
-                  content: Text('some thing went rong'),
-              )}
-              });
-
-
-
+                    if (value)
+                      {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => selectpills2()))
+                      }
+                    else
+                      {
+                        SnackBar(
+                          content: Text('some thing went rong'),
+                        )
+                      }
+                  });
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),
-    height: 43,
-    width: MediaQuery.of(context).size.width / 1.1,
+              height: 43,
+              width: MediaQuery.of(context).size.width / 1.1,
               child: Center(
                   child: Text("Next",
                       style: TextStyle(
-                        fontSize: 17.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white
-                      ))),
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white))),
               color: Colors.lightGreen,
             ),
           ),

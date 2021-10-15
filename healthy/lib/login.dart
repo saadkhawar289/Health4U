@@ -4,11 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy/Model/Patient.dart';
 import 'package:healthy/forntscreen.dart';
 import 'package:healthy/frontscreenRetail.dart';
 import 'package:healthy/newpassword.dart';
-import 'package:healthy/selectAccount.dart';
+import 'package:healthy/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'DoctorLandingScreen.dart';
@@ -19,14 +18,12 @@ class Login extends StatefulWidget {
 }
 
 class _State extends State<Login> {
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final scaffKey =
-      GlobalKey<ScaffoldState>(debugLabel: "scaffold-get-phone");
+  final scaffKey = GlobalKey<ScaffoldState>(debugLabel: "scaffold-get-phone");
   TextEditingController _controller = TextEditingController();
   TextEditingController _controllerPass = TextEditingController();
   ValueNotifier<bool> loading = ValueNotifier(false);
-
+  bool show = true;
   Map<String, dynamic> formValues = {
     'email': null,
     'password': null,
@@ -60,7 +57,6 @@ class _State extends State<Login> {
       return false;
     }
   }
-
 
   Future<bool> loadUser() async {
     String localStorageValue;
@@ -188,8 +184,7 @@ class _State extends State<Login> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            AccountSelection()));
+                                        builder: (context) => singup()));
                               },
                               child: Text(
                                 "Create acccount",
@@ -235,7 +230,38 @@ class _State extends State<Login> {
                           Container(
                             margin: EdgeInsets.only(top: 15),
                             child: TextFormField(
+                              obscureText: show,
+                              decoration: InputDecoration(
+                                suffixIcon: show == false
+                                    ? InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            show = true;
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.visibility,
+                                          color: Colors.grey,
+                                        ))
+                                    : InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            show = false;
+                                          });
+                                        },
+                                        child: Icon(Icons.visibility_off,
+                                            color: Colors.grey)),
+                                hintText: 'Password',
+                                contentPadding:
+                                    EdgeInsets.only(left: 15.0, top: 15),
+                                border: InputBorder.none,
+                              ),
                               controller: _controllerPass,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(12),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[0-9,@#*&^%?/>< a-z A-Z ]"))
+                              ],
                               validator: (val) {
                                 if (val!.isEmpty || val.length <= 8) {
                                   return "enter a password greater then 8";
@@ -244,18 +270,32 @@ class _State extends State<Login> {
                               onSaved: (String? value) {
                                 formValues['password'] = value;
                               },
-                              inputFormatters: [
-                                LengthLimitingTextInputFormatter(12),
-                                FilteringTextInputFormatter.allow(
-                                    RegExp("[0-9,@#*&^%?/>< a-z A-Z ]"))
-                              ],
-                              obscureText: true,
-                              decoration: const InputDecoration(
-                                  contentPadding:
-                                      EdgeInsets.only(left: 15.0, top: 15),
-                                  border: InputBorder.none,
-                                  hintText: 'Password'),
                             ),
+
+                            // TextFormField(
+                            //   controller: _controllerPass,
+                            //   validator: (val) {
+                            //     if (val!.isEmpty || val.length <= 8) {
+                            //       return "enter a password greater then 8";
+                            //     }
+                            //   },
+                            //   onSaved: (String? value) {
+                            //     formValues['password'] = value;
+                            //   },
+                            //   inputFormatters: [
+                            //     LengthLimitingTextInputFormatter(12),
+                            //     FilteringTextInputFormatter.allow(
+                            //         RegExp("[0-9,@#*&^%?/>< a-z A-Z ]"))
+                            //   ],
+                            //   obscureText: show,
+                            //   decoration: const InputDecoration(
+                            //
+                            //       contentPadding:
+                            //           EdgeInsets.only(left: 15.0, top: 15),
+                            //       border: InputBorder.none,
+                            //
+                            //       hintText: 'Password'),
+                            // ),
                           ),
                           Divider(
                             thickness: 1,
@@ -271,13 +311,9 @@ class _State extends State<Login> {
                         _formKey.currentState!.save();
                         logIn(formValues).then((value) => {
                               if (value)
-                                {
-                                  loadUser()
-                                }
+                                {loadUser()}
                               else
-                                {
-                                  print('loginErrorrrr')
-                                }
+                                {print('loginErrorrrr')}
                             });
                       },
                       child: Container(
