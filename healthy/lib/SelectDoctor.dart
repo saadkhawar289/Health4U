@@ -1,5 +1,7 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'TimeDateReservation.dart';
 
 class SelectDoctor extends StatefulWidget {
   const SelectDoctor({Key? key}) : super(key: key);
@@ -108,15 +110,17 @@ class _SelectDoctorState extends State<SelectDoctor> {
                                                     builder:
                                                         (BuildContext context) {
                                                       return AlertDialog(
-
                                                         title: Align(
                                                             alignment: Alignment
                                                                 .bottomRight,
                                                             child: InkWell(
                                                               child: InkWell(
-                                                                onTap:()=> Navigator.pop(context),
+                                                                onTap: () =>
+                                                                    Navigator.pop(
+                                                                        context),
                                                                 child: Icon(
-                                                                    Icons.close),
+                                                                    Icons
+                                                                        .close),
                                                               ),
                                                             )),
                                                         content: Container(
@@ -143,57 +147,73 @@ class _SelectDoctorState extends State<SelectDoctor> {
                                                               SizedBox(
                                                                 height: 8.h,
                                                               ),
-                                                              Text('Language',style: TextStyle(
-                                                                  fontSize:
-                                                                  14.sp,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w500,color: Colors.blue),),
-
+                                                              Text(
+                                                                'Language',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        14.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    color: Colors
+                                                                        .blue),
+                                                              ),
                                                               Padding(
-                                                                padding:  EdgeInsets.symmetric(horizontal: 35.w,vertical: 5.h),
-                                                                child: Container(
-                                                                  child:Row(
-                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal: 35
+                                                                            .w,
+                                                                        vertical:
+                                                                            5.h),
+                                                                child:
+                                                                    Container(
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
                                                                     children: [
                                                                       Container(
-                                                                        height: 20,
-                                                                        width: 70,
-                                                                        decoration: BoxDecoration(
-                                                                          borderRadius: BorderRadius.circular(20),
-
-                                                                          color: Colors.lightGreen,
+                                                                        height:
+                                                                            20,
+                                                                        width:
+                                                                            70,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(20),
+                                                                          color:
+                                                                              Colors.lightGreen,
                                                                         ),
                                                                         child: Center(
-                                                                            child: Text('French',
-                                                                                style: TextStyle(
-                                                                                  fontSize: 12.sp,
-                                                                                    color: Colors.white))),
+                                                                            child:
+                                                                                Text('French', style: TextStyle(fontSize: 12.sp, color: Colors.white))),
                                                                       ),
                                                                       Container(
-                                                                        height: 20,
-                                                                        width: 70,
-                                                                        decoration: BoxDecoration(
-                                                                          borderRadius: BorderRadius.circular(20),
-
-                                                                          color: Colors.lightGreen,
+                                                                        height:
+                                                                            20,
+                                                                        width:
+                                                                            70,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(20),
+                                                                          color:
+                                                                              Colors.lightGreen,
                                                                         ),
                                                                         child: Center(
-                                                                            child: Text('English',
-                                                                                style: TextStyle(
-                                                                                    fontSize: 12.sp,
-                                                                                    color: Colors.white))),
+                                                                            child:
+                                                                                Text('English', style: TextStyle(fontSize: 12.sp, color: Colors.white))),
                                                                       ),
                                                                     ],
-                                                                  ) ,
+                                                                  ),
                                                                 ),
                                                               ),
-                                                              Center(child: Text('Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,'))
-
+                                                              Center(
+                                                                  child: Text(
+                                                                      'Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,'))
                                                             ],
                                                           ),
                                                         ),
-
                                                       );
                                                     });
                                               },
@@ -221,8 +241,11 @@ class _SelectDoctorState extends State<SelectDoctor> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/timeReservation');
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Resolution('Dr Saad')));
                                           },
                                           child: Icon(
                                             Icons.arrow_forward,
@@ -312,8 +335,12 @@ class _SelectDoctorState extends State<SelectDoctor> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/timeReservation');
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Resolution(
+                                                            'Dr Sadia')));
                                           },
                                           child: Icon(
                                             Icons.arrow_forward,
@@ -403,8 +430,12 @@ class _SelectDoctorState extends State<SelectDoctor> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/timeReservation');
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Resolution(
+                                                            'Dr Ashfaq')));
                                           },
                                           child: Icon(
                                             Icons.arrow_forward,
@@ -494,8 +525,11 @@ class _SelectDoctorState extends State<SelectDoctor> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/timeReservation');
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Resolution('Dr Amna')));
                                           },
                                           child: Icon(
                                             Icons.arrow_forward,
@@ -585,8 +619,12 @@ class _SelectDoctorState extends State<SelectDoctor> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/timeReservation');
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Resolution(
+                                                            'Dr Ayesha')));
                                           },
                                           child: Icon(
                                             Icons.arrow_forward,

@@ -10,7 +10,6 @@ import 'package:provider/provider.dart';
 
 import 'OnlinePractitioner.dart';
 import 'SelectDoctor.dart';
-import 'TimeDateReservation.dart';
 import 'appointConfirmation.dart';
 import 'home.dart';
 
@@ -47,9 +46,7 @@ Future<void> main() async {
                   '/confirmation': (BuildContext context) =>
                       Confirmation()
                 },
-              )))
-
-  ));
+              ))));
 }
 
 // class Splash extends StatefulWidget {

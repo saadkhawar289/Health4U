@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Resolution extends StatefulWidget {
+  String drname;
+  Resolution(this.drname);
   @override
   _ResolutionState createState() => _ResolutionState();
 }
@@ -739,7 +741,7 @@ class _ResolutionState extends State<Resolution> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: Text("Dr Akeel"),
+                            child: Text(widget.drname),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),

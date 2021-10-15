@@ -206,13 +206,13 @@ class CheckOutCartTile extends StatelessWidget {
   final Map<String, dynamic> productValues;
 
   const CheckOutCartTile(this.index, this.productValues);
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ListTile(
-          leading: Image.network('https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
+          leading: Image.network(
+              'https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
           title: Text(productValues['name'],
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
@@ -704,4 +704,4 @@ class _SelectedProductState extends State<SelectedProduct> {
 
 
   }
-}
+
