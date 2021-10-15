@@ -82,13 +82,13 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                           EdgeInsets.only(top: 16.0, left: 8),
                                       child: Column(
                                         children: [
-                                          Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Text('Hi Aman',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 12.sp))),
+                                          // Align(
+                                          //     alignment: Alignment.topLeft,
+                                          //     child: Text('   ',
+                                          //         style: TextStyle(
+                                          //             fontWeight:
+                                          //                 FontWeight.w500,
+                                          //             fontSize: 12.sp))),
                                           SizedBox(
                                             height: 3,
                                           ),
