@@ -42,8 +42,8 @@ class _CartState extends State<Cart> {
                   padding: const EdgeInsets.all(18.0),
                   child: Align(
                     alignment: Alignment.topLeft,
-                    child: Text(
-                      '10 items',
+                    child: Text('${widget.lisOfProducts!.length} items'
+                      ,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -173,17 +173,17 @@ class CartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text('remove',
-                  style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black)),
+              // Text('remove',
+              //     style: TextStyle(
+              //         fontSize: 17,
+              //         fontWeight: FontWeight.bold,
+              //         color: Colors.black)),
               SizedBox(
                 height: 10,
               )
             ],
           ),
-          trailing: Image.asset('assets/ic_logo.png'),
+          trailing: Image.network('https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
         ),
         Divider(
           height: 5,

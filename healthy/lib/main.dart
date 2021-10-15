@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/PractitionerBooking.dart';
+import 'package:healthy/Provider/cart_view_model.dart';
 import 'package:healthy/splash.dart';
+import 'package:provider/provider.dart';
 
 import 'OnlinePractitioner.dart';
 import 'SelectDoctor.dart';
@@ -15,10 +17,19 @@ import 'home.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(ScreenUtilInit(
-      builder: () => DevicePreview(
-          enabled: false,
-          builder: (context) => MaterialApp(
+
+
+
+
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<CartViewModel>(
+        create: (_) => CartViewModel(),
+        ),
+  ],
+      child: ScreenUtilInit(
+          builder: () => DevicePreview(
+              enabled: false,
+              builder: (context) => MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(primaryColor: Colors.green),
                 // home: Splash(),
@@ -29,11 +40,16 @@ Future<void> main() async {
                   '/homeScreen': (BuildContext context) => HomeScreen(),
                   '/BookPractitioner': (BuildContext context) =>
                       BookPractitioner(),
-                  '/selectDoctor': (BuildContext context) => SelectDoctor(),
-                  '/timeReservation': (BuildContext context) => Resolution(),
-                  '/confirmation': (BuildContext context) => Confirmation()
+                  '/selectDoctor': (BuildContext context) =>
+                      SelectDoctor(),
+                  '/timeReservation': (BuildContext context) =>
+                      Resolution(),
+                  '/confirmation': (BuildContext context) =>
+                      Confirmation()
                 },
-              ))));
+              )))
+
+  ));
 }
 
 // class Splash extends StatefulWidget {

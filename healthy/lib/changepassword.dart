@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/profile3.dart';
+import 'package:http/http.dart' as http;
+
+
 
 class changepassword extends StatefulWidget {
   @override
@@ -8,6 +12,38 @@ class changepassword extends StatefulWidget {
 }
 
 class _State extends State<changepassword> {
+
+
+  Future<bool>updatePass()async{
+
+    try{
+      User? user = FirebaseAuth.instance.currentUser;
+var pass ='zain1234567';
+var id= await user!.getIdToken();
+user.reload();
+      var url = Uri.parse('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDZO71lOat12Id_lb4zuX_gqNcApLphHVQ');
+      var response = await http.post(url, body: {'idToken':id,'password':pass,'returnSecureToken':'true'});
+      print(response.statusCode);
+      print(response.body);
+
+      return true;
+
+    }
+    catch(e){
+      print(e);
+      return false;
+    }
+
+
+
+
+
+  }
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,10 +107,19 @@ class _State extends State<changepassword> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
+                        updatePass().then((value) => {
+                          if(value){
+                            Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => profile3()));
+                                builder: (context) => profile3()))
+                          }
+                          else{
+                            print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+                          }
+
+                        });
+
                       },
                       child: Container(
                         margin: EdgeInsets.only(top: 70, bottom: 20),

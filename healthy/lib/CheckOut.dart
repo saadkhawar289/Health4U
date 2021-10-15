@@ -2,11 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/Paymenterification.dart';
+import 'package:healthy/Provider/cart_view_model.dart';
+import 'package:provider/provider.dart';
 import 'package:healthy/QrScanner.dart';
 import 'package:healthy/drawer.dart';
 
+import 'Model/Product.dart';
+
 class Checkout extends StatefulWidget {
-  const Checkout({Key? key}) : super(key: key);
+
+  const Checkout({Key? key}) ;
 
   @override
   _CheckoutState createState() => _CheckoutState();
@@ -14,6 +19,7 @@ class Checkout extends StatefulWidget {
 
 class _CheckoutState extends State<Checkout> {
   int index = 0;
+
 
   Widget columnBody() {
     return Column(children: [
@@ -299,15 +305,15 @@ class _CheckoutState extends State<Checkout> {
     ]);
   }
 
-  Widget _buildAcceptSwitch() {
-    return SwitchListTile(
-      activeColor: Colors.green,
-      value: true,
-      onChanged: (bool value) {
-        setState(() {});
-      },
-    );
-  }
+  // Widget _buildAcceptSwitch() {
+  //   return SwitchListTile(
+  //     activeColor: Colors.green,
+  //     value: true,
+  //     onChanged: (bool value) {
+  //       setState(() {});
+  //     },
+  //   );
+  // }
 
   void _showBottomSheet2(BuildContext context) {
     showModalBottomSheet(
@@ -333,6 +339,7 @@ class _CheckoutState extends State<Checkout> {
 
   @override
   Widget build(BuildContext context) {
+    var model=context.watch<CartViewModel>();
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -366,7 +373,7 @@ class _CheckoutState extends State<Checkout> {
                     child: Row(
                       children: [
                         Text(
-                          '10 items',
+                          '${context.read<CartViewModel>().addedCartItems.length} items',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -392,10 +399,10 @@ class _CheckoutState extends State<Checkout> {
                   color: const Color(0xFFF7F7F7),
                   child: ListView.builder(
                     itemBuilder: (BuildContext context, int index) => Container(
-                      child: CheckOutCartTile(index + 1),
+                      child: CheckOutCartTile(index+1,model.addedCartItems[index]),
                     ),
                     addAutomaticKeepAlives: false,
-                    itemCount: 10,
+                    itemCount:model.addedCartItems.length,
                     //cacheExtent: 100.0,
                   ),
                 ),
@@ -459,7 +466,8 @@ class _CheckoutState extends State<Checkout> {
 
 class CheckOutCartTile extends StatelessWidget {
   final int index;
-  const CheckOutCartTile(this.index);
+  final Product product;
+  const CheckOutCartTile(this.index,this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -471,12 +479,12 @@ class CheckOutCartTile extends StatelessWidget {
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
-          title: Text('Sunflower Oil',
+          title: Text(product.name.toString(),
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('5L',
+              Text(product.weight.toString(),
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w400,
@@ -484,7 +492,7 @@ class CheckOutCartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text('£ 0.80',
+              Text(product.price.toString(),
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -497,7 +505,7 @@ class CheckOutCartTile extends StatelessWidget {
               )
             ],
           ),
-          trailing: Image.asset('assets/ic_logo.png'),
+          trailing: Image.network('https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
         ),
         Divider(
           height: 5,

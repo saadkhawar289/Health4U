@@ -10,4 +10,4 @@ class CartViewModel extends ChangeNotifier {
     addedCartItems = cartItems;
     notifyListeners();
   }
-} 
+}

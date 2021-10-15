@@ -338,12 +338,9 @@ class _SelectedProductState extends State<SelectedProduct> {
 
   @override
   Widget build(BuildContext context) {
-    var viewModel= Provider.of<CartViewModel>(context, listen: false);
+    var model=context.read<CartViewModel>(); //Provider.of<CartViewModel>(context, listen: false);
 
-    return ChangeNotifierProvider.value(
-        value: viewModel,
-        builder: (context, snapshot) {
-          return Container(
+    return Container(
             color: Colors.white,
             child: SafeArea(
               child: Scaffold(
@@ -656,15 +653,16 @@ class _SelectedProductState extends State<SelectedProduct> {
                             Product prod=Product(
                                 name: productValues['name'],
                                 id: '1234',
-                                price: productValues['price'],
+                                price:231,// productValues['price'],
                                 weight:productValues['weight'],
                                 descp: ' hhhj jjj jj');
-
-                            viewModel.addToCart(prod);
+                            context.read<CartViewModel>().addToCart(prod);
+                          // viewModel.addToCart(prod);
+                           // model.addToCart(prod);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Cart(viewModel.cartItems)));
+                                    builder: (context) => Cart(context.read<CartViewModel>().addedCartItems)));
                           },
                           child: Container(
                             height: 93,
@@ -701,8 +699,7 @@ class _SelectedProductState extends State<SelectedProduct> {
               ),
             ),
           );
-        }
-    );
+
 
 
 
