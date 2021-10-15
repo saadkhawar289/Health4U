@@ -81,10 +81,12 @@ class _State extends State<Login> {
                     "last_name", data.get('lName')),
                 await sharedPreferences.setString(
                     "password", data.get('password')),
-        // await sharedPreferences.setString(
-        //     "dob", data.get('date')),
+        await sharedPreferences.setString(
+            "dob", data.get('date')),
                 print(data.get('fName')),
-                print("ffffffffffffffffffffffffffffffffffffffffffff"),
+        print(data.get('date')),
+
+        print("ffffffffffffffffffffffffffffffffffffffffffff"),
                 print(data.get('lName')),
         print(data.get('password')),
                 if (data.get('type') == 'Customer')

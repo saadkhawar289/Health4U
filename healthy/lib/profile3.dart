@@ -115,11 +115,15 @@ class _State extends State<profile3> {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () {
+                      onTap: () async{
+                        SharedPreferences preferences = await SharedPreferences.getInstance();
+                      var  fName = preferences.getString('first_name');
+                      var  lName=preferences.getString('last_name');
+                      var dob = preferences.getString('dob');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditProfilePatient()));
+                                builder: (context) => EditProfilePatient(dob: dob!,fName: fName!,lName: lName!,)));
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

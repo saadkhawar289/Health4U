@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'changepassword.dart';
 
 class EditProfilePatient extends StatefulWidget {
+ final String fName,lName,dob;
+ EditProfilePatient({required this.lName,required this.fName,required this.dob});
+
   @override
   _EditProfilePatientState createState() => _EditProfilePatientState();
 }
 
 class _EditProfilePatientState extends State<EditProfilePatient> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,8 +51,8 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                   children: [
                     TextFormField(
                       decoration: InputDecoration(
-                        hintText: 'First Name',
-                        suffixText: "Edit  ",
+                        hintText: widget.fName,
+                      //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
@@ -57,8 +65,8 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                     ),
                     TextFormField(
                       decoration: InputDecoration(
-                        hintText: 'Last Name',
-                        suffixText: "Edit  ",
+                        hintText: widget.lName,
+                      //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
@@ -71,8 +79,8 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                     ),
                     TextFormField(
                       decoration: InputDecoration(
-                        hintText: '12/12/2020',
-                        suffixText: "Edit  ",
+                        hintText: widget.dob,
+                      //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
