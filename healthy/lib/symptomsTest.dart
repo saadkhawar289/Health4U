@@ -657,7 +657,9 @@ class _SymptomsTestState extends State<SymptomsTest> {
                           symptomsTest['FootHealth'] = footHealth;
                           symptomsTest['EyeHealth'] = eyeHealth;
                           symptomsTest['KidneyHealth'] = kidneyHealth;
-                          symptomsTest['HbA1c'] = controller.text;
+                          var val = controller.text as int;
+                          symptomsTest['HbA1c'] = val;
+
                           if (widget.navigation == 'doctor') {
                             saveSymptomsResult(symptomsTest).then((value) => {
                                   if (value)

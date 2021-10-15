@@ -38,6 +38,7 @@ class _State extends State<editdiabetes> {
     'pills': [],
     'typeOfDiabetes': null,
   };
+  int val = 5;
   Map<String, dynamic> symptomsTest = {
     'HbA1c': 5,
     'FootHealth': [],

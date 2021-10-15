@@ -77,14 +77,12 @@ class _State extends State<Login> {
                     "last_name", data.get('lName')),
                 await sharedPreferences.setString(
                     "password", data.get('password')),
-        await sharedPreferences.setString(
-            "dob", data.get('date')),
+                await sharedPreferences.setString("dob", data.get('date')),
                 print(data.get('fName')),
-        print(data.get('date')),
-
-        print("ffffffffffffffffffffffffffffffffffffffffffff"),
+                print(data.get('date')),
+                print("ffffffffffffffffffffffffffffffffffffffffffff"),
                 print(data.get('lName')),
-        print(data.get('password')),
+                print(data.get('password')),
                 if (data.get('type') == 'Customer')
                   {
                     await FirebaseFirestore.instance
@@ -325,14 +323,14 @@ class _State extends State<Login> {
                         margin: EdgeInsets.only(top: 12),
                         height: 43,
                         width: MediaQuery.of(context).size.width / 1.1,
-                        child:  Center(
-                                child: Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17.sp,
-                                    fontWeight: FontWeight.w600),
-                              )),
+                        child: Center(
+                            child: Text(
+                          "Login",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w600),
+                        )),
                         color: Colors.lightGreen,
                       ),
                     ),

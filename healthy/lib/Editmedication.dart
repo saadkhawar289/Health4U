@@ -63,7 +63,7 @@ class _State extends State<editmedication> {
               alignment: Alignment.centerLeft,
               height: 100,
               width: MediaQuery.of(context).size.width,
-              child: Icon(Icons.arrow_forward_ios),
+              child: Icon(Icons.arrow_back_ios_outlined),
             ),
           ),
           Container(
