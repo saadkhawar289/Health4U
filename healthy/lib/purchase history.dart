@@ -9,7 +9,15 @@ class purchasehistory extends StatefulWidget {
   _State createState() => _State();
 }
 
+
+
+
+
 class _State extends State<purchasehistory> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +88,7 @@ class _State extends State<purchasehistory> {
               height: 0.30.sh,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: Colors.yellow,//const Color(0xFFF7F7F7),
+                  color: const Color(0xFFF7F7F7),
                   border: Border(
                       bottom: BorderSide(color: Colors.black12, width: 1))),
               child: ListView.builder(
@@ -142,7 +150,7 @@ class _State extends State<purchasehistory> {
             height: 40,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-               color:Colors.red, //const Color(0xFFF7F7F7),
+               color:const Color(0xFFF7F7F7),
                 border: Border(
                     bottom: BorderSide(color: Colors.black12, width: 1))),
             child: Row(
@@ -161,11 +169,11 @@ class _State extends State<purchasehistory> {
               height:0.30.sh,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color:Colors.green,  //const Color(0xFFF7F7F7),
+                  color:const Color(0xFFF7F7F7),
                   border: Border(
                       bottom: BorderSide(color: Colors.black12, width: 1))),
               child: ListView.builder(
-                  itemCount: 1,
+                  itemCount: 3,
                   itemBuilder: (BuildContext context, int index) {
                     return Column(
                       children: [
