@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/selectpils2.dart';
 
 class editmedication extends StatefulWidget {
+  final bool isEditAble;
+  editmedication(this.isEditAble);
   @override
   _State createState() => _State();
 }
@@ -12,8 +14,89 @@ class editmedication extends StatefulWidget {
 class _State extends State<editmedication> {
   @override
   initState() {
+    if(widget.isEditAble){
+      loadUserMedicines();
+    }
+    else{}
+
     super.initState();
   }
+  Future<bool> loadUserMedicines() async {
+    try {
+      // loader = true;
+      print('loading===================================');
+      User? user = FirebaseAuth.instance.currentUser;
+
+      await FirebaseFirestore.instance
+          .collection("Patient")
+          .doc(user!.uid)
+          .get()
+          .then((data) => {
+
+        fetchedListOMedicines = data['medicines'],
+        print('${fetchedListOMedicines.length}---------fetchedListOMedicines'),
+        fetchedListOMedicines.forEach((element) {
+      if (element.contains('Humalog'))
+      {
+      setState(() {
+      Humalog = true;
+
+      });
+      }
+      else if (element.contains('Lantus'))
+        {
+          setState(() {
+            Lantus =true;
+          });
+        }
+      else if (element.contains('Levemir'))
+          {
+            setState(() {
+              Levemir = true;
+            });
+          }
+        else if (element.contains('Novorapid'))
+            {
+              setState(() {
+                Novorapid = true;
+              });
+            }
+          else if (element.contains('Insuman'))
+              {
+                setState(() {
+                  Insuman = true;
+                });
+              }
+            else if (element.contains('Insulatard'))
+                {
+                  setState(() {
+                    Insulatard = true;
+                  });
+                }
+
+
+        })
+
+        //
+      });
+      print('loading++++++++++++++++++++++++++++');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+    // loader = false;
+
+    return true;
+  }
+
 
   bool Humalog = false;
   bool Lantus = false;
@@ -24,6 +107,7 @@ class _State extends State<editmedication> {
 
   Future<bool> addPatientMedicines(Map<String, dynamic> data) async {
     try {
+
       User? user = FirebaseAuth.instance.currentUser;
       DocumentReference ref =
           FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
@@ -43,8 +127,12 @@ class _State extends State<editmedication> {
   }
 
   // List<bool> value = [];
-  List<String> listOMedicines = [];
+ List<String> listOMedicines = [];
   Map<String, dynamic> medicines = {'medicines': []};
+  List<dynamic> fetchedListOMedicines = [];
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +148,7 @@ class _State extends State<editmedication> {
               alignment: Alignment.centerLeft,
               height: 100,
               width: MediaQuery.of(context).size.width,
-              child: Icon(Icons.arrow_forward_ios),
+              child: Icon(Icons.arrow_back_ios),
             ),
           ),
           Container(
@@ -111,6 +199,9 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Humalog = value!;
+                            listOMedicines.add('Humalog');
+
+
                             // isChecked1 = false;
                           });
                         },
@@ -136,6 +227,7 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Lantus = value!;
+                            listOMedicines.add('Lantus');
                             // isChecked1 = false;
                           });
                         },
@@ -161,6 +253,8 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Levemir = value!;
+                            listOMedicines.add('Levemir');
+
                             // isChecked1 = false;
                           });
                         },
@@ -186,7 +280,7 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Novorapid = value!;
-                            // isChecked1 = false;
+                            listOMedicines.add('Novorapid');
                           });
                         },
                       ),
@@ -211,7 +305,7 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Insuman = value!;
-                            // isChecked1 = false;
+                            listOMedicines.add('Insuman');
                           });
                         },
                       ),
@@ -236,7 +330,7 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Insulatard = value!;
-                            // isChecked1 = false;
+                            listOMedicines.add('Insulatard');
                           });
                         },
                       ),
@@ -298,8 +392,20 @@ class _State extends State<editmedication> {
 
           InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => selectpills2()));
+              print(listOMedicines);
+              medicines['medicines']=listOMedicines;
+              addPatientMedicines(medicines).then((value) => {
+                if(value){
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => selectpills2()))
+                }
+                else{
+                  print('error')
+                }
+              });
+
+
+
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),

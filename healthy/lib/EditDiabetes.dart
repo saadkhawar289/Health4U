@@ -212,7 +212,7 @@ class _State extends State<editdiabetes> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => editmedication()))
+                                    builder: (context) => editmedication(false)))
                           }
                         else
                           {_showSnackBar("some thing went worng")}
@@ -244,7 +244,7 @@ class _State extends State<editdiabetes> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  editmedication()))
+                                                  editmedication(true)))
                                     }
                                   else
                                     {_showSnackBar('some thing went worng')}

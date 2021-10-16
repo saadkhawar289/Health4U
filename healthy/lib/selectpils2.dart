@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/forntscreen.dart';
@@ -8,6 +10,9 @@ class selectpills2 extends StatefulWidget {
 }
 
 class _State extends State<selectpills2> {
+  List<String> listOPills = [];
+  Map<String, dynamic> pills = {'pills': []};
+  List<dynamic> fetchedListOMedicines = [];
   bool Metformin = false;
   bool Empagliflozin = false;
   bool Dapagliflozin = false;
@@ -20,6 +25,38 @@ class _State extends State<selectpills2> {
   bool Saxagliptin = false;
   bool Liraglutide = false;
   bool Dulaglutide = false;
+
+
+
+  Future<bool> addPatientPills(Map<String, dynamic> data) async {
+    try {
+
+      User? user = FirebaseAuth.instance.currentUser;
+      DocumentReference ref =
+      FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
+      ref.update(data);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+
+    return true;
+  }
+
+
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +71,7 @@ class _State extends State<selectpills2> {
               alignment: Alignment.centerLeft,
               height: 100,
               width: MediaQuery.of(context).size.width,
-              child: Icon(Icons.arrow_forward_ios),
+              child: Icon(Icons.arrow_back_ios),
             ),
           ),
           Container(
@@ -86,6 +123,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Metformin = value!;
+                              listOPills.add('Metformin');
                               // isChecked1 = false;
                             });
                           },
@@ -111,7 +149,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Empagliflozin = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Empagliflozin');
                             });
                           },
                         ),
@@ -136,7 +174,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Dapagliflozin = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Dapagliflozin');
                             });
                           },
                         ),
@@ -161,7 +199,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Canagliflozin = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Canagliflozin');
                             });
                           },
                         ),
@@ -186,7 +224,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Gliclzide = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Gliclzide');
                             });
                           },
                         ),
@@ -211,7 +249,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Glimerpiride = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Glimerpiride');
                             });
                           },
                         ),
@@ -236,7 +274,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Pioglitazone = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Pioglitazone');
                             });
                           },
                         ),
@@ -261,7 +299,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Alogliptin = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Alogliptin');
                             });
                           },
                         ),
@@ -286,7 +324,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Linagliptin = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Linagliptin');
                             });
                           },
                         ),
@@ -311,7 +349,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Saxagliptin = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Saxagliptin');
                             });
                           },
                         ),
@@ -336,7 +374,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Liraglutide = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Liraglutide');
                             });
                           },
                         ),
@@ -361,7 +399,7 @@ class _State extends State<selectpills2> {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Dulaglutide = value!;
-                              // isChecked1 = false;
+                              listOPills.add('Dulaglutide');
                             });
                           },
                         ),
@@ -374,8 +412,17 @@ class _State extends State<selectpills2> {
 
           InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => forntscreen()));
+              pills['pills']=listOPills;
+              addPatientPills(pills).then((value) => {
+                if(value){
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => forntscreen()))
+                }
+            else{
+  print('error')
+                }
+              });
+
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),
