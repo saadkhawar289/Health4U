@@ -47,7 +47,7 @@ class _State extends State<editmedication> {
 
   // List<bool> value = [];
   List<String> listOMedicines = [];
-   Map<String, dynamic> medicines = {'medicines': []};
+  Map<String, dynamic> medicines = {'medicines': []};
 
   @override
   Widget build(BuildContext context) {
