@@ -10,6 +10,14 @@ class selectpills2 extends StatefulWidget {
 }
 
 class _State extends State<selectpills2> {
+
+  initState() {
+    loadUserPills();
+    super.initState();
+  }
+
+
+
   List<String> listOPills = [];
   Map<String, dynamic> pills = {'pills': []};
   List<dynamic> fetchedListOMedicines = [];
@@ -28,13 +36,125 @@ class _State extends State<selectpills2> {
 
 
 
+  Future<bool> loadUserPills() async {
+    try {
+      // loader = true;
+      print('loading===================================');
+      User? user = FirebaseAuth.instance.currentUser;
+
+      await FirebaseFirestore.instance
+          .collection("Patient")
+          .doc(user!.uid)
+          .get()
+          .then((data) => {
+
+        fetchedListOMedicines = data['pills'],
+        print('${fetchedListOMedicines.length}---------fetchedListOMedicines'),
+        fetchedListOMedicines.forEach((element) {
+          if (element.contains('Metformin'))
+          {
+            setState(() {
+              Metformin = true;
+
+            });
+          }
+          else if (element.contains('Empagliflozin'))
+          {
+            setState(() {
+              Empagliflozin =true;
+            });
+          }
+          else if (element.contains('Dapagliflozin'))
+          {
+            setState(() {
+              Dapagliflozin = true;
+            });
+          }
+          else if (element.contains('Canagliflozin'))
+          {
+            setState(() {
+              Canagliflozin = true;
+            });
+          }
+          else if (element.contains('Gliclzide'))
+          {
+            setState(() {
+              Gliclzide = true;
+            });
+          }
+          else if (element.contains('Glimerpiride'))
+          {
+            setState(() {
+              Pioglitazone = true;
+            });
+          }
+          else if (element.contains('Pioglitazone'))
+          {
+            setState(() {
+              Pioglitazone = true;
+            });
+          }
+          else if (element.contains('Alogliptin'))
+          {
+            setState(() {
+              Alogliptin = true;
+            });
+          }
+          else if (element.contains('Linagliptin'))
+          {
+            setState(() {
+              Linagliptin = true;
+            });
+          }
+          else if (element.contains('Saxagliptin'))
+          {
+            setState(() {
+              Saxagliptin = true;
+            });
+          }
+          else if (element.contains('Liraglutide'))
+          {
+            setState(() {
+              Liraglutide = true;
+            });
+          }
+          else if (element.contains('Liraglutide'))
+          {
+            setState(() {
+              Liraglutide = true;
+            });
+          }
+
+        })
+
+        //
+      });
+      print('loading++++++++++++++++++++++++++++');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+    // loader = false;
+
+    return true;
+  }
+
   Future<bool> addPatientPills(Map<String, dynamic> data) async {
     try {
-
+print(';;;;;;;;;;;;;;;');
       User? user = FirebaseAuth.instance.currentUser;
       DocumentReference ref =
       FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
       ref.update(data);
+      print('ssssssssssssssss');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return false;
@@ -413,6 +533,7 @@ class _State extends State<selectpills2> {
           InkWell(
             onTap: () {
               pills['pills']=listOPills;
+              print(listOPills.length);
               addPatientPills(pills).then((value) => {
                 if(value){
                   Navigator.push(context,

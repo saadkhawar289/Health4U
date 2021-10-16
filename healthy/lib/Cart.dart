@@ -144,6 +144,7 @@ class CartTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(product.image);
     return Column(
       children: [
         ListTile(
@@ -183,7 +184,11 @@ class CartTile extends StatelessWidget {
               )
             ],
           ),
-          trailing: Image.network('https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
+          trailing: Container(
+            color: Colors.red,
+              height: 100,
+              width: 100,
+              child: Image.network(product.image.toString(),fit: BoxFit.fill,)),
         ),
         Divider(
           height: 5,

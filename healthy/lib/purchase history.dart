@@ -95,8 +95,12 @@ class _State extends State<purchasehistory> {
                           //         fontSize: 17,
                           //         fontWeight: FontWeight.bold,
                           //         color: Colors.black)),
-                          leading: Image.network(
-                              'https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
+                          leading: Container(
+                            child: Image.network(context
+                                .read<CartViewModel>()
+                                .addedCartItems[index]
+                                .image.toString()),
+                          ),
                           title: Column(
                             children: [
                               Text(

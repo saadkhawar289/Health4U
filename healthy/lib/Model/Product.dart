@@ -12,6 +12,7 @@ class Product {
   num? price;
   String? descp;
   String? id;
+  String? image;
 
 
 
@@ -21,6 +22,7 @@ class Product {
     @required this.price,
     @required this.weight,
     @required this.descp,
+    @required this.image
 
   });
 

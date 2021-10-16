@@ -505,7 +505,7 @@ class CheckOutCartTile extends StatelessWidget {
               )
             ],
           ),
-          trailing: Image.network('https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
+          trailing: Image.network(product.image.toString()),
         ),
         Divider(
           height: 5,

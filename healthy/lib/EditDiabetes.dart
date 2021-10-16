@@ -212,7 +212,7 @@ class _State extends State<editdiabetes> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => editmedication(false)))
+                                    builder: (context) =>widget.isEditAble? forntscreen(): editmedication(false)))
                           }
                         else
                           {_showSnackBar("some thing went worng")}
@@ -243,7 +243,7 @@ class _State extends State<editdiabetes> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
+                                              builder: (context) =>widget.isEditAble? forntscreen():
                                                   editmedication(true)))
                                     }
                                   else
@@ -265,7 +265,7 @@ class _State extends State<editdiabetes> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => selectpills()))
+                                    builder: (context) =>widget.isEditAble? forntscreen(): selectpills()))
                           }
                         else
                           {_showSnackBar("some thing went worng")}
@@ -297,7 +297,7 @@ class _State extends State<editdiabetes> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
+                                              builder: (context) =>widget.isEditAble? forntscreen():
                                                   selectpills()))
                                     }
                                   else
@@ -319,7 +319,7 @@ class _State extends State<editdiabetes> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => selectpills3()))
+                                    builder: (context) =>widget.isEditAble? forntscreen(): selectpills3()))
                           }
                         else
                           {_showSnackBar("some thing went worng")}
@@ -356,8 +356,7 @@ class _State extends State<editdiabetes> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  selectpills3()))
+                                              builder: (context) =>widget.isEditAble? forntscreen():selectpills3()))
                                     }
                                   else
                                     {}
@@ -380,7 +379,7 @@ class _State extends State<editdiabetes> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => forntscreen()))
+                                builder: (context) =>widget.isEditAble? forntscreen():forntscreen()))
                       }
                     else
                       {_showSnackBar("some thing is worng")}
@@ -420,7 +419,7 @@ class _State extends State<editdiabetes> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => forntscreen()))
+                                          builder: (context) =>widget.isEditAble? forntscreen():forntscreen()))
                                 }
                               else
                                 {_showSnackBar("some thing is worng")}

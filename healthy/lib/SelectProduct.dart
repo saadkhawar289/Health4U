@@ -212,10 +212,10 @@ class CheckOutCartTile extends StatelessWidget {
       children: [
         ListTile(
           leading: Container(
-            height: 70,
-            width: 70,
-            child: Image.network(
-                'https://thumbs.dreamstime.com/b/swiss-cheese-holes-18911609.jpg'),
+            height: 100,
+            width: 100,
+            child: Image.network(productValues['image'],fit: BoxFit.fill
+                ),
           ),
           title: Text(productValues['name'],
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
@@ -297,6 +297,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                     productValues['name'] = data['name'],
                     productValues['weight'] = data['weight'],
                     productValues['price'] = data['price'],
+                    productValues['image'] = data['image'],
                     sugar = double.tryParse(data['sugar'])!,
                     foodScore = (h1Abc! * sugar),
                     print('fffffffffffffffffff$foodScore'),
@@ -657,6 +658,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                             child: InkWell(
                               onTap: () {
                                 Product prod = Product(
+                                  image:  productValues['image'],
                                     name: productValues['name'],
                                     id: '1234',
                                     price: 231,

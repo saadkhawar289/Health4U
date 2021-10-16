@@ -34,7 +34,7 @@ class _State extends State<selectpills3> {
               alignment: Alignment.centerLeft,
               height: 100,
               width: MediaQuery.of(context).size.width,
-              child: Icon(Icons.arrow_forward_ios),
+              child: Icon(Icons.arrow_back_ios),
             ),
           ),
           Container(
