@@ -121,7 +121,7 @@ class _State extends State<editdiabetes> {
                 else if (dbSavedValue == 'Gestational')
                   {
                     setState(() {
-                      _value = 2;
+                      _value = 3;
                     })
                   }
                 else if (dbSavedValue == 'Prediabetes')
