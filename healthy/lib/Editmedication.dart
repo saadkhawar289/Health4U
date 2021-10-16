@@ -15,15 +15,12 @@ class _State extends State<editmedication> {
     super.initState();
   }
 
-  bool zinic = false;
-  bool zinic1 = false;
-  bool zinic2 = false;
-  bool zinic3 = false;
-  bool zinic4 = false;
-  bool zinic5 = false;
-  bool zinic6 = false;
-  bool zinic7 = false;
-  bool zinic8 = false;
+  bool Humalog = false;
+  bool Lantus = false;
+  bool Levemir = false;
+  bool Novorapid = false;
+  bool Insuman = false;
+  bool Insulatard = false;
 
   Future<bool> addPatientMedicines(Map<String, dynamic> data) async {
     try {
@@ -63,7 +60,7 @@ class _State extends State<editmedication> {
               alignment: Alignment.centerLeft,
               height: 100,
               width: MediaQuery.of(context).size.width,
-              child: Icon(Icons.arrow_back_ios_outlined),
+              child: Icon(Icons.arrow_forward_ios),
             ),
           ),
           Container(
@@ -109,19 +106,11 @@ class _State extends State<editmedication> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: zinic,
-                        activeColor: Colors.green,
+                        value: Humalog,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic = value!;
-                            if (zinic) {
-                              listOMedicines.add('Humalog');
-                              print(listOMedicines.length);
-                            } else {
-                              listOMedicines.remove('Humalog');
-                              print(listOMedicines.length);
-                            }
+                            Humalog = value!;
                             // isChecked1 = false;
                           });
                         },
@@ -142,17 +131,11 @@ class _State extends State<editmedication> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        activeColor: Colors.green,
-                        value: zinic1,
+                        value: Lantus,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic1 = value!;
-                            if (zinic1) {
-                              listOMedicines.add('Lantus');
-                            } else {
-                              listOMedicines.remove('Lantus');
-                            }
+                            Lantus = value!;
                             // isChecked1 = false;
                           });
                         },
@@ -173,17 +156,12 @@ class _State extends State<editmedication> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        activeColor: Colors.green,
-                        value: zinic2,
+                        value: Levemir,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic2 = value!;
-                            if (zinic2) {
-                              listOMedicines.add('Levemir');
-                            } else {
-                              listOMedicines.remove('Levemir');
-                            }
+                            Levemir = value!;
+                            // isChecked1 = false;
                           });
                         },
                       ),
@@ -203,17 +181,12 @@ class _State extends State<editmedication> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        activeColor: Colors.green,
-                        value: zinic3,
+                        value: Novorapid,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic3 = value!;
-                            if (zinic3) {
-                              listOMedicines.add('Novorapid');
-                            } else {
-                              listOMedicines.remove('Novorapid');
-                            }
+                            Novorapid = value!;
+                            // isChecked1 = false;
                           });
                         },
                       ),
@@ -233,17 +206,12 @@ class _State extends State<editmedication> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        activeColor: Colors.green,
-                        value: zinic4,
+                        value: Insuman,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic4 = value!;
-                            if (zinic4) {
-                              listOMedicines.add('Insuman');
-                            } else {
-                              listOMedicines.remove('Insuman');
-                            }
+                            Insuman = value!;
+                            // isChecked1 = false;
                           });
                         },
                       ),
@@ -263,17 +231,12 @@ class _State extends State<editmedication> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        activeColor: Colors.green,
-                        value: zinic6,
+                        value: Insulatard,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic6 = value!;
-                            if (zinic4) {
-                              listOMedicines.add('Insulatard');
-                            } else {
-                              listOMedicines.remove('Insulatard');
-                            }
+                            Insulatard = value!;
+                            // isChecked1 = false;
                           });
                         },
                       ),
@@ -335,22 +298,8 @@ class _State extends State<editmedication> {
 
           InkWell(
             onTap: () {
-              medicines['medicines'] = listOMedicines;
-              addPatientMedicines(medicines).then((value) => {
-                    if (value)
-                      {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => selectpills2()))
-                      }
-                    else
-                      {
-                        SnackBar(
-                          content: Text('some thing went rong'),
-                        )
-                      }
-                  });
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => selectpills2()));
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),
@@ -360,8 +309,8 @@ class _State extends State<editmedication> {
                   child: Text("Next",
                       style: TextStyle(
                           fontSize: 17.sp,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white))),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600))),
               color: Colors.lightGreen,
             ),
           ),

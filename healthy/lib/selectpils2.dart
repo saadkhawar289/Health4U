@@ -8,16 +8,18 @@ class selectpills2 extends StatefulWidget {
 }
 
 class _State extends State<selectpills2> {
-  bool zinic = false;
-  bool zinic1 = false;
-  bool zinic2 = false;
-  bool zinic3 = false;
-  bool zinic4 = false;
-  bool zinic5 = false;
-  bool zinic6 = false;
-  bool zinic7 = false;
-  bool zinic8 = false;
-  bool zinic9 = false;
+  bool Metformin = false;
+  bool Empagliflozin = false;
+  bool Dapagliflozin = false;
+  bool Canagliflozin = false;
+  bool Gliclzide = false;
+  bool Glimerpiride = false;
+  bool Pioglitazone = false;
+  bool Alogliptin = false;
+  bool Linagliptin = false;
+  bool Saxagliptin = false;
+  bool Liraglutide = false;
+  bool Dulaglutide = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,12 +81,11 @@ class _State extends State<selectpills2> {
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          value: zinic,
-                          activeColor: Colors.green,
+                          value: Metformin,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic = value!;
+                              Metformin = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -105,12 +106,11 @@ class _State extends State<selectpills2> {
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          activeColor: Colors.green,
-                          value: zinic1,
+                          value: Empagliflozin,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic1 = value!;
+                              Empagliflozin = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -131,12 +131,11 @@ class _State extends State<selectpills2> {
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          value: zinic2,
-                          activeColor: Colors.green,
+                          value: Dapagliflozin,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic2 = value!;
+                              Dapagliflozin = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -157,12 +156,11 @@ class _State extends State<selectpills2> {
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          value: zinic3,
-                          activeColor: Colors.green,
+                          value: Canagliflozin,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic3 = value!;
+                              Canagliflozin = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -178,17 +176,16 @@ class _State extends State<selectpills2> {
                               bottom:
                                   BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
-                        title: Text("Gliclazide",
+                        title: Text("Gliclzide",
                             style: TextStyle(
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          value: zinic4,
-                          activeColor: Colors.green,
+                          value: Gliclzide,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic4 = value!;
+                              Gliclzide = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -204,17 +201,16 @@ class _State extends State<selectpills2> {
                               bottom:
                                   BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
-                        title: Text("Glimepiride",
+                        title: Text("Glimerpiride",
                             style: TextStyle(
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          activeColor: Colors.green,
-                          value: zinic6,
+                          value: Glimerpiride,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic6 = value!;
+                              Glimerpiride = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -230,17 +226,16 @@ class _State extends State<selectpills2> {
                               bottom:
                                   BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
-                        title: Text("Ploglitazone",
+                        title: Text("Pioglitazone",
                             style: TextStyle(
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          value: zinic7,
-                          activeColor: Colors.green,
+                          value: Pioglitazone,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic7 = value!;
+                              Pioglitazone = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -261,12 +256,11 @@ class _State extends State<selectpills2> {
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          activeColor: Colors.green,
-                          value: zinic8,
+                          value: Alogliptin,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic8 = value!;
+                              Alogliptin = value!;
                               // isChecked1 = false;
                             });
                           },
@@ -282,17 +276,91 @@ class _State extends State<selectpills2> {
                               bottom:
                                   BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
-                        title: Text("Linagllptin",
+                        title: Text("Linagliptin",
                             style: TextStyle(
                               fontSize: 16.sp,
                             )),
                         trailing: Checkbox(
-                          activeColor: Colors.green,
-                          value: zinic9,
+                          value: Linagliptin,
                           onChanged: (bool? value) {
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
-                              zinic9 = value!;
+                              Linagliptin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Saxagliptin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Saxagliptin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Saxagliptin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Liraglutide",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Liraglutide,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Liraglutide = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Dulaglutide",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Dulaglutide,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Dulaglutide = value!;
                               // isChecked1 = false;
                             });
                           },

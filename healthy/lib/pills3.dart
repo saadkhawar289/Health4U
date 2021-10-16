@@ -8,15 +8,18 @@ class selectpills3 extends StatefulWidget {
 }
 
 class _State extends State<selectpills3> {
-  bool zinic = false;
-  bool zinic1 = false;
-  bool zinic2 = false;
-  bool zinic3 = false;
-  bool zinic4 = false;
-  bool zinic5 = false;
-  bool zinic6 = false;
-  bool zinic7 = false;
-  bool zinic8 = false;
+  bool Metformin = false;
+  bool Empagliflozin = false;
+  bool Dapagliflozin = false;
+  bool Canagliflozin = false;
+  bool Gliclzide = false;
+  bool Glimerpiride = false;
+  bool Pioglitazone = false;
+  bool Alogliptin = false;
+  bool Linagliptin = false;
+  bool Saxagliptin = false;
+  bool Liraglutide = false;
+  bool Dulaglutide = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,218 +56,320 @@ class _State extends State<selectpills3> {
                 //  color: Colors.red,
                 border: Border(
                     bottom: BorderSide(color: Colors.black26, width: 1))),
-            // child: Text(
-            //   "Insulin",
-            //   style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-            // ),
+            child: Text(
+              "Pills",
+              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+            ),
           ),
           Container(
               height: MediaQuery.of(context).size.height / 1.8,
               width: MediaQuery.of(context).size.width,
               //color: Colors.blue,
-              child: Column(
-                children: [
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Metformin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Metformin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Metformin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic1,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic1 = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Empagliflozin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Empagliflozin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Empagliflozin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic2,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic2 = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Dapagliflozin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Dapagliflozin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Dapagliflozin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic3,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic3 = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Canagliflozin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Canagliflozin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Canagliflozin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic4,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic4 = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Gliclzide",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Gliclzide,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Gliclzide = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic6,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic6 = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Glimerpiride",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Glimerpiride,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Glimerpiride = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic7,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic7 = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Pioglitazone",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Pioglitazone,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Pioglitazone = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        //  color: Colors.red,
-                        border: Border(
-                            bottom:
-                                BorderSide(color: Colors.black26, width: 1))),
-                    child: ListTile(
-                      title: Text("Metformin",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          )),
-                      trailing: Checkbox(
-                        value: zinic8,
-                        onChanged: (bool? value) {
-                          // This is where we update the state when the checkbox is tapped
-                          setState(() {
-                            zinic8 = value!;
-                            // isChecked1 = false;
-                          });
-                        },
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Alogliptin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Alogliptin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Alogliptin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
                       ),
-                      //trailing: Icon(Icons.where_to_vote),
                     ),
-                  ),
-                ],
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Linagliptin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Linagliptin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Linagliptin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Saxagliptin",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Saxagliptin,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Saxagliptin = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Liraglutide",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Liraglutide,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Liraglutide = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Dulaglutide",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Dulaglutide,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Dulaglutide = value!;
+                              // isChecked1 = false;
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                  ],
+                ),
               )),
 
           InkWell(
@@ -279,8 +384,9 @@ class _State extends State<selectpills3> {
               child: Center(
                   child: Text("Next",
                       style: TextStyle(
-                        fontSize: 17.sp,
-                      ))),
+                          fontSize: 17.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600))),
               color: Colors.lightGreen,
             ),
           ),
