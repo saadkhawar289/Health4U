@@ -13,6 +13,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'diabitiesSymptoms.dart';
 
 class editdiabetes extends StatefulWidget {
+  final bool isEditAble;
+
+  editdiabetes(this.isEditAble);
+
   @override
   _State createState() => _State();
 }
@@ -20,7 +24,7 @@ class editdiabetes extends StatefulWidget {
 class _State extends State<editdiabetes> {
   int _value = 0;
   final sKey = GlobalKey<ScaffoldState>(debugLabel: "Scaffold key");
-  var patientt;
+  var dbSavedValue;
   _showSnackBar(String text) {
     final snackBar = SnackBar(
       content: Text('$text'),
@@ -38,7 +42,6 @@ class _State extends State<editdiabetes> {
     'pills': [],
     'typeOfDiabetes': null,
   };
-  int val = 5;
   Map<String, dynamic> symptomsTest = {
     'HbA1c': 5,
     'FootHealth': [],
@@ -46,6 +49,7 @@ class _State extends State<editdiabetes> {
     'KidneyHealth': [],
     'uID': null
   };
+
   Future<bool> addPatientRecord(Map<String, dynamic> data) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
@@ -89,30 +93,51 @@ class _State extends State<editdiabetes> {
     return true;
   }
 
-  Future<bool> loadUser() async {
+  Future<bool> loadUserDaibities() async {
     try {
       // loader = true;
       print('loading===================================');
       User? user = FirebaseAuth.instance.currentUser;
       patient['uID'] = user!.uid;
       await FirebaseFirestore.instance
-          .collection("patient")
+          .collection("Patient")
           .doc(user.uid)
           .get()
           .then((data) => {
                 print(user.uid),
-
-                // _controllerName.text = data['fName'],
-                // _controllerNameLast.text = data['lName'],
-                // _controllerMob.text = data['MobileNo'],
-                // _controllerPhone.text = data['PhoneNo'],
+                dbSavedValue = data['typeOfDiabetes'],
+                if (dbSavedValue == 'Type1')
+                  {
+                    setState(() {
+                      _value = 1;
+                    })
+                  }
+                else if (dbSavedValue == 'Type2')
+                  {
+                    setState(() {
+                      _value = 2;
+                    })
+                  }
+                else if (dbSavedValue == 'Gestational')
+                  {
+                    setState(() {
+                      _value = 2;
+                    })
+                  }
+                else if (dbSavedValue == 'Prediabetes')
+                  {
+                    setState(() {
+                      _value = 4;
+                    })
+                  }
+                else
+                  {
+                    setState(() {
+                      _value = 5;
+                    })
+                  }
               });
       print('loading++++++++++++++++++++++++++++');
-
-      setState(() {
-        // loader = false;
-      });
-      // print('==============================$loader');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -130,25 +155,17 @@ class _State extends State<editdiabetes> {
     return true;
   }
 
-//  // Future<bool> SaveSurgeryInfo(Map<String, dynamic> data) async {
-  //   //   try {
-  //   //     User? user = FirebaseAuth.instance.currentUser;
-  //   //     await FirebaseFirestore.instance
-  //   //         .collection("MedicalRecord")
-  //   //         .doc(user.uid)
-  //   //         .set(data);
-  //   //   } catch (e) {
-  //   //     _showSnackBar(e.toString());
-  //   //     return false;
-  //   //   }
-  //   //   return true;
-  //   // }
-  //
   @override
   void initState() {
-    // TODO: implement initState
+    if(widget.isEditAble){
+      loadUserDaibities();
+    }
+    else{
+
+    }
+
     super.initState();
-    loadUser();
+
   }
 
   @override

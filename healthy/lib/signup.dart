@@ -82,6 +82,11 @@ class _State extends State<singup> {
           await SharedPreferences.getInstance();
       sharedPreferences.setString("email", _controller.text);
       sharedPreferences.setString("Password", _controllerPass.text);
+      await sharedPreferences.setString(
+          "first_name", data['fName']);
+    await sharedPreferences.setString(
+        "last_name", data['lName']);
+
       User? user = FirebaseAuth.instance.currentUser;
       formValues['uID'] = user!.uid;
       formValues['type'] = 'Customer';
@@ -648,7 +653,7 @@ class _State extends State<singup> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                editdiabetes()))
+                                                editdiabetes(false)))
                                   }
                                 else
                                   {

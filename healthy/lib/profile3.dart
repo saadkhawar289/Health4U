@@ -147,7 +147,7 @@ class _State extends State<profile3> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => editdiabetes()));
+                                builder: (context) => editdiabetes(true)));
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

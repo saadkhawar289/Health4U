@@ -83,11 +83,11 @@ class _State extends State<purchasehistory> {
                   color: const Color(0xFFF7F7F7),
                   border: Border(
                       bottom: BorderSide(color: Colors.black12, width: 1))),
-              child: ListView.builder(
+              child:context.read<CartViewModel>().addedCartItems.isEmpty?Center(child: Text('No product purchased yet')): ListView.builder(
                   itemCount:
                       context.read<CartViewModel>().addedCartItems.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Column(
+                    return  Column(
                       children: [
                         ListTile(
                           // leading: Text(index.toString(),
