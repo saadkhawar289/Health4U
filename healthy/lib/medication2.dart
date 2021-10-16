@@ -321,15 +321,12 @@ class _State extends State<editmedication2> {
     super.initState();
   }
 
-  bool zinic = false;
-  bool zinic1 = false;
-  bool zinic2 = false;
-  bool zinic3 = false;
-  bool zinic4 = false;
-  bool zinic5 = false;
-  bool zinic6 = false;
-  bool zinic7 = false;
-  bool zinic8 = false;
+  bool Humalog = false;
+  bool Lantus = false;
+  bool Levemir = false;
+  bool Novorapid = false;
+  bool Insuman = false;
+  bool Insulatard = false;
 
   List<bool> value = [];
   List<String> listOMedicines = [];
@@ -394,11 +391,11 @@ class _State extends State<editmedication2> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: zinic,
+                        value: Humalog,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic = value!;
+                            Humalog = value!;
                             // isChecked1 = false;
                           });
                         },
@@ -419,11 +416,11 @@ class _State extends State<editmedication2> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: zinic1,
+                        value: Lantus,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic1 = value!;
+                            Lantus = value!;
                             // isChecked1 = false;
                           });
                         },
@@ -444,11 +441,11 @@ class _State extends State<editmedication2> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: zinic2,
+                        value: Levemir,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic2 = value!;
+                            Levemir = value!;
                             // isChecked1 = false;
                           });
                         },
@@ -469,11 +466,11 @@ class _State extends State<editmedication2> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: zinic3,
+                        value: Novorapid,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic3 = value!;
+                            Novorapid = value!;
                             // isChecked1 = false;
                           });
                         },
@@ -494,11 +491,11 @@ class _State extends State<editmedication2> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: zinic4,
+                        value: Insuman,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic4 = value!;
+                            Insuman = value!;
                             // isChecked1 = false;
                           });
                         },
@@ -519,11 +516,11 @@ class _State extends State<editmedication2> {
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: zinic6,
+                        value: Insulatard,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            zinic6 = value!;
+                            Insulatard = value!;
                             // isChecked1 = false;
                           });
                         },
