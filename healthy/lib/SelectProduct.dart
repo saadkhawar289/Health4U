@@ -217,12 +217,17 @@ class CheckOutCartTile extends StatelessWidget {
             child: Image.network(productValues['image'],fit: BoxFit.fill
                 ),
           ),
-          title: Text(productValues['name'],
+          title: Text(productValues['name']??'fff',
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(productValues['weight'],
+              Text(productValues['weight']??'oooo',
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black)),
+              Text(productValues['brand']??'Morriosons',
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w400,
@@ -230,7 +235,7 @@ class CheckOutCartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text('£ ${productValues['price']}',
+              Text('£ ${productValues['price']??'888'}',
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,

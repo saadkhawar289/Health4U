@@ -199,7 +199,13 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Humalog = value!;
-                            listOMedicines.add('Humalog');
+                            if(value){
+                              listOMedicines.add('Humalog');
+
+                            }else{
+                              listOMedicines.remove('Humalog');
+
+                            }
 
 
                             // isChecked1 = false;
@@ -227,8 +233,13 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Lantus = value!;
-                            listOMedicines.add('Lantus');
-                            // isChecked1 = false;
+                            if(value){
+                              listOMedicines.add('Lantus');
+
+                            }else{
+                              listOMedicines.remove('Lantus');
+
+                            }
                           });
                         },
                       ),
@@ -253,7 +264,13 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Levemir = value!;
-                            listOMedicines.add('Levemir');
+                            if(value){
+                              listOMedicines.add('Levemir');
+
+                            }else{
+                              listOMedicines.remove('Levemir');
+
+                            }
 
                             // isChecked1 = false;
                           });
@@ -280,7 +297,14 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Novorapid = value!;
-                            listOMedicines.add('Novorapid');
+                            if(value){
+                              listOMedicines.add('Novorapid');
+
+                            }else{
+                              listOMedicines.remove('Novorapid');
+
+                            }
+
                           });
                         },
                       ),
@@ -305,7 +329,13 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Insuman = value!;
-                            listOMedicines.add('Insuman');
+                            if(value){
+                              listOMedicines.add('Insuman');
+
+                            }else{
+                              listOMedicines.remove('Insuman');
+
+                            }
                           });
                         },
                       ),
@@ -330,7 +360,13 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Insulatard = value!;
-                            listOMedicines.add('Insulatard');
+                            if(value){
+                              listOMedicines.add('Insulatard');
+
+                            }else{
+                              listOMedicines.remove('Insulatard');
+
+                            }
                           });
                         },
                       ),

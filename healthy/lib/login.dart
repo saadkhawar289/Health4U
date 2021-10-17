@@ -220,6 +220,10 @@ class _State extends State<Login> {
                                 border: InputBorder.none,
                               ),
                               controller: _controller,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                  RegExp("[0-9,@,a-z,A-Z,.]"))
+                              ],
                               validator: (val) => val!.isEmpty ||
                                       !val.contains("@") ||
                                       val != _controller.text
@@ -263,7 +267,7 @@ class _State extends State<Login> {
                               inputFormatters: [
                                 LengthLimitingTextInputFormatter(12),
                                 FilteringTextInputFormatter.allow(
-                                    RegExp("[0-9,@#*&^%?/>< a-z A-Z ]"))
+                                    RegExp("[0-9,@#*&^%?/>< a-z A-Z]"))
                               ],
                               validator: (val) {
                                 if (val!.isEmpty || val.length <= 8) {
