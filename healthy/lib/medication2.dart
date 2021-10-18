@@ -1011,7 +1011,7 @@ class _State extends State<editmedication2> {
           InkWell(
             onTap: () {
               print(listOMedicines);
-              medicines['medicines']=listOMedicines;
+              medicines['medicines']=listOMedicines.isEmpty?fetchedListOMedicines:listOMedicines;
               addPatientMedicines(medicines).then((value) => {
                 if(value){
                   Navigator.push(context,

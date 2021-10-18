@@ -34,8 +34,11 @@ class _State extends State<editmedication> {
           .then((data) => {
 
         fetchedListOMedicines = data['medicines'],
-        print('${fetchedListOMedicines.length}---------fetchedListOMedicines'),
+        print('${fetchedListOMedicines.length}---------fetchedListOMedicinesLength'),
         medicines['medicines']=fetchedListOMedicines,
+        print('${fetchedListOMedicines}---------fetchedListOMedicines'),
+        print('${medicines['medicines']}---------Medicines'),
+
         fetchedListOMedicines.forEach((element) {
       if  (element.contains('Humalog'))
       {
@@ -429,9 +432,10 @@ class _State extends State<editmedication> {
 
           InkWell(
             onTap: () {
-              print(listOMedicines);
-              fetchedListOMedicines.clear();
-              medicines['medicines']=listOMedicines;
+              print('$listOMedicines ==================listOfMed');
+
+              medicines['medicines']=listOMedicines.isEmpty?fetchedListOMedicines:listOMedicines;
+              print('${medicines['medicines']}===============Medicinessss MAp');
               addPatientMedicines(medicines).then((value) => {
                 if(value){
                   Navigator.push(context,
