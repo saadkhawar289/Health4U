@@ -446,7 +446,7 @@ class _State extends State<selectpills> {
       User? user = FirebaseAuth.instance.currentUser;
       DocumentReference ref =
       FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
-      ref.set(data);
+      ref.update(data);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return false;
