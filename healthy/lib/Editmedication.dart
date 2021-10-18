@@ -37,7 +37,7 @@ class _State extends State<editmedication> {
         print('${fetchedListOMedicines.length}---------fetchedListOMedicines'),
         medicines['medicines']=fetchedListOMedicines,
         fetchedListOMedicines.forEach((element) {
-      if (element.contains('Humalog'))
+      if  (element.contains('Humalog'))
       {
       setState(() {
       Humalog = true;
