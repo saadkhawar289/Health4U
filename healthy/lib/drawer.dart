@@ -83,11 +83,14 @@ class CustomDrawer extends StatelessWidget {
                 : ListTile(
                     leading: Icon(Icons.person),
                     title: Text('Online Practitioner'),
-                    onTap: () {
+                    onTap: ()async {
+                      var pref = await SharedPreferences.getInstance();
+                     var name= pref.getString('first_name');
+
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => OnlinePractitioner()));
+                              builder: (context) => OnlinePractitioner(name!)));
                     },
                   ),
             Divider(),

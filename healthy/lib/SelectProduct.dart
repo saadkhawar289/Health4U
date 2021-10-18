@@ -655,7 +655,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                               color: Colors.white,
                               child: Center(
                                   child: Text(
-                                      'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
+                                      productValues['descp']??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
                             ),
                           ),
                           Spacer(),
@@ -669,7 +669,9 @@ class _SelectedProductState extends State<SelectedProduct> {
                                     price: 231,
                                     // productValues['price'],
                                     weight: productValues['weight'],
-                                    descp: ' hhhj jjj jj');
+                                    descp: ' hhhj jjj jj',
+                                    brand: productValues['brand']
+                                );
                                 context.read<CartViewModel>().addToCart(prod);
                                 // viewModel.addToCart(prod);
                                 // model.addToCart(prod);

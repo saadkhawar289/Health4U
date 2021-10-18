@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:healthy/OnlinePractitioner.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Confirmation extends StatefulWidget {
   @override
@@ -20,11 +21,13 @@ class _ConfirmationState extends State<Confirmation> {
             backgroundColor: const Color(0xFFF7F7F7),
             iconTheme: Theme.of(context).iconTheme,
             leading: InkWell(
-              onTap: () {
+              onTap: ()async {
+                var pref = await SharedPreferences.getInstance();
+                var name= pref.getString('first_name');
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OnlinePractitioner()));
+                        builder: (context) => OnlinePractitioner(name!)));
               },
               child: Container(
                 child: Icon(Icons.clear),

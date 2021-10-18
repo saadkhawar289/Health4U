@@ -16,7 +16,7 @@ class _State extends State<newpassword> {
 
 TextEditingController emailController =TextEditingController();
 var key=GlobalKey<FormState>();
-String? email;
+String? mail;
   Future<bool> passReset(String email)async{
 
     try{
@@ -40,7 +40,6 @@ String? email;
 
 
   }
-
 _showSnackBar(String text) {
   Fluttertoast.showToast(
       msg: text,
@@ -52,7 +51,6 @@ _showSnackBar(String text) {
       fontSize: 16.0
   );
 }
-
 
 
   @override
@@ -71,7 +69,7 @@ _showSnackBar(String text) {
           ),
         ),
         body: Form(
-          key:key ,
+          key: key,
           child: ListView(
             children: [
               Container(
@@ -122,7 +120,7 @@ _showSnackBar(String text) {
                       ? "enter a valid eamil"
                       : null,
                   onSaved: (String? value) {
-                    email = value;
+                    mail = value;
                   },
                 ),
               ),
@@ -136,6 +134,10 @@ _showSnackBar(String text) {
                 children: [
                   InkWell(
                     onTap: () {
+                      if(!key.currentState!.validate()){
+                        return;
+                      }
+                      key.currentState!.save();
                       passReset(emailController.text).then((value) => {
                         if(value){
                           showDialog(

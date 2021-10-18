@@ -13,6 +13,7 @@ class Product {
   String? descp;
   String? id;
   String? image;
+  String? brand;
 
 
 
@@ -22,7 +23,8 @@ class Product {
     @required this.price,
     @required this.weight,
     @required this.descp,
-    @required this.image
+    @required this.image,
+    @required this.brand
 
   });
 
