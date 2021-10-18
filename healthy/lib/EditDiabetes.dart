@@ -48,20 +48,14 @@ class _State extends State<editdiabetes> {
     'pills': [],
     'typeOfDiabetes': null,
   };
-  Map<String, dynamic> symptomsTest = {
-    'HbA1c': 5,
-    'FootHealth': [],
-    'EyeHealth': [],
-    'KidneyHealth': [],
-    'uID': null
-  };
+
 
   Future<bool> addPatientRecord(Map<String, dynamic> data) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-
+      patient['uID']=user!.uid;
       DocumentReference ref =
-          FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
+          FirebaseFirestore.instance.collection("Patient").doc(user.uid);
      if(widget.navigation=='profile'){
        ref.update(data);
        print('profileeeeeeeeeeeeeeeeeeeeeeeeee');
