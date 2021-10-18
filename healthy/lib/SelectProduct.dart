@@ -281,7 +281,8 @@ class _SelectedProductState extends State<SelectedProduct> {
     'name': null,
     'weight': null,
     'price': null,
-    'image': null
+    'image': null,
+      'descp':null
   };
 
   Future<bool> loadProduct(String id) async {
@@ -303,6 +304,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                     productValues['weight'] = data['weight'],
                     productValues['price'] = data['price'],
                     productValues['image'] = data['image'],
+                    productValues['descp']=data['descp'],
                     sugar = double.tryParse(data['sugar'])!,
                     foodScore = (h1Abc! * sugar),
                     print('fffffffffffffffffff$foodScore'),
@@ -655,8 +657,8 @@ class _SelectedProductState extends State<SelectedProduct> {
                               color: Colors.white,
                               child: Center(
                                   child: Text(
-                                      productValues['descp']??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
-                            ),
+                                      "${productValues['descp']}",//??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
+                                  ))),
                           ),
                           Spacer(),
                           Center(
