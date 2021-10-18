@@ -652,13 +652,12 @@ class _SelectedProductState extends State<SelectedProduct> {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 20.0.w, top: 8.h),
+                            padding: EdgeInsets.only(left: 10.0.w, top: 8.h),
                             child: Container(
                               color: Colors.white,
-                              child: Center(
-                                  child: Text(
-                                      "${productValues['descp']}",//??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
-                                  ))),
+                              child: Text(
+                                  "${productValues['descp']}",//??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
+                              )),
                           ),
                           Spacer(),
                           Center(
