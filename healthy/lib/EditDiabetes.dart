@@ -53,7 +53,7 @@ class _State extends State<editdiabetes> {
   Future<bool> addPatientRecord(Map<String, dynamic> data) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-      patient['uID']=user!.uid;
+      //patient['uID']=user!.uid;
       DocumentReference ref =
           FirebaseFirestore.instance.collection("Patient").doc(user.uid);
      if(widget.navigation=='profile'){
@@ -244,6 +244,8 @@ class _State extends State<editdiabetes> {
                           _value = val;
                           Timer(Duration(seconds: 1), () async {
                             patient['typeOfDiabetes'] = 'Type1';
+                            patient['uID'] = user!.uid;
+
                             addPatientRecord(patient).then((value) => {
                                   if (value)
                                     {
@@ -266,6 +268,8 @@ class _State extends State<editdiabetes> {
               InkWell(
                 onTap: () {
                   patient['typeOfDiabetes'] = 'Type2';
+                  patient['uID'] = user!.uid;
+
                   addPatientRecord(patient).then((value) => {
                         if (value)
                           {
@@ -298,6 +302,8 @@ class _State extends State<editdiabetes> {
 
                           Timer(Duration(seconds: 1), () async {
                             patient['typeOfDiabetes'] = 'Type2';
+                            patient['uID'] = user!.uid;
+
                             addPatientRecord(patient).then((value) => {
                                   if (value)
                                     {
@@ -320,6 +326,8 @@ class _State extends State<editdiabetes> {
               InkWell(
                 onTap: () {
                   patient["typeOfDiabetes"] = 'Gestational';
+                  patient['uID'] = user!.uid;
+
                   addPatientRecord(patient).then((value) => {
                         if (value)
                           {
@@ -357,6 +365,8 @@ class _State extends State<editdiabetes> {
                                 await SharedPreferences.getInstance();
                             pref.setString('TypeOfDiabetes', 'Gestational');
                             patient["typeOfDiabetes"] = 'Gestational';
+                            patient['uID'] = user!.uid;
+
                             addPatientRecord(patient).then((value) => {
                                   if (value)
                                     {
@@ -380,6 +390,8 @@ class _State extends State<editdiabetes> {
           InkWell(
             onTap: () {
               patient['typeOfDiabetes'] = 'Prediabetes';
+              patient['uID'] = user!.uid;
+
               addPatientRecord(patient).then((value) => {
                     if (value)
                       {
@@ -420,6 +432,8 @@ class _State extends State<editdiabetes> {
                             await SharedPreferences.getInstance();
                         pref.setString('TypeOfDiabetes', 'Prediabetes');
                         patient['typeOfDiabetes'] = 'Prediabetes';
+                        patient['uID'] = user!.uid;
+
                         addPatientRecord(patient).then((value) => {
                               if (value)
                                 {
@@ -465,6 +479,8 @@ class _State extends State<editdiabetes> {
                             await SharedPreferences.getInstance();
                         pref.setString('TypeOfDiabetes', "don't Know");
                         patient['typeOfDiabetes'] = "don't Know";
+                        patient['uID'] = user!.uid;
+
                         addPatientRecord(patient).then((value) => {
                               if (value)
                                 {
