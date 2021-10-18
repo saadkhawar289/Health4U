@@ -1,21 +1,97 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_format/date_format.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:healthy/profile3.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'changepassword.dart';
 
 class EditProfilePatient extends StatefulWidget {
- final fName,lName,dob;
+  final fName, lName, dob;
 
- EditProfilePatient({required this.lName,required this.fName,required this.dob});
+  EditProfilePatient(
+      {required this.lName, required this.fName, required this.dob});
 
   @override
   _EditProfilePatientState createState() => _EditProfilePatientState();
 }
 
 class _EditProfilePatientState extends State<EditProfilePatient> {
+  Map<String, dynamic> formValues = {
+    'fName': null,
+    'lName': null,
+    'date': null,
+  };
+  DateTime pickedDate = DateTime.now();
 
+  TextEditingController fName = TextEditingController();
+  TextEditingController lName = TextEditingController();
+  TextEditingController dob = TextEditingController();
 
+  _showSnackBar(String text) {
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.SNACKBAR,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
 
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime(1980),
+      firstDate: DateTime(1975),
+      lastDate: DateTime(2008),
+    );
+    if (picked != null && picked != pickedDate)
+      setState(() {
+        pickedDate = picked;
+
+        dob.text = pickedDate.toString().substring(0, 11);
+        dob.text = formatDate(picked, [dd, '/', mm, '/', yyyy]);
+        // dateController.text = ;
+      });
+  }
+
+  Future<bool> editinfo() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      formValues['fName'] = fName.text;
+      formValues['lName'] = lName.text;
+      formValues['date'] = dob.text;
+      FirebaseFirestore.instance
+          .collection("Users")
+          .doc(user!.uid)
+          .update(formValues);
+      var pref = await SharedPreferences.getInstance();
+      pref.remove('first_name');
+      pref.remove('last_name');
+      var s = await pref.setString('first_name', formValues['fName']);
+      var f = await pref.setString('last_name', formValues['lName']);
+      print(s);
+      print(f);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        return false;
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +127,10 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: fName,
                       decoration: InputDecoration(
                         hintText: widget.fName,
-                      //  suffixText: "Edit  ",
+                        //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
@@ -65,9 +142,10 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                       ),
                     ),
                     TextFormField(
+                      controller: lName,
                       decoration: InputDecoration(
                         hintText: widget.lName,
-                      //  suffixText: "Edit  ",
+                        //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
@@ -79,12 +157,23 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                       ),
                     ),
                     TextFormField(
+                      onTap: () {
+                        _selectDate(context);
+                      },
                       decoration: InputDecoration(
                         hintText: widget.dob,
-                      //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),
+                      controller: dob,
+                      validator: (val) {
+                        if (val!.isEmpty || !val.contains("/")) {
+                          return "Please Enter valid Date of Brith";
+                        }
+                      },
+                      onSaved: (String? value) {
+                        formValues['date'] = value;
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
@@ -125,7 +214,40 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                           ),
                         ),
                       ),
-                    )
+                    ),
+                    // Spacer(),
+                    InkWell(
+                      onTap: () {
+                        editinfo().then((value) => {
+                              if (value)
+                                {
+                                  _showSnackBar('Data saving...'),
+                                  Future.delayed(Duration(seconds: 2), () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => profile3()));
+                                  })
+                                }
+                              else
+                                {_showSnackBar('Data not saved')}
+                            });
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 70, bottom: 20),
+                        height: 43,
+                        width: MediaQuery.of(context).size.width / 1.1,
+                        child: Center(
+                            child: Text(
+                          "Save",
+                          style: TextStyle(
+                              fontSize: 17.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
+                        )),
+                        color: Colors.lightGreen,
+                      ),
+                    ),
                   ],
                 ),
               ),
