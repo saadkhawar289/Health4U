@@ -709,7 +709,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'AppointmentReview.dart';
 import 'TimeDateReservation.dart';
@@ -1122,10 +1121,21 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                     width: 33,
                                                   ),
                                           ),
-                                          Icon(
-                                            Icons.arrow_forward,
-                                            size: 33,
-                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              past == true
+                                                  ? Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              AppointmentReview()))
+                                                  : SizedBox.shrink();
+                                            },
+                                            child: Icon(
+                                              Icons.arrow_forward,
+                                              size: 33,
+                                            ),
+                                          )
                                         ],
                                       ),
                                     )))
@@ -1434,10 +1444,21 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                       height: 33,
                                                       width: 33,
                                                     ),
-                                              Icon(
-                                                Icons.arrow_forward,
-                                                size: 33,
-                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  past == true
+                                                      ? Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  AppointmentReview()))
+                                                      : SizedBox.shrink();
+                                                },
+                                                child: Icon(
+                                                  Icons.arrow_forward,
+                                                  size: 33,
+                                                ),
+                                              )
                                             ],
                                           ),
                                         )))
