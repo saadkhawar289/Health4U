@@ -35,6 +35,7 @@ class _State extends State<editmedication> {
 
         fetchedListOMedicines = data['medicines'],
         print('${fetchedListOMedicines.length}---------fetchedListOMedicines'),
+        medicines['medicines']=fetchedListOMedicines,
         fetchedListOMedicines.forEach((element) {
       if (element.contains('Humalog'))
       {
@@ -429,6 +430,7 @@ class _State extends State<editmedication> {
           InkWell(
             onTap: () {
               print(listOMedicines);
+              fetchedListOMedicines.clear();
               medicines['medicines']=listOMedicines;
               addPatientMedicines(medicines).then((value) => {
                 if(value){
