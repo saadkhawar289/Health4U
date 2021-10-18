@@ -55,7 +55,7 @@ class _State extends State<editdiabetes> {
       User? user = FirebaseAuth.instance.currentUser;
       //patient['uID']=user!.uid;
       DocumentReference ref =
-          FirebaseFirestore.instance.collection("Patient").doc(user.uid);
+          FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
      if(widget.navigation=='profile'){
        ref.update(data);
        print('profileeeeeeeeeeeeeeeeeeeeeeeeee');
