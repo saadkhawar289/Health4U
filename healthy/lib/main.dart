@@ -18,36 +18,32 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-
-
-
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<CartViewModel>(
-        create: (_) => CartViewModel(),
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<CartViewModel>(
+          create: (_) => CartViewModel(),
         ),
-  ],
+      ],
       child: ScreenUtilInit(
           builder: () => DevicePreview(
               enabled: false,
               builder: (context) => MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(primaryColor: Colors.green),
-                // home: Splash(),
-                routes: {
-                  '/': (BuildContext context) => Splash(),
-                  '/onlinePractitioner': (BuildContext context) =>
-                      OnlinePractitioner(),
-                  '/homeScreen': (BuildContext context) => HomeScreen(),
-                  '/BookPractitioner': (BuildContext context) =>
-                      BookPractitioner(),
-                  '/selectDoctor': (BuildContext context) =>
-                      SelectDoctor(),
-                  '/timeReservation': (BuildContext context) =>
-                      Resolution(''),
-                  '/confirmation': (BuildContext context) =>
-                      Confirmation()
-                },
-              )))));
+                    debugShowCheckedModeBanner: false,
+                    theme: ThemeData(primaryColor: Colors.green),
+                    // home: Splash(),
+                    routes: {
+                      '/': (BuildContext context) => Splash(),
+                      '/onlinePractitioner': (BuildContext context) =>
+                          OnlinePractitioner(),
+                      '/homeScreen': (BuildContext context) => HomeScreen(),
+                      '/BookPractitioner': (BuildContext context) =>
+                          BookPractitioner(),
+                      '/selectDoctor': (BuildContext context) => SelectDoctor(),
+                      '/timeReservation': (BuildContext context) =>
+                          Resolution(''),
+                      '/confirmation': (BuildContext context) => Confirmation()
+                    },
+                  )))));
 }
 
 // class Splash extends StatefulWidget {
