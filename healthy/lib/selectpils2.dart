@@ -243,7 +243,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Metformin = value!;
-                              listOPills.add('Metformin');
+                              if(value){
+                                listOPills.add('Metformin');
+                              }
+                              else{
+                                listOPills.remove('Metformin');
+                              }
                               // isChecked1 = false;
                             });
                           },
@@ -269,8 +274,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Empagliflozin = value!;
-                              listOPills.add('Empagliflozin');
-                            });
+                              if(value){
+                                listOPills.add('Empagliflozin');
+                              }
+                              else{
+                                listOPills.remove('Empagliflozin');
+                              }                            });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),
@@ -294,8 +303,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Dapagliflozin = value!;
-                              listOPills.add('Dapagliflozin');
-                            });
+                              if(value){
+                                listOPills.add('Dapagliflozin');
+                              }
+                              else{
+                                listOPills.remove('Dapagliflozin');
+                              }                                  });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),
@@ -319,8 +332,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Canagliflozin = value!;
-                              listOPills.add('Canagliflozin');
-                            });
+                              if(value){
+                                listOPills.add('Canagliflozin');
+                              }
+                              else{
+                                listOPills.remove('Canagliflozin');
+                              }                             });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),
@@ -344,7 +361,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Gliclzide = value!;
-                              listOPills.add('Gliclzide');
+                              if(value){
+                                listOPills.add('Gliclzide');
+                              }
+                              else{
+                                listOPills.remove('Gliclzide');
+                              }
                             });
                           },
                         ),
@@ -369,8 +391,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Glimerpiride = value!;
-                              listOPills.add('Glimerpiride');
-                            });
+                              if(value){
+                                listOPills.add('Glimerpiride');
+                              }
+                              else{
+                                listOPills.remove('Glimerpiride');
+                              }                            });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),
@@ -394,7 +420,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Pioglitazone = value!;
-                              listOPills.add('Pioglitazone');
+                              if(value){
+                                listOPills.add('Pioglitazone');
+                              }
+                              else{
+                                listOPills.remove('Pioglitazone');
+                              }
                             });
                           },
                         ),
@@ -419,8 +450,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Alogliptin = value!;
-                              listOPills.add('Alogliptin');
-                            });
+                              if(value){
+                                listOPills.add('Alogliptin');
+                              }
+                              else{
+                                listOPills.remove('Alogliptin');
+                              }                            });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),
@@ -444,7 +479,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Linagliptin = value!;
-                              listOPills.add('Linagliptin');
+                              if(value){
+                                listOPills.add('Linagliptin');
+                              }
+                              else{
+                                listOPills.remove('Linagliptin');
+                              }
                             });
                           },
                         ),
@@ -469,8 +509,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Saxagliptin = value!;
-                              listOPills.add('Saxagliptin');
-                            });
+                              if(value){
+                                listOPills.add('Saxagliptin');
+                              }
+                              else{
+                                listOPills.remove('Saxagliptin');
+                              }                            });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),
@@ -494,8 +538,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Liraglutide = value!;
-                              listOPills.add('Liraglutide');
-                            });
+                              if(value){
+                                listOPills.add('Liraglutide');
+                              }
+                              else{
+                                listOPills.remove('Liraglutide');
+                              }                                  });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),
@@ -519,8 +567,12 @@ print(';;;;;;;;;;;;;;;');
                             // This is where we update the state when the checkbox is tapped
                             setState(() {
                               Dulaglutide = value!;
-                              listOPills.add('Dulaglutide');
-                            });
+                              if(value){
+                                listOPills.add('Dulaglutide');
+                              }
+                              else{
+                                listOPills.remove('Dulaglutide');
+                              }                            });
                           },
                         ),
                         //trailing: Icon(Icons.where_to_vote),

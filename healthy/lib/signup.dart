@@ -10,6 +10,8 @@ import 'package:healthy/EditDiabetes.dart';
 import 'package:healthy/privacyPolicy.dart';
 import 'package:healthy/profile3.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 import 'login.dart';
 
@@ -20,7 +22,7 @@ class singup extends StatefulWidget {
   _State createState() => _State();
 }
 
-final scaffoldKeys = GlobalKey<ScaffoldState>(debugLabel: "scaffolds");
+//final scaffoldKeys = GlobalKey<ScaffoldState>();
 bool show = true;
 List<String> docs = ['saad', 'haron', 'jawad'];
 
@@ -33,13 +35,18 @@ class _State extends State<singup> {
       loadUser();
     } else {}
     super.initState();
-  }
 
+  }
   _showSnackBar(String text) {
-    final snackBar = SnackBar(
-      content: Text('$text'),
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.SNACKBAR,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        fontSize: 16.0
     );
-    scaffoldKeys.currentState!.showSnackBar(snackBar);
   }
 
   DateTime pickedDate = DateTime.now();
@@ -230,7 +237,7 @@ class _State extends State<singup> {
     return Container(
       child: SafeArea(
         child: Scaffold(
-          key: scaffoldKeys,
+       //   key: scaffoldKeys,
           //  appBar: AppBar(
           //  backgroundColor: Colors.white,
           //),
