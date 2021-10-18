@@ -797,7 +797,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                         children: [
                                           Align(
                                               alignment: Alignment.topLeft,
-                                              child: Text(widget.name,
+                                              child: Text('Hi ${widget.name}',
                                                   style: TextStyle(
                                                       fontWeight:
                                                       FontWeight.w500,

@@ -669,7 +669,9 @@ class _SelectedProductState extends State<SelectedProduct> {
                                     price: 231,
                                     // productValues['price'],
                                     weight: productValues['weight'],
-                                    descp: ' hhhj jjj jj');
+                                    descp: ' hhhj jjj jj',
+                                    brand: productValues['brand']
+                                );
                                 context.read<CartViewModel>().addToCart(prod);
                                 // viewModel.addToCart(prod);
                                 // model.addToCart(prod);
