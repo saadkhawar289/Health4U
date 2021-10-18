@@ -655,7 +655,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                               color: Colors.white,
                               child: Center(
                                   child: Text(
-                                      'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
+                                      productValues['descp']??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
                             ),
                           ),
                           Spacer(),
