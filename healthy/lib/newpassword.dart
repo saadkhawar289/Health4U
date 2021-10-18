@@ -20,7 +20,7 @@ String? email;
   Future<bool> passReset(String email)async{
 
     try{
-      var url=Uri.parse('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDZO71lOat12Id_lb4zuX_gqNcApLphHVQ')
+      var url=Uri.parse('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDZO71lOat12Id_lb4zuX_gqNcApLphHVQ');
       final Map<String, dynamic> authData = {
         'email': email,
         'requestType': 'PASSWORD_RESET'
