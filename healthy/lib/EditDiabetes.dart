@@ -14,8 +14,9 @@ import 'diabitiesSymptoms.dart';
 
 class editdiabetes extends StatefulWidget {
   final bool isEditAble;
+  final String navigation;
 
-  editdiabetes(this.isEditAble);
+  editdiabetes(this.isEditAble,this.navigation);
 
   @override
   _State createState() => _State();
@@ -61,12 +62,17 @@ class _State extends State<editdiabetes> {
 
       DocumentReference ref =
           FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
-      ref.update(data);
-      symptomsTest['uID'] = user.uid;
-      await FirebaseFirestore.instance
-          .collection("SymptomsTestResults")
-          .doc(user.uid)
-          .set(symptomsTest);
+     if(widget.navigation=='profile'){
+       ref.update(data);
+       print('profileeeeeeeeeeeeeeeeeeeeeeeeee');
+
+     }else{
+       print('signuppppppppppppppppppppppppppp');
+
+       ref.set(data);
+     }
+
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');

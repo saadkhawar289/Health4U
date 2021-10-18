@@ -660,7 +660,7 @@ class _State extends State<singup> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                editdiabetes(false)))
+                                                editdiabetes(false,'signUp')))
                                   }
                                 else
                                   {
