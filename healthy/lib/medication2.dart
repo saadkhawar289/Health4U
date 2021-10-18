@@ -622,6 +622,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healthy/forntscreen.dart';
 import 'package:healthy/selectpils2.dart';
 
 class editmedication2 extends StatefulWidget {
@@ -1015,7 +1016,7 @@ class _State extends State<editmedication2> {
               addPatientMedicines(medicines).then((value) => {
                 if(value){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => selectpills2()))
+                      MaterialPageRoute(builder: (context) => forntscreen()))
                 }
                 else{
                   print('error')
