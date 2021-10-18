@@ -25,6 +25,11 @@ class _State extends State<editdiabetes> {
   int _value = 0;
   final sKey = GlobalKey<ScaffoldState>(debugLabel: "Scaffold key");
   var dbSavedValue;
+  List<String> listOPills = [];
+  Map<String, dynamic> pills = {'pills': []};
+  List<dynamic> fetchedListOMedicines = [];
+
+
   _showSnackBar(String text) {
     final snackBar = SnackBar(
       content: Text('$text'),
@@ -56,7 +61,7 @@ class _State extends State<editdiabetes> {
 
       DocumentReference ref =
           FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
-      ref.set(data);
+      ref.update(data);
       symptomsTest['uID'] = user.uid;
       await FirebaseFirestore.instance
           .collection("SymptomsTestResults")
@@ -78,20 +83,20 @@ class _State extends State<editdiabetes> {
     return true;
   }
 
-  Future<bool> saveSymptomsResult(Map<String, dynamic> data) async {
-    try {
-      User? user = FirebaseAuth.instance.currentUser;
-
-      await FirebaseFirestore.instance
-          .collection("SymptomsTestResults")
-          .doc(user!.uid)
-          .set(data);
-    } catch (e) {
-      _showSnackBar(e.toString());
-      return false;
-    }
-    return true;
-  }
+  // Future<bool> saveSymptomsResult(Map<String, dynamic> data) async {
+  //   try {
+  //     User? user = FirebaseAuth.instance.currentUser;
+  //
+  //     await FirebaseFirestore.instance
+  //         .collection("SymptomsTestResults")
+  //         .doc(user!.uid)
+  //         .set(data);
+  //   } catch (e) {
+  //     _showSnackBar(e.toString());
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   Future<bool> loadUserDaibities() async {
     try {
@@ -106,6 +111,8 @@ class _State extends State<editdiabetes> {
           .then((data) => {
                 print(user.uid),
                 dbSavedValue = data['typeOfDiabetes'],
+        patient['medicines']=data['medicines'],
+        patient['pills']=data['pills'],
                 if (dbSavedValue == 'Type1')
                   {
                     setState(() {
