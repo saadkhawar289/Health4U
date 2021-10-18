@@ -424,7 +424,7 @@ class selectpills extends StatefulWidget {
 class _State extends State<selectpills> {
   List<String> listOPills = [];
   Map<String, dynamic> pills = {'pills': []};
-  List<dynamic> fetchedListOMedicines = [];
+
   bool Metformin = false;
   bool Empagliflozin = false;
   bool Dapagliflozin = false;
