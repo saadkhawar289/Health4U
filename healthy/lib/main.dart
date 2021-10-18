@@ -36,7 +36,7 @@ Future<void> main() async {
                 routes: {
                   '/': (BuildContext context) => Splash(),
                   '/onlinePractitioner': (BuildContext context) =>
-                      OnlinePractitioner(),
+                      OnlinePractitioner('test'),
                   '/homeScreen': (BuildContext context) => HomeScreen(),
                   '/BookPractitioner': (BuildContext context) =>
                       BookPractitioner(),

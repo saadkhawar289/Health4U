@@ -709,11 +709,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'TimeDateReservation.dart';
 
 class OnlinePractitioner extends StatefulWidget {
-  const OnlinePractitioner({Key? key}) : super(key: key);
+  final String name;
+  const OnlinePractitioner(@required this.name);
 
   @override
   _OnlinePractitionerState createState() => _OnlinePractitionerState();
@@ -795,7 +797,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                         children: [
                                           Align(
                                               alignment: Alignment.topLeft,
-                                              child: Text('Hi Aman',
+                                              child: Text(widget.name,
                                                   style: TextStyle(
                                                       fontWeight:
                                                       FontWeight.w500,
