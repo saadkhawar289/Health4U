@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/profile3.dart';
 import 'package:healthy/setting.dart';
 import 'package:healthy/shops.dart';
-import 'package:healthy/sugeryinformation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'OnlinePractitioner.dart';
@@ -70,9 +69,9 @@ class _State extends State<forntscreen> {
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Online Practitioner'),
-              onTap: () async{
+              onTap: () async {
                 var pref = await SharedPreferences.getInstance();
-                var name= pref.getString('first_name');
+                var name = pref.getString('first_name');
                 Navigator.push(
                     context,
                     MaterialPageRoute(
