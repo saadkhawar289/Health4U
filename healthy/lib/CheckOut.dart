@@ -500,6 +500,11 @@ class CheckOutCartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
+              Text(product.brand.toString(),
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black)),
               SizedBox(
                 height: 10,
               )

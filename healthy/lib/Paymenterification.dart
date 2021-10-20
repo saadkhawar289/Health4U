@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healthy/Provider/cart_view_model.dart';
+import 'package:provider/provider.dart';
 
 import 'forntscreen.dart';
 
@@ -43,6 +45,7 @@ class _PaymentVerifiactionState extends State<PaymentVerifiaction> {
                 ),
                 InkWell(
                   onTap: () {
+                    context.read<CartViewModel>().cartItems.clear();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => forntscreen()));
                   },

@@ -34,7 +34,7 @@ Future<void> main() async {
                 theme: ThemeData(primaryColor: Colors.green),
                 // home: Splash(),
                 routes: {
-                  '/': (BuildContext context) => QRViewExample(),
+                  '/': (BuildContext context) => Splash(),
                   '/onlinePractitioner': (BuildContext context) =>
                       OnlinePractitioner('test'),
                   '/homeScreen': (BuildContext context) => HomeScreen(),
