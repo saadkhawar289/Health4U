@@ -98,9 +98,27 @@ class _State extends State<changepassword> {
                     Form(
                       key: resetFormKey,
                       child: TextFormField(
-                        obscureText: false,
+                        obscureText: show,
                         decoration: InputDecoration(
-
+                          suffix:show == false
+                              ? InkWell(
+                              onTap: () {
+                                setState(() {
+                                  show = true;
+                                });
+                              },
+                              child: Icon(
+                                Icons.visibility,
+                                color: Colors.grey,
+                              ))
+                              : InkWell(
+                              onTap: () {
+                                setState(() {
+                                  show = false;
+                                });
+                              },
+                              child: Icon(Icons.visibility_off,
+                                  color: Colors.grey)) ,
                           hintText: 'Current Password',
                           contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                           border: InputBorder.none,
@@ -182,7 +200,7 @@ class _State extends State<changepassword> {
                                           builder: (context) => profile3()))
                                 }
                               else
-                                {print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrr')}
+                                {_showSnackBar('Something went wrong please login again and then retry')}
                             });
                       },
                       child: Container(

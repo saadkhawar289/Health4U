@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/DoctorLandingScreen.dart';
 import 'package:healthy/forntscreen.dart';
 
@@ -55,7 +56,7 @@ class _SymptomsTestState extends State<SymptomsTest> {
       await FirebaseFirestore.instance
           .collection("SymptomsTestResults")
           .doc(user.uid)
-          .set(data);
+          .update(data);
     } catch (e) {
       _showSnackBar(e.toString());
       return false;
@@ -64,10 +65,15 @@ class _SymptomsTestState extends State<SymptomsTest> {
   }
 
   _showSnackBar(String text) {
-    final snackBar = SnackBar(
-      content: Text('$text'),
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.SNACKBAR,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        fontSize: 16.0
     );
-    scaffoldKey.currentState!.showSnackBar(snackBar);
   }
 
   @override
@@ -657,8 +663,9 @@ class _SymptomsTestState extends State<SymptomsTest> {
                           symptomsTest['FootHealth'] = footHealth;
                           symptomsTest['EyeHealth'] = eyeHealth;
                           symptomsTest['KidneyHealth'] = kidneyHealth;
-                          var val = controller.text as int;
-                          symptomsTest['HbA1c'] = val;
+                          var val = controller.text ;
+                          var res=int.parse(val);
+                          symptomsTest['HbA1c'] = res;
 
                           if (widget.navigation == 'doctor') {
                             saveSymptomsResult(symptomsTest).then((value) => {
@@ -677,7 +684,8 @@ class _SymptomsTestState extends State<SymptomsTest> {
                             symptomsTest['FootHealth'] = footHealth;
                             symptomsTest['EyeHealth'] = eyeHealth;
                             symptomsTest['KidneyHealth'] = kidneyHealth;
-                            symptomsTest['HbA1c'] = controller.text;
+                            var res=int.parse(val);
+                            symptomsTest['HbA1c'] = res;
                             print(symptomsTest);
                             saveSymptomsResult(symptomsTest).then((value) => {
                                   if (value)

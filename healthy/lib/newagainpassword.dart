@@ -80,7 +80,7 @@ class _State extends State<againpassword> {
                 ),
                 height: 50,
                 width: MediaQuery.of(context).size.width / 1.1,
-                child: Center(child: Text("Save Password")),
+                child: Center(child: Text("Save Passmword")),
                 color: const Color(0xFF999999),
               ),
             ),

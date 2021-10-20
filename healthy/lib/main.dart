@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/PractitionerBooking.dart';
 import 'package:healthy/Provider/cart_view_model.dart';
+import 'package:healthy/qr.dart';
 import 'package:healthy/splash.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,6 @@ import 'home.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
 
 
 
@@ -34,7 +34,7 @@ Future<void> main() async {
                 theme: ThemeData(primaryColor: Colors.green),
                 // home: Splash(),
                 routes: {
-                  '/': (BuildContext context) => Splash(),
+                  '/': (BuildContext context) => QRViewExample(),
                   '/onlinePractitioner': (BuildContext context) =>
                       OnlinePractitioner('test'),
                   '/homeScreen': (BuildContext context) => HomeScreen(),

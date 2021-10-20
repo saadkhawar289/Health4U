@@ -10,10 +10,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'changepassword.dart';
 
 class EditProfilePatient extends StatefulWidget {
-  final fName, lName, dob;
+  final fstName, lstName, dobs;
 
   EditProfilePatient(
-      {required this.lName, required this.fName, required this.dob});
+      {required this.lstName, required this.fstName, required this.dobs});
 
   @override
   _EditProfilePatientState createState() => _EditProfilePatientState();
@@ -62,10 +62,9 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
   Future<bool> editinfo() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-      SharedPreferences preferences = await SharedPreferences.getInstance();
-      formValues['fName'] = fName.text;
-      formValues['lName'] = lName.text;
-      formValues['date'] = dob.text;
+      formValues['fName'] = fName.text.isEmpty?widget.fstName:fName.text;
+      formValues['lName'] = lName.text.isEmpty?widget.lstName:lName.text;
+      formValues['date'] = dob.text.isEmpty?widget.dobs:dob.text;
       FirebaseFirestore.instance
           .collection("Users")
           .doc(user!.uid)
@@ -129,7 +128,7 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                     TextFormField(
                       controller: fName,
                       decoration: InputDecoration(
-                        hintText: widget.fName,
+                        hintText: widget.fstName,
                         //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
@@ -144,7 +143,7 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                     TextFormField(
                       controller: lName,
                       decoration: InputDecoration(
-                        hintText: widget.lName,
+                        hintText: widget.lstName,
                         //  suffixText: "Edit  ",
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
@@ -161,7 +160,7 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                         _selectDate(context);
                       },
                       decoration: InputDecoration(
-                        hintText: widget.dob,
+                        hintText: widget.dobs,
                         contentPadding: EdgeInsets.only(left: 15.0, top: 15),
                         border: InputBorder.none,
                       ),

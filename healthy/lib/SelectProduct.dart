@@ -231,7 +231,7 @@ class CheckOutCartTile extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 17,
 
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.bold,
                       color: Colors.black)),
               SizedBox(
                 height: 10,
@@ -283,7 +283,8 @@ class _SelectedProductState extends State<SelectedProduct> {
     'weight': null,
     'price': null,
     'image': null,
-      'descp':null
+      'descp':null,
+    'brand':null
   };
 
   Future<bool> loadProduct(String id) async {
@@ -306,6 +307,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                     productValues['price'] = data['price'],
                     productValues['image'] = data['image'],
                     productValues['descp']=data['descp'],
+                    productValues['brand']=data['brand'],
                     sugar = double.tryParse(data['sugar'])!,
                     foodScore = (h1Abc! * sugar),
                     print('fffffffffffffffffff$foodScore'),
