@@ -745,7 +745,7 @@ class _ResolutionState extends State<Resolution> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: Text("Fri june 1 , 15:00-15:15"),
+                            child: Text("Fri november 1 , 15:00-15:15"),
                           ),
                         ],
                       ),
