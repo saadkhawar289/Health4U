@@ -119,7 +119,7 @@ class _State extends State<selectpills2> {
     return true;
   }
 
-  Future<bool> addPatientPills(Map<String, dynamic> data) async {
+  Future<bool> addPatientPills(Map<String, dynamic> data) async  {
     try {
       print(';;;;;;;;;;;;;;;');
       User? user = FirebaseAuth.instance.currentUser;

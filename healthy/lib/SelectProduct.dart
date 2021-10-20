@@ -227,9 +227,10 @@ class CheckOutCartTile extends StatelessWidget {
                       fontSize: 17,
                       fontWeight: FontWeight.w400,
                       color: Colors.black)),
-              Text(productValues['brand']??'Morriosons',
+              Text(productValues['brand']??' ',
                   style: TextStyle(
                       fontSize: 17,
+
                       fontWeight: FontWeight.w400,
                       color: Colors.black)),
               SizedBox(
