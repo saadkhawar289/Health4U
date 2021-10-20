@@ -7,8 +7,10 @@ import 'package:healthy/profile3Doctor.dart';
 import 'package:healthy/setting.dart';
 import 'package:healthy/shops.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 import 'OnlinePractitioner.dart';
+import 'Provider/cart_view_model.dart';
 
 class CustomDrawer extends StatelessWidget {
   final int vis;
@@ -123,7 +125,7 @@ class CustomDrawer extends StatelessWidget {
                               pref.remove('last_name');
                               pref.remove('password');
                               pref.remove('dob');
-
+                              context.read<CartViewModel>().addedCartItems.clear();
                               Navigator.pushReplacementNamed(
                                   context, '/homeScreen');
                             },
