@@ -5,13 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/AcceptedCondition.dart';
 import 'package:healthy/EditDiabetes.dart';
 import 'package:healthy/privacyPolicy.dart';
 import 'package:healthy/profile3.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
 
 import 'login.dart';
 
@@ -35,8 +34,8 @@ class _State extends State<singup> {
       loadUser();
     } else {}
     super.initState();
-
   }
+
   _showSnackBar(String text) {
     Fluttertoast.showToast(
         msg: text,
@@ -45,8 +44,7 @@ class _State extends State<singup> {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.black,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   DateTime pickedDate = DateTime.now();
@@ -89,11 +87,9 @@ class _State extends State<singup> {
           await SharedPreferences.getInstance();
       sharedPreferences.setString("email", _controller.text);
       sharedPreferences.setString("Password", _controllerPass.text);
-      await sharedPreferences.setString(
-          "first_name", data['fName']);
-    await sharedPreferences.setString(
-        "last_name", data['lName']);
-
+      await sharedPreferences.setString("first_name", data['fName']);
+      await sharedPreferences.setString("last_name", data['lName']);
+      await sharedPreferences.setString("dob", data['date']);
       User? user = FirebaseAuth.instance.currentUser;
       formValues['uID'] = user!.uid;
       formValues['type'] = 'Customer';
@@ -237,7 +233,7 @@ class _State extends State<singup> {
     return Container(
       child: SafeArea(
         child: Scaffold(
-       //   key: scaffoldKeys,
+          //   key: scaffoldKeys,
           //  appBar: AppBar(
           //  backgroundColor: Colors.white,
           //),
@@ -660,7 +656,7 @@ class _State extends State<singup> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                editdiabetes(false,'signUp')))
+                                                editdiabetes(false, 'signUp')))
                                   }
                                 else
                                   {

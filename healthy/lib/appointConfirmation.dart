@@ -21,9 +21,9 @@ class _ConfirmationState extends State<Confirmation> {
             backgroundColor: const Color(0xFFF7F7F7),
             iconTheme: Theme.of(context).iconTheme,
             leading: InkWell(
-              onTap: ()async {
+              onTap: () async {
                 var pref = await SharedPreferences.getInstance();
-                var name= pref.getString('first_name');
+                var name = pref.getString('first_name');
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -108,7 +108,7 @@ class _ConfirmationState extends State<Confirmation> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 8.0),
-                              child: Text("Dr Akeel"),
+                              child: Text("Dr saad"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 8.0),
