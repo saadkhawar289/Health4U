@@ -42,12 +42,13 @@ class _State extends State<purchasehistory> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 80, top: 60),
-                  height: 30,
-                  width: 150,
-                  //  color: Colors.red,
+                  height: 40.h,
+                  width: 150.w,
+                  //color: Colors.red,
                   child: Text(
                     "Purchase History",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
                   ),
                 ),
                 Container(
@@ -83,86 +84,92 @@ class _State extends State<purchasehistory> {
                   color: const Color(0xFFF7F7F7),
                   border: Border(
                       bottom: BorderSide(color: Colors.black12, width: 1))),
-              child:context.read<CartViewModel>().addedCartItems.isEmpty?Center(child: Text('No product purchased yet')): ListView.builder(
-                  itemCount:
-                      context.read<CartViewModel>().addedCartItems.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return  Column(
-                      children: [
-                        ListTile(
-                          // leading: Text(index.toString(),
-                          //     style: TextStyle(
-                          //         fontSize: 17,
-                          //         fontWeight: FontWeight.bold,
-                          //         color: Colors.black)),
-                          leading: Container(
-                            child: Image.network(context
-                                .read<CartViewModel>()
-                                .addedCartItems[index]
-                                .image.toString()),
-                          ),
-                          title: Column(
-                            children: [
-                              Text(
-                                  context
-                                      .read<CartViewModel>()
-                                      .addedCartItems[index]
-                                      .name
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                  )),
-                              Text('24/08/2021',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                  )),
-                            ],
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(context
-                                  .read<CartViewModel>()
-                                  .addedCartItems[index]
-                                  .brand.toString(),
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black)),
-                              Text('&0.80',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                              SizedBox(
-                                height: 10,
+              child: context.read<CartViewModel>().addedCartItems.isEmpty
+                  ? Center(child: Text('No product purchased yet'))
+                  : ListView.builder(
+                      itemCount:
+                          context.read<CartViewModel>().addedCartItems.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
+                          children: [
+                            ListTile(
+                              // leading: Text(index.toString(),
+                              //     style: TextStyle(
+                              //         fontSize: 17,
+                              //         fontWeight: FontWeight.bold,
+                              //         color: Colors.black)),
+                              leading: Container(
+                                child: Image.network(context
+                                    .read<CartViewModel>()
+                                    .addedCartItems[index]
+                                    .image
+                                    .toString()),
                               ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          purchasehistory2()));
-                                },
-                                child: Text('View Detail',
-                                    style: TextStyle(
+                              title: Column(
+                                children: [
+                                  Text(
+                                      context
+                                          .read<CartViewModel>()
+                                          .addedCartItems[index]
+                                          .name
+                                          .toString(),
+                                      style: TextStyle(
                                         fontSize: 17,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black)),
+                                      )),
+                                  Text('24/08/2021',
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                      )),
+                                ],
                               ),
-                              SizedBox(
-                                height: 10,
-                              )
-                            ],
-                          ),
-                          // trailing: Image.asset('assets/5879.png'),
-                        ),
-                        Divider(
-                          height: 5,
-                          thickness: 2,
-                        )
-                      ],
-                    );
-                  })),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                      context
+                                          .read<CartViewModel>()
+                                          .addedCartItems[index]
+                                          .brand
+                                          .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black)),
+                                  Text('&0.80',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.black)),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  purchasehistory2()));
+                                    },
+                                    child: Text('View Detail',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black)),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  )
+                                ],
+                              ),
+                              // trailing: Image.asset('assets/5879.png'),
+                            ),
+                            Divider(
+                              height: 5,
+                              thickness: 2,
+                            )
+                          ],
+                        );
+                      })),
           Container(
             height: 40,
             width: MediaQuery.of(context).size.width,

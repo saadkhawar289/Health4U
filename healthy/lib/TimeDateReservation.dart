@@ -803,18 +803,18 @@ class _ResolutionState extends State<Resolution> {
                               width: 18,
                             ),
                             Container(
-                              height: 30,
-                              width: 150,
+                              height: 30.h,
+                              width: 160.w,
                               child: Row(
                                 children: [
                                   Text(
                                     "appointments till 6 pm",
                                     style: TextStyle(
-                                        fontSize: 12, color: Colors.white),
+                                        fontSize: 12.sp, color: Colors.white),
                                   ),
                                   Icon(
                                     Icons.arrow_downward_rounded,
-                                    size: 20,
+                                    size: 20.sp,
                                     color: Colors.white,
                                   )
                                 ],
