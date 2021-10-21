@@ -4,7 +4,7 @@ import 'package:healthy/Model/Product.dart';
 class CartViewModel extends ChangeNotifier {
   List<Product> cartItems = [];
   List<Product> addedCartItems = [];
-  late num totalBill;
+   num totalBill=0;
 
   void addToCart(Product product) {
     cartItems.add(product);

@@ -294,7 +294,7 @@ class _ResolutionState extends State<Resolution> {
                                   setState(() {
                                     Date1 = Date1 == true ? false : true;
                                     Date2 = false;
-                                    Date2 = false;
+                                    Date3 = false;
                                   });
                                 },
                                 child: Container(
@@ -830,9 +830,11 @@ class _ResolutionState extends State<Resolution> {
                             ),
                             InkWell(
                               onTap: () {
-                                Date3 = Date3 == true ? false : true;
-                                Date1 = false;
-                                Date2 = false;
+                               setState(() {
+                                 Date3 = Date3 == true ? false : true;
+                                 Date1 = false;
+                                 Date2 = false;
+                               });
                               },
                               child: Container(
                                   height: 30,
