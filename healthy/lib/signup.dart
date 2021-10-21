@@ -79,6 +79,14 @@ class _State extends State<singup> {
     );
   }
 
+  Map<String, dynamic> symptomsTest = {
+    'HbA1c': 5,
+    'FootHealth': null,
+    'EyeHealth': null,
+    'KidneyHealth': null,
+    'uID': null
+  };
+
   Future<bool> signUp(Map<String, dynamic> data) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -90,7 +98,10 @@ class _State extends State<singup> {
       await sharedPreferences.setString("first_name", data['fName']);
       await sharedPreferences.setString("last_name", data['lName']);
       await sharedPreferences.setString("dob", data['date']);
+      await sharedPreferences.setInt('HbA1c', 5);
+
       User? user = FirebaseAuth.instance.currentUser;
+
       formValues['uID'] = user!.uid;
       formValues['type'] = 'Customer';
 
@@ -98,6 +109,10 @@ class _State extends State<singup> {
           .collection("Users")
           .doc(user.uid)
           .set(data);
+      await FirebaseFirestore.instance
+          .collection("SymptomsTestResults")
+          .doc(user.uid)
+          .set(symptomsTest);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
