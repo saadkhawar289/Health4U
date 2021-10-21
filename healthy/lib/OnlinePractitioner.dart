@@ -712,6 +712,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'AppointmentReview.dart';
 import 'TimeDateReservation.dart';
+import 'forntscreen.dart';
 
 class OnlinePractitioner extends StatefulWidget {
   final String name;
@@ -741,7 +742,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
               iconTheme: Theme.of(context).iconTheme,
               leading: InkWell(
                 child: Icon(Icons.close),
-                onTap: () => Navigator.pop(context),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>forntscreen())),
               ),
               title: Text(
                 'Online Practitioner',
@@ -1128,7 +1129,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              AppointmentReview()))
+                                                              AppointmentReview(name: 'Dr Saad',picture: 'assets/dr1.jpg',)))
                                                   : SizedBox.shrink();
                                             },
                                             child: Icon(
@@ -1348,7 +1349,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              AppointmentReview()))
+                                                              AppointmentReview(name: 'Dr Amna',picture: 'assets/dr2.jpg',)))
                                                   : SizedBox.shrink();
                                             },
                                             child: Icon(
@@ -1451,7 +1452,7 @@ class _OnlinePractitionerState extends State<OnlinePractitioner> {
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) =>
-                                                                  AppointmentReview()))
+                                                                  AppointmentReview(name: 'Dr Saeeda',picture: 'assets/dr3.png',)))
                                                       : SizedBox.shrink();
                                                 },
                                                 child: Icon(

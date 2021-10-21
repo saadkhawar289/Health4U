@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppointmentReview extends StatefulWidget {
+  final String name,picture;
+
+  AppointmentReview({required this.name,required this.picture});
   @override
   _State createState() => _State();
 }
@@ -41,12 +44,12 @@ class _State extends State<AppointmentReview> {
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black12)),
                 child: ListTile(
-                  leading: Image.asset("assets/man.png"),
+                  leading: Image.asset(widget.picture),
                   title: Row(
                     children: [
                       Column(
                         children: [
-                          Text("Dr Mohammad"),
+                          Text(widget.name),
                           Text("Fri june 01.2021"),
                           Text("15:00-15:15")
                         ],

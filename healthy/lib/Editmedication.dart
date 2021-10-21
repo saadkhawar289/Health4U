@@ -131,7 +131,7 @@ class _State extends State<editmedication> {
   }
 
   // List<bool> value = [];
- List<String> listOMedicines = [];
+ List<dynamic> listOMedicines = [];
   Map<String, dynamic> medicines = {'medicines': []};
   List<dynamic> fetchedListOMedicines = [];
 
