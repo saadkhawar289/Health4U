@@ -214,29 +214,27 @@ class CheckOutCartTile extends StatelessWidget {
           leading: Container(
             height: 100,
             width: 100,
-            child: Image.network(productValues['image'],fit: BoxFit.fill
-                ),
+            child: Image.network(productValues['image'], fit: BoxFit.fill),
           ),
-          title: Text(productValues['name']??'fff',
+          title: Text(productValues['name'] ?? 'fff',
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(productValues['weight']??'oooo',
+              Text(productValues['weight'] ?? 'oooo',
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w400,
                       color: Colors.black)),
-              Text(productValues['brand']??' ',
+              Text(productValues['brand'] ?? ' ',
                   style: TextStyle(
                       fontSize: 17,
-
                       fontWeight: FontWeight.bold,
                       color: Colors.black)),
               SizedBox(
                 height: 10,
               ),
-              Text('£ ${productValues['price']??'888'}',
+              Text('£ ${productValues['price'] ?? '888'}',
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -283,8 +281,8 @@ class _SelectedProductState extends State<SelectedProduct> {
     'weight': null,
     'price': null,
     'image': null,
-      'descp':null,
-    'brand':null
+    'descp': null,
+    'brand': null
   };
 
   Future<bool> loadProduct(String id) async {
@@ -306,8 +304,8 @@ class _SelectedProductState extends State<SelectedProduct> {
                     productValues['weight'] = data['weight'],
                     productValues['price'] = data['price'],
                     productValues['image'] = data['image'],
-                    productValues['descp']=data['descp'],
-                    productValues['brand']=data['brand'],
+                    productValues['descp'] = data['descp'],
+                    productValues['brand'] = data['brand'],
                     sugar = double.tryParse(data['sugar'])!,
                     foodScore = (h1Abc! * sugar),
                     print('fffffffffffffffffff$foodScore'),
@@ -479,7 +477,8 @@ class _SelectedProductState extends State<SelectedProduct> {
                                     ),
                                     Spacer(),
                                     Padding(
-                                      padding: const EdgeInsets.only(bottom: 28.0),
+                                      padding:
+                                          const EdgeInsets.only(bottom: 28.0),
                                       child: Align(
                                         alignment: Alignment.bottomCenter,
                                         child: Center(
@@ -499,7 +498,8 @@ class _SelectedProductState extends State<SelectedProduct> {
                                                             fontSize: 20.sp,
                                                             color: Colors.black,
                                                             fontWeight:
-                                                                FontWeight.bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       )
                                                     : Text(
                                                         'This item is not ideal for you',
@@ -507,7 +507,8 @@ class _SelectedProductState extends State<SelectedProduct> {
                                                             fontSize: 20.sp,
                                                             color: Colors.black,
                                                             fontWeight:
-                                                                FontWeight.bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       )),
                                       ),
                                     ),
@@ -664,26 +665,27 @@ class _SelectedProductState extends State<SelectedProduct> {
                           Padding(
                             padding: EdgeInsets.only(left: 10.0.w, top: 8.h),
                             child: Container(
-                              color: Colors.white,
-                              child: Text(
-                                  "${productValues['descp']}",//??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
-                              )),
+                                color: Colors.white,
+                                child: Text(
+                                  "${productValues['descp']}", //??'Simply dummy text of the prdoubleing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,')),
+                                )),
                           ),
                           Spacer(),
                           Center(
                             child: InkWell(
                               onTap: () {
                                 Product prod = Product(
-                                  image:  productValues['image'],
+                                    image: productValues['image'],
                                     name: productValues['name'],
                                     id: '1234',
                                     price: productValues['price'],
                                     // productValues['price'],
                                     weight: productValues['weight'],
                                     descp: ' hhhj jjj jj',
-                                    brand: productValues['brand']
-                                );
-                                context.read<CartViewModel>().totalBill=context.read<CartViewModel>().totalBill+prod.price!;
+                                    brand: productValues['brand']);
+                                context.read<CartViewModel>().totalBill =
+                                    context.read<CartViewModel>().totalBill +
+                                        prod.price!;
                                 context.read<CartViewModel>().addToCart(prod);
                                 // viewModel.addToCart(prod);
                                 // model.addToCart(prod);
