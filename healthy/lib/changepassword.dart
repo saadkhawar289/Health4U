@@ -107,7 +107,7 @@ class _State extends State<changepassword> {
                       child: TextFormField(
                         obscureText: show1,
                         decoration: InputDecoration(
-                          suffix: show1 == false
+                          suffixIcon: show1 == false
                               ? InkWell(
                                   onTap: () {
                                     setState(() {

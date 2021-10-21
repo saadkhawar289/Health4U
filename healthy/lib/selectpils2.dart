@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/forntscreen.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class selectpills2 extends StatefulWidget {
   @override
@@ -46,7 +45,7 @@ class _State extends State<selectpills2> {
                 fetchedListOMedicines = data['pills'],
                 print(
                     '${fetchedListOMedicines.length}---------fetchedListOMedicines'),
-        pills['pills']=fetchedListOMedicines,
+                pills['pills'] = fetchedListOMedicines,
                 fetchedListOMedicines.forEach((element) {
                   if (element.contains('Metformin')) {
                     setState(() {
@@ -70,7 +69,7 @@ class _State extends State<selectpills2> {
                     });
                   } else if (element.contains('Glimerpiride')) {
                     setState(() {
-                      Pioglitazone = true;
+                      Glimerpiride = true;
                     });
                   } else if (element.contains('Pioglitazone')) {
                     setState(() {
@@ -92,9 +91,9 @@ class _State extends State<selectpills2> {
                     setState(() {
                       Liraglutide = true;
                     });
-                  } else if (element.contains('Liraglutide')) {
+                  } else if (element.contains('Dulaglutide')) {
                     setState(() {
-                      Liraglutide = true;
+                      Dulaglutide = true;
                     });
                   }
                 })
@@ -119,7 +118,7 @@ class _State extends State<selectpills2> {
     return true;
   }
 
-  Future<bool> addPatientPills(Map<String, dynamic> data) async  {
+  Future<bool> addPatientPills(Map<String, dynamic> data) async {
     try {
       print(';;;;;;;;;;;;;;;');
       User? user = FirebaseAuth.instance.currentUser;
@@ -545,7 +544,8 @@ class _State extends State<selectpills2> {
           InkWell(
             onTap: () {
               //fetchedListOMedicines.clear();
-              pills['pills']=listOPills.isEmpty?fetchedListOMedicines:listOPills;
+              pills['pills'] =
+                  listOPills.isEmpty ? fetchedListOMedicines : listOPills;
               print(listOPills.length);
               addPatientPills(pills).then((value) => {
                     if (value)
