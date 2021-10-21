@@ -544,8 +544,8 @@ class _State extends State<selectpills2> {
 
           InkWell(
             onTap: () {
-              fetchedListOMedicines.clear();
-              pills['pills'] = listOPills;
+              //fetchedListOMedicines.clear();
+              pills['pills']=listOPills.isEmpty?fetchedListOMedicines:listOPills;
               print(listOPills.length);
               addPatientPills(pills).then((value) => {
                     if (value)

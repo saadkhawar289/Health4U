@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/CheckOut.dart';
+import 'package:healthy/Provider/cart_view_model.dart';
 import 'package:healthy/drawer.dart';
+import 'package:provider/provider.dart';
 
 import 'Model/Product.dart';
 
@@ -98,7 +100,7 @@ class _CartState extends State<Cart> {
                                         style: TextStyle(
                                             fontSize: 17.sp,
                                             fontWeight: FontWeight.w400)),
-                                    Text('0.80',
+                                    Text(context.read<CartViewModel>().totalBill.toString(),
                                         style: TextStyle(
                                             fontSize: 17.sp,
                                             fontWeight: FontWeight.bold))

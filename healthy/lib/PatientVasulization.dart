@@ -35,6 +35,9 @@ class PatientVisualization extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
+        leading: InkWell(
+            onTap:() =>Navigator.of(context).pop(),
+            child: Icon(Icons.arrow_back_ios,color: Colors.black,)),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
@@ -54,14 +57,44 @@ class PatientVisualization extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
+                          builder: (context) => SymptomsTest(
+                            navigation: 'k',
+                          )));
+                },
+                child: Container(
+                  height: 43,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  decoration: BoxDecoration(
+                  //  image: _buildServiceBoxImage('assets/Doctor.png'),
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                      child: Text(
+                        'Symptoms Test result',
+                        style: TextStyle(
+                            fontSize: 17.0.sp,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white),
+                      )),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+              child: GestureDetector(
+                onTap: () async {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
                           builder: (context) => Chart(monthCategory)));
                 },
                 child: Container(
-                  height: 150,
-                  width: targetWidth,
+                  height: 43,
+                  width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
                     color: Colors.green,
-                    image: _buildServiceBoxImage('assets/foodItems.png'),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
@@ -88,10 +121,9 @@ class PatientVisualization extends StatelessWidget {
                           builder: (context) => Chart(foodCategory)));
                 },
                 child: Container(
-                  height: 150,
-                  width: targetWidth,
+                  height: 43,
+                  width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    image: _buildServiceBoxImage('assets/foodItems2.jpg'),
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -119,10 +151,9 @@ class PatientVisualization extends StatelessWidget {
                           builder: (context) => Chart(foodCategory)));
                 },
                 child: Container(
-                  height: 150,
-                  width: targetWidth,
+                  height: 43,
+                  width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    image: _buildServiceBoxImage('assets/foodItems.png'),
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -150,10 +181,9 @@ class PatientVisualization extends StatelessWidget {
                           builder: (context) => Chart(foodCategory)));
                 },
                 child: Container(
-                  height: 150,
-                  width: targetWidth,
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    image: _buildServiceBoxImage('assets/foodItems.png'),
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -181,10 +211,9 @@ class PatientVisualization extends StatelessWidget {
                           builder: (context) => Chart(scoreCategory)));
                 },
                 child: Container(
-                  height: 150,
-                  width: targetWidth,
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    image: _buildServiceBoxImage('assets/foodItems.png'),
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -212,10 +241,9 @@ class PatientVisualization extends StatelessWidget {
                           builder: (context) => Chart(percentageCategory)));
                 },
                 child: Container(
-                  height: 150,
-                  width: targetWidth,
+                  height: 43,
+                  width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    image: _buildServiceBoxImage('assets/foodItems.png'),
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -243,10 +271,9 @@ class PatientVisualization extends StatelessWidget {
                           builder: (context) => Chart(monthCategory)));
                 },
                 child: Container(
-                  height: 150,
-                  width: targetWidth,
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    image: _buildServiceBoxImage('assets/foodItems.png'),
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -264,36 +291,7 @@ class PatientVisualization extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SymptomsTest(
-                                navigation: 'k',
-                              )));
-                },
-                child: Container(
-                  height: 150,
-                  width: targetWidth,
-                  decoration: BoxDecoration(
-                    image: _buildServiceBoxImage('assets/Doctor.png'),
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Symptoms Test result',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
-                ),
-              ),
-            ),
+
           ],
         ),
       ),

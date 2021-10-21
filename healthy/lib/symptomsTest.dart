@@ -16,6 +16,34 @@ class SymptomsTest extends StatefulWidget {
 }
 
 class _SymptomsTestState extends State<SymptomsTest> {
+
+
+  initState() {
+    loadTestValue();
+    super.initState();
+  }
+
+
+
+Future<void>loadTestValue()async{
+  User? user = FirebaseAuth.instance.currentUser;
+
+  await FirebaseFirestore.instance
+      .collection("SymptomsTestResults")
+      .doc(user!.uid)
+      .get()
+      .then((value) async => {
+    controller.text = value['HbA1c'].toString() ,
+
+  });
+
+
+
+
+
+}
+
+
   bool drySkin = false;
   TextEditingController controller = TextEditingController();
   bool losingSensation = false;

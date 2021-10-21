@@ -72,10 +72,16 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
       var pref = await SharedPreferences.getInstance();
       pref.remove('first_name');
       pref.remove('last_name');
+      pref.remove('dob');
+
       var s = await pref.setString('first_name', formValues['fName']);
       var f = await pref.setString('last_name', formValues['lName']);
+      var c = await pref.setString('dob', formValues['date']);
+
       print(s);
       print(f);
+      print(c);
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');

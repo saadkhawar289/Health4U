@@ -391,89 +391,89 @@ class _SelectedProductState extends State<SelectedProduct> {
                                 decoration: BoxDecoration(
                                     image: foodScoreResult! <= 20
                                         ? _buildServiceBoxImage(
-                                            'assets/pic3.jpg')
+                                            'assets/pic3.png')
                                         : foodScoreResult! >= 30
                                             ? _buildServiceBoxImage(
-                                                'assets/pic1.jpg')
+                                                'assets/pic1.png')
                                             : _buildServiceBoxImage(
-                                                'assets/pic2.jpg')),
+                                                'assets/pic2.png')),
                                 child: Column(
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                            height: 0.08.sh,
-                                            width: 0.12.sw,
-                                            margin:
-                                                EdgeInsets.only(top: 0.17.sh),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(0))),
-                                            child: Center(
-                                                child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.05,
-                                                    width: 0.07.sw,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.red[200],
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    25.r)))))),
-                                        SizedBox(
-                                          width: 0.04.sw,
-                                        ),
-                                        Container(
-                                            height: 0.08.sh,
-                                            width: 0.12.sw,
-                                            margin:
-                                                EdgeInsets.only(top: 0.17.sh),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(0))),
-                                            child: Center(
-                                                child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.05,
-                                                    width: 0.07.sw,
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            Colors.yellow[100],
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    25.r)))))),
-                                        SizedBox(
-                                          width: 0.04.sw,
-                                        ),
-                                        Container(
-                                            height: 0.08.sh,
-                                            width: 0.12.sw,
-                                            margin:
-                                                EdgeInsets.only(top: 0.17.sh),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(0))),
-                                            child: Center(
-                                              child: Icon(
-                                                Icons.check_circle,
-                                                size: 35.sp,
-                                                color: Colors.green,
-                                              ),
-                                            )),
-                                      ],
-                                    ),
+                                    // Row(
+                                    //   mainAxisAlignment:
+                                    //       MainAxisAlignment.center,
+                                    //   children: [
+                                    //     Container(
+                                    //         height: 0.08.sh,
+                                    //         width: 0.12.sw,
+                                    //         margin:
+                                    //             EdgeInsets.only(top: 0.17.sh),
+                                    //         decoration: BoxDecoration(
+                                    //             color: Colors.white,
+                                    //             borderRadius: BorderRadius.all(
+                                    //                 Radius.circular(0))),
+                                    //         child: Center(
+                                    //             child: Container(
+                                    //                 height:
+                                    //                     MediaQuery.of(context)
+                                    //                             .size
+                                    //                             .height *
+                                    //                         0.05,
+                                    //                 width: 0.07.sw,
+                                    //                 decoration: BoxDecoration(
+                                    //                     color: Colors.red[200],
+                                    //                     borderRadius:
+                                    //                         BorderRadius.all(
+                                    //                             Radius.circular(
+                                    //                                 25.r)))))),
+                                    //     SizedBox(
+                                    //       width: 0.04.sw,
+                                    //     ),
+                                    //     Container(
+                                    //         height: 0.08.sh,
+                                    //         width: 0.12.sw,
+                                    //         margin:
+                                    //             EdgeInsets.only(top: 0.17.sh),
+                                    //         decoration: BoxDecoration(
+                                    //             color: Colors.white,
+                                    //             borderRadius: BorderRadius.all(
+                                    //                 Radius.circular(0))),
+                                    //         child: Center(
+                                    //             child: Container(
+                                    //                 height:
+                                    //                     MediaQuery.of(context)
+                                    //                             .size
+                                    //                             .height *
+                                    //                         0.05,
+                                    //                 width: 0.07.sw,
+                                    //                 decoration: BoxDecoration(
+                                    //                     color:
+                                    //                         Colors.yellow[100],
+                                    //                     borderRadius:
+                                    //                         BorderRadius.all(
+                                    //                             Radius.circular(
+                                    //                                 25.r)))))),
+                                    //     SizedBox(
+                                    //       width: 0.04.sw,
+                                    //     ),
+                                    //     Container(
+                                    //         height: 0.08.sh,
+                                    //         width: 0.12.sw,
+                                    //         margin:
+                                    //             EdgeInsets.only(top: 0.17.sh),
+                                    //         decoration: BoxDecoration(
+                                    //             color: Colors.white,
+                                    //             borderRadius: BorderRadius.all(
+                                    //                 Radius.circular(0))),
+                                    //         child: Center(
+                                    //           child: Icon(
+                                    //             Icons.check_circle,
+                                    //             size: 35.sp,
+                                    //             color: Colors.green,
+                                    //           ),
+                                    //         )),
+                                    //   ],
+                                    // ),
                                     SizedBox(
                                       height: 0.04.sw,
                                     ),
@@ -670,12 +670,13 @@ class _SelectedProductState extends State<SelectedProduct> {
                                   image:  productValues['image'],
                                     name: productValues['name'],
                                     id: '1234',
-                                    price: 231,
+                                    price: productValues['price'],
                                     // productValues['price'],
                                     weight: productValues['weight'],
                                     descp: ' hhhj jjj jj',
                                     brand: productValues['brand']
                                 );
+                                context.read<CartViewModel>().totalBill=context.read<CartViewModel>().totalBill+prod.price!;
                                 context.read<CartViewModel>().addToCart(prod);
                                 // viewModel.addToCart(prod);
                                 // model.addToCart(prod);
