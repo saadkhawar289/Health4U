@@ -12,6 +12,17 @@ class _ResolutionState extends State<Resolution> {
   bool isEnable = false;
   bool Enable = false;
   bool isable = false;
+  bool Time1 = false;
+  bool Time2 = false;
+  bool Time3 = false;
+  bool Date1 = false;
+  bool Date2 = false;
+  bool Date3 = false;
+  bool Date4 = false;
+  bool Date5 = false;
+  bool Date6 = false;
+  bool Date7 = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -278,50 +289,87 @@ class _ResolutionState extends State<Resolution> {
                               padding: const EdgeInsets.only(
                                 left: 5.0,
                               ),
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    Date1 = Date1 == true ? false : true;
+                                    Date2 = false;
+                                    Date2 = false;
+                                  });
+                                },
+                                child: Container(
+                                    height: 30,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          15), // radius of 10
+                                      color: isEnable == true
+                                          ? Date1 == true
+                                              ? Colors.blue
+                                              : Colors.lightGreen
+                                          : Color(0xFFF7F7F7),
+                                      // green as background color
+                                    ),
+                                    child: Center(child: Text("09:45"))),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  Date4 = Date4 == true ? false : true;
+                                  Date5 = false;
+                                  Date6 = false;
+                                  Date7 = false;
+                                });
+                              },
                               child: Container(
                                   height: 30,
                                   width: 60,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(
                                         15), // radius of 10
-                                    color: isEnable == true
-                                        ? Colors.lightGreen
+                                    // color: const Color(0xFFF7F7F7),
+                                    color: Enable == true
+                                        ? Date4 == true
+                                            ? Colors.blue
+                                            : Colors.lightGreen
                                         : Color(0xFFF7F7F7),
-                                    // green as background color
                                   ),
-                                  child: Center(child: Text("09:45"))),
+                                  child: Center(child: Text("10:45"))),
                             ),
                             SizedBox(
                               width: 18,
                             ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  // color: const Color(0xFFF7F7F7),
-                                  color: Enable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("10:45"))),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  // color: const Color(0xFFF7F7F7),
+                            // SizBox(
+                            //   width: 18,
+                            // ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  Date2 = Date2 == true ? false : true;
+                                  Date1 = false;
+                                  Date3 = false;
+                                });
+                              },
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // radius of 10
+                                    // color: const Color(0xFFF7F7F7),
 
-                                  color: isEnable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("11:45"))),
+                                    color: isEnable == true
+                                        ? Date2 == true
+                                            ? Colors.blue
+                                            : Colors.lightGreen
+                                        : Color(0xFFF7F7F7),
+                                  ),
+                                  child: Center(child: Text("11:45"))),
+                            ),
                             SizedBox(
                               width: 18,
                             ),
@@ -374,33 +422,56 @@ class _ResolutionState extends State<Resolution> {
                             SizedBox(
                               width: 18,
                             ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  // color: const Color(0xFFF7F7F7),
-                                  color: Enable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("12:30"))),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  Date5 = Date5 == true ? false : true;
+                                  Date4 = false;
+                                  Date6 = false;
+                                  Date7 = false;
+                                });
+                              },
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // radius of 10
+                                    // color: const Color(0xFFF7F7F7),
+                                    color: Enable == true
+                                        ? Date5 == true
+                                            ? Colors.blue
+                                            : Colors.lightGreen
+                                        : Color(0xFFF7F7F7),
+                                  ),
+                                  child: Center(child: Text("12:30"))),
+                            ),
                             SizedBox(
                               width: 18,
                             ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  //  color: const Color(0xFFF7F7F7),
-                                  color: isable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("01:30"))),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  Time1 = Time1 == true ? false : true;
+                                  Time2 = false;
+                                  Time3 = false;
+                                });
+                              },
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          15), // radius of 10
+                                      // color: const Color(0xFFF7F7F7),
+
+                                      color: isable == true
+                                          ? Time1 == true
+                                              ? Colors.blue
+                                              : Colors.lightGreen
+                                          : Color(0xFFF7F7F7)),
+                                  child: Center(child: Text("01:30"))),
+                            ),
                           ],
                         ),
                       ),
@@ -429,18 +500,30 @@ class _ResolutionState extends State<Resolution> {
                             SizedBox(
                               width: 18,
                             ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  //color: const Color(0xFFF7F7F7),
-                                  color: Enable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("11:00"))),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  Date6 = Date6 == true ? false : true;
+                                  Date4 = false;
+                                  Date5 = false;
+                                  Date7 = false;
+                                });
+                              },
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // radius of 10
+                                    //color: const Color(0xFFF7F7F7),
+                                    color: Enable == true
+                                        ? Date6 == true
+                                            ? Colors.blue
+                                            : Colors.lightGreen
+                                        : Color(0xFFF7F7F7),
+                                  ),
+                                  child: Center(child: Text("11:00"))),
+                            ),
                             SizedBox(
                               width: 18,
                             ),
@@ -537,23 +620,33 @@ class _ResolutionState extends State<Resolution> {
                         child: Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                left: 5.0,
-                              ),
-                              child: Container(
-                                  height: 30,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        15), // radius of 10
-                                    //color: const Color(0xFFF7F7F7),
-                                    color: isable == true
-                                        ? Colors.lightGreen
-                                        : Color(0xFFF7F7F7),
-                                    // green as background color
-                                  ),
-                                  child: Center(child: Text("12:00"))),
-                            ),
+                                padding: const EdgeInsets.only(
+                                  left: 5.0,
+                                ),
+                                child: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      Time3 = Time3 == true ? false : true;
+                                      Time1 = false;
+                                      Time2 = false;
+                                    });
+                                  },
+                                  child: Container(
+                                      height: 30,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            15), // radius of 10
+                                        //color: const Color(0xFFF7F7F7),
+                                        color: isable == true
+                                            ? Time3 == true
+                                                ? Colors.blue
+                                                : Colors.lightGreen
+                                            : Color(0xFFF7F7F7),
+                                        // green as background color
+                                      ),
+                                      child: Center(child: Text("12:00"))),
+                                )),
                             SizedBox(
                               width: 18,
                             ),
@@ -581,19 +674,31 @@ class _ResolutionState extends State<Resolution> {
                             SizedBox(
                               width: 18,
                             ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  //  color: const Color(0xFFF7F7F7),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  Date7 = Date7 == true ? false : true;
+                                  Date5 = false;
+                                  Date6 = false;
+                                  Date4 = false;
+                                });
+                              },
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // radius of 10
+                                    //  color: const Color(0xFFF7F7F7),
 
-                                  color: Enable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("06:00"))),
+                                    color: Enable == true
+                                        ? Date7 == true
+                                            ? Colors.blue
+                                            : Colors.lightGreen
+                                        : Color(0xFFF7F7F7),
+                                  ),
+                                  child: Center(child: Text("06:00"))),
+                            ),
                           ],
                         ),
                       ),
@@ -622,18 +727,29 @@ class _ResolutionState extends State<Resolution> {
                             SizedBox(
                               width: 18,
                             ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  //color: const Color(0xFFF7F7F7),
-                                  color: isable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("10:30"))),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  Time2 = Time2 == true ? false : true;
+                                  Time1 = false;
+                                  Time3 = false;
+                                });
+                              },
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // radius of 10
+                                    //color: const Color(0xFFF7F7F7),
+                                    color: isable == true
+                                        ? Time2 == true
+                                            ? Colors.blue
+                                            : Colors.lightGreen
+                                        : Color(0xFFF7F7F7),
+                                  ),
+                                  child: Center(child: Text("10:30"))),
+                            ),
                             SizedBox(
                               width: 18,
                             ),
@@ -712,18 +828,26 @@ class _ResolutionState extends State<Resolution> {
                             SizedBox(
                               width: 18,
                             ),
-                            Container(
-                                height: 30,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(15), // radius of 10
-                                  //  color: const Color(0xFFF7F7F7),
-                                  color: isEnable == true
-                                      ? Colors.lightGreen
-                                      : Color(0xFFF7F7F7),
-                                ),
-                                child: Center(child: Text("01:00"))),
+                            InkWell(
+                              onTap: () {
+                                Date3 = Date3 == true ? false : true;
+                                Date1 = false;
+                                Date2 = false;
+                              },
+                              child: Container(
+                                  height: 30,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          15), // radius of 10
+                                      //  color: const Color(0xFFF7F7F7),
+                                      color: isEnable == true
+                                          ? Date3 == true
+                                              ? Colors.blue
+                                              : Colors.lightGreen
+                                          : Color(0xFFF7F7F7)),
+                                  child: Center(child: Text("01:00"))),
+                            ),
                           ],
                         ),
                       ),
