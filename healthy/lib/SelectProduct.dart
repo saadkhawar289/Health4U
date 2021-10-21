@@ -391,12 +391,12 @@ class _SelectedProductState extends State<SelectedProduct> {
                                 decoration: BoxDecoration(
                                     image: foodScoreResult! <= 20
                                         ? _buildServiceBoxImage(
-                                            'assets/pic3.png')
+                                            'assets/pic2.png')
                                         : foodScoreResult! >= 30
                                             ? _buildServiceBoxImage(
                                                 'assets/pic1.png')
                                             : _buildServiceBoxImage(
-                                                'assets/pic2.png')),
+                                                'assets/pic3.png')),
                                 child: Column(
                                   children: [
                                     // Row(
@@ -477,33 +477,40 @@ class _SelectedProductState extends State<SelectedProduct> {
                                     SizedBox(
                                       height: 0.04.sw,
                                     ),
-                                    Center(
-                                        child: foodScoreResult! <= 20
-                                            ? Text(
-                                                'Great! This is ideal for you',
-                                                style: TextStyle(
-                                                    fontSize: 20.sp,
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )
-                                            : foodScoreResult! >= 30
+                                    Spacer(),
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 28.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Center(
+                                            child: foodScoreResult! <= 20
                                                 ? Text(
-                                                    'This item is not ideal for you',
+                                                    'Great! This is ideal for you',
                                                     style: TextStyle(
                                                         fontSize: 20.sp,
                                                         color: Colors.black,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   )
-                                                : Text(
-                                                    'This item is not ideal for you',
-                                                    style: TextStyle(
-                                                        fontSize: 20.sp,
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  )),
+                                                : foodScoreResult! >= 30
+                                                    ? Text(
+                                                        'This item is not ideal for you',
+                                                        style: TextStyle(
+                                                            fontSize: 20.sp,
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.bold),
+                                                      )
+                                                    : Text(
+                                                        'This item is not ideal for you',
+                                                        style: TextStyle(
+                                                            fontSize: 20.sp,
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.bold),
+                                                      )),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
