@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_format/date_format.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/profile3.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'changepassword.dart';
 
@@ -62,9 +62,9 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
   Future<bool> editinfo() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-      formValues['fName'] = fName.text.isEmpty?widget.fstName:fName.text;
-      formValues['lName'] = lName.text.isEmpty?widget.lstName:lName.text;
-      formValues['date'] = dob.text.isEmpty?widget.dobs:dob.text;
+      formValues['fName'] = fName.text.isEmpty ? widget.fstName : fName.text;
+      formValues['lName'] = lName.text.isEmpty ? widget.lstName : lName.text;
+      formValues['date'] = dob.text.isEmpty ? widget.dobs : dob.text;
       FirebaseFirestore.instance
           .collection("Users")
           .doc(user!.uid)
@@ -81,7 +81,6 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
       print(s);
       print(f);
       print(c);
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');

@@ -83,7 +83,7 @@ class _State extends State<shops> {
                         ),
                         Container(
                           height: 50,
-                          width: 70,
+                          width: 80,
                           //  color: Colors.cyanAccent,
                           child: Center(
                               child: Text(

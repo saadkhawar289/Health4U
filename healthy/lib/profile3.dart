@@ -32,6 +32,7 @@ class _State extends State<profile3> {
     setState(() {
       firstName = prefs.getString('first_name');
       lastName = prefs.getString('last_name');
+      var date = prefs.getString('dob');
       print(lastName);
 
       loader = false;
@@ -115,16 +116,21 @@ class _State extends State<profile3> {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () async{
-                        SharedPreferences preferences = await SharedPreferences.getInstance();
-                      var  fName = preferences.getString('first_name');
-                      var  lName=preferences.getString('last_name');
-                      var dob = preferences.getString('dob');
-                      print(dob);
+                      onTap: () async {
+                        SharedPreferences preferences =
+                            await SharedPreferences.getInstance();
+                        var fName = preferences.getString('first_name');
+                        var lName = preferences.getString('last_name');
+                        var dob = preferences.getString('dob');
+                        print(dob);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditProfilePatient(dobs: dob!,fstName: fName!,lstName: lName!,)));
+                                builder: (context) => EditProfilePatient(
+                                      dobs: dob!,
+                                      fstName: fName!,
+                                      lstName: lName!,
+                                    )));
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -148,7 +154,8 @@ class _State extends State<profile3> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => editdiabetes(true,'profile')));
+                                builder: (context) =>
+                                    editdiabetes(true, 'profile')));
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

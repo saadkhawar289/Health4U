@@ -15,7 +15,7 @@ class _State extends State<changepassword> {
   TextEditingController currentPassController = TextEditingController();
   TextEditingController newPassController = TextEditingController();
   bool show = true;
-  bool show1= true;
+  bool show1 = true;
 
   String? newPass;
   final passScaffoldKeys = GlobalKey<ScaffoldState>(debugLabel: "scaffolds");
@@ -27,13 +27,12 @@ class _State extends State<changepassword> {
     passScaffoldKeys.currentState!.showSnackBar(snackBar);
   }
 
-
   Future<bool> updatePass() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String currentPass = sharedPreferences.getString('password')!;
-    String email=sharedPreferences.getString('email')!;
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email, password: currentPass);
+    String email = sharedPreferences.getString('email')!;
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: currentPass);
 
     if (!resetFormKey.currentState!.validate()) {
       return false;
@@ -43,7 +42,7 @@ class _State extends State<changepassword> {
       User? user = FirebaseAuth.instance.currentUser;
 
       var id = await user!.getIdToken();
-    // await user.reload();
+      // await user.reload();
 
       if (currentPassController.text == currentPass) {
         var url = Uri.parse(
@@ -54,6 +53,9 @@ class _State extends State<changepassword> {
           'returnSecureToken': 'true'
         });
         print(response.statusCode);
+        var newPass = await sharedPreferences.setString(
+            'password', newPassController.text);
+
         print(response.body);
 
         return true;
@@ -105,27 +107,28 @@ class _State extends State<changepassword> {
                       child: TextFormField(
                         obscureText: show1,
                         decoration: InputDecoration(
-                          suffix:show1 == false
+                          suffixIcon: show1 == false
                               ? InkWell(
-                              onTap: () {
-                                setState(() {
-                                  show1 = true;
-                                });
-                              },
-                              child: Icon(
-                                Icons.visibility,
-                                color: Colors.grey,
-                              ))
+                                  onTap: () {
+                                    setState(() {
+                                      show1 = true;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.visibility,
+                                    color: Colors.grey,
+                                  ))
                               : InkWell(
-                              onTap: () {
-                                setState(() {
-                                  show1 = false;
-                                });
-                              },
-                              child: Icon(Icons.visibility_off,
-                                  color: Colors.grey)) ,
+                                  onTap: () {
+                                    setState(() {
+                                      show1 = false;
+                                    });
+                                  },
+                                  child: Icon(Icons.visibility_off,
+                                      color: Colors.grey)),
                           hintText: 'Current Password',
-                          contentPadding: EdgeInsets.only(left: 15.0, top: 15,right: 10),
+                          contentPadding:
+                              EdgeInsets.only(left: 15.0, top: 15, right: 10),
                           border: InputBorder.none,
                         ),
                         controller: currentPassController,
@@ -170,7 +173,8 @@ class _State extends State<changepassword> {
                                 child: Icon(Icons.visibility_off,
                                     color: Colors.grey)),
                         hintText: 'Password',
-                        contentPadding: EdgeInsets.only(left: 15.0, top: 15,right: 20),
+                        contentPadding:
+                            EdgeInsets.only(left: 15.0, top: 15, right: 20),
                         border: InputBorder.none,
                       ),
                       controller: newPassController,
@@ -189,7 +193,10 @@ class _State extends State<changepassword> {
                       },
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10,),
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                      ),
                       child: Divider(
                         thickness: 2,
                       ),
