@@ -70,9 +70,9 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
           .doc(user!.uid)
           .update(formValues);
       var pref = await SharedPreferences.getInstance();
-      pref.remove('first_name');
-      pref.remove('last_name');
-      pref.remove('dob');
+      // pref.remove('first_name');
+      // pref.remove('last_name');
+      // pref.remove('dob');
 
       var s = await pref.setString('first_name', formValues['fName']);
       var f = await pref.setString('last_name', formValues['lName']);
