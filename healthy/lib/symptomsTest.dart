@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/DoctorLandingScreen.dart';
 import 'package:healthy/forntscreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SymptomsTest extends StatefulWidget {
   final String navigation;
@@ -16,33 +17,22 @@ class SymptomsTest extends StatefulWidget {
 }
 
 class _SymptomsTestState extends State<SymptomsTest> {
-
-
   initState() {
     loadTestValue();
     super.initState();
   }
 
+  Future<void> loadTestValue() async {
+    User? user = FirebaseAuth.instance.currentUser;
 
-
-Future<void>loadTestValue()async{
-  User? user = FirebaseAuth.instance.currentUser;
-
-  await FirebaseFirestore.instance
-      .collection("SymptomsTestResults")
-      .doc(user!.uid)
-      .get()
-      .then((value) async => {
-    controller.text = value['HbA1c'].toString() ,
-
-  });
-
-
-
-
-
-}
-
+    await FirebaseFirestore.instance
+        .collection("SymptomsTestResults")
+        .doc(user!.uid)
+        .get()
+        .then((value) async => {
+              controller.text = value['HbA1c'].toString(),
+            });
+  }
 
   bool drySkin = false;
   TextEditingController controller = TextEditingController();
@@ -74,10 +64,10 @@ Future<void>loadTestValue()async{
     'KidneyHealth': null,
     'uID': null
   };
-
   Future<bool> saveSymptomsResult(Map<String, dynamic> data) async {
     print('iiiiiiiiiiiiiiiiiiiiiiiii');
     print(symptomsTest);
+
     try {
       User? user = FirebaseAuth.instance.currentUser;
       symptomsTest['uID'] = user!.uid;
@@ -85,6 +75,10 @@ Future<void>loadTestValue()async{
           .collection("SymptomsTestResults")
           .doc(user.uid)
           .update(data);
+      var xx = int.parse(controller.text);
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      await sharedPreferences.setInt('HbA1c', xx);
     } catch (e) {
       _showSnackBar(e.toString());
       return false;
@@ -100,8 +94,7 @@ Future<void>loadTestValue()async{
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.black,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   @override
@@ -691,8 +684,8 @@ Future<void>loadTestValue()async{
                           symptomsTest['FootHealth'] = footHealth;
                           symptomsTest['EyeHealth'] = eyeHealth;
                           symptomsTest['KidneyHealth'] = kidneyHealth;
-                          var val = controller.text ;
-                          var res=int.parse(val);
+                          var val = controller.text;
+                          var res = int.parse(val);
                           symptomsTest['HbA1c'] = res;
 
                           if (widget.navigation == 'doctor') {
@@ -712,7 +705,7 @@ Future<void>loadTestValue()async{
                             symptomsTest['FootHealth'] = footHealth;
                             symptomsTest['EyeHealth'] = eyeHealth;
                             symptomsTest['KidneyHealth'] = kidneyHealth;
-                            var res=int.parse(val);
+                            var res = int.parse(val);
                             symptomsTest['HbA1c'] = res;
                             print(symptomsTest);
                             saveSymptomsResult(symptomsTest).then((value) => {

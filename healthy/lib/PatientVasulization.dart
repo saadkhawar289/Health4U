@@ -36,8 +36,11 @@ class PatientVisualization extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         leading: InkWell(
-            onTap:() =>Navigator.of(context).pop(),
-            child: Icon(Icons.arrow_back_ios,color: Colors.black,)),
+            onTap: () => Navigator.of(context).pop(),
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            )),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
@@ -47,252 +50,253 @@ class PatientVisualization extends StatelessWidget {
       ),
       // backgroundColor: Color(0xfff2e1cf),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 20),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SymptomsTest(
-                            navigation: 'k',
-                          )));
-                },
-                child: Container(
-                  height: 43,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                  //  image: _buildServiceBoxImage('assets/Doctor.png'),
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                        'Symptoms Test result',
-                        style: TextStyle(
-                            fontSize: 17.0.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      )),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Chart(monthCategory)));
-                },
-                child: Container(
-                  height: 43,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Food items purchased',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Chart(foodCategory)));
-                },
-                child: Container(
-                  height: 43,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Food items purchased monthly',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Chart(foodCategory)));
-                },
-                child: Container(
-                  height: 43,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Percentage of items',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Chart(foodCategory)));
-                },
-                child: Container(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SymptomsTest(
+                                  navigation: 'k',
+                                )));
+                  },
+                  child: Container(
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
+                    decoration: BoxDecoration(
+                      //  image: _buildServiceBoxImage('assets/Doctor.png'),
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Symptoms Test result',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
                   ),
-                  child: Center(
-                      child: Text(
-                    'Percentage of items by category',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Chart(scoreCategory)));
-                },
-                child: Container(
+              SizedBox(height: 20),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chart(monthCategory)));
+                  },
+                  child: Container(
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Food items purchased',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
                   ),
-                  child: Center(
-                      child: Text(
-                    'Overall Healthy Food score',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Chart(percentageCategory)));
-                },
-                child: Container(
-                  height: 43,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Total sugar,fat and fibre consumed',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
-                ),
+              SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
-              child: GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Chart(monthCategory)));
-                },
-                child: Container(
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chart(foodCategory)));
+                  },
+                  child: Container(
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Food items purchased monthly',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
                   ),
-                  child: Center(
-                      child: Text(
-                    'Monthly sugar, fat and fibre consumed',
-                    style: TextStyle(
-                        fontSize: 17.0.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                  )),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chart(foodCategory)));
+                  },
+                  child: Container(
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Percentage of items',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chart(foodCategory)));
+                  },
+                  child: Container(
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Percentage of items by category',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chart(scoreCategory)));
+                  },
+                  child: Container(
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Overall Healthy Food score',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chart(percentageCategory)));
+                  },
+                  child: Container(
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Total sugar,fat and fibre consumed',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: targetPadding / 2),
+                child: GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chart(monthCategory)));
+                  },
+                  child: Container(
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Monthly sugar, fat and fibre consumed',
+                      style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -80,7 +80,7 @@ class _State extends State<singup> {
   }
 
   Map<String, dynamic> symptomsTest = {
-    'HbA1c': 5,
+    'HbA1c': 6,
     'FootHealth': null,
     'EyeHealth': null,
     'KidneyHealth': null,
