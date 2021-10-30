@@ -412,7 +412,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy/forntscreen.dart';
 
 import 'medication2.dart';
 
@@ -437,15 +436,13 @@ class _State extends State<selectpills> {
   bool Saxagliptin = false;
   bool Liraglutide = false;
   bool Dulaglutide = false;
-
-
+  bool pill = false;
 
   Future<bool> addPatientPills(Map<String, dynamic> data) async {
     try {
-
       User? user = FirebaseAuth.instance.currentUser;
       DocumentReference ref =
-      FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
+          FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
       ref.update(data);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -460,14 +457,6 @@ class _State extends State<selectpills> {
 
     return true;
   }
-
-
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -502,7 +491,7 @@ class _State extends State<selectpills> {
             height: 60,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              //  color: Colors.red,
+                //  color: Colors.red,
                 border: Border(
                     bottom: BorderSide(color: Colors.black26, width: 1))),
             child: Text(
@@ -520,10 +509,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Metformin",
                             style: TextStyle(
@@ -546,10 +535,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Empagliflozin",
                             style: TextStyle(
@@ -571,10 +560,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Dapagliflozin",
                             style: TextStyle(
@@ -596,10 +585,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Canagliflozin",
                             style: TextStyle(
@@ -621,10 +610,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Gliclzide",
                             style: TextStyle(
@@ -646,10 +635,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Glimerpiride",
                             style: TextStyle(
@@ -671,10 +660,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Pioglitazone",
                             style: TextStyle(
@@ -696,10 +685,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Alogliptin",
                             style: TextStyle(
@@ -721,10 +710,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Linagliptin",
                             style: TextStyle(
@@ -746,10 +735,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Saxagliptin",
                             style: TextStyle(
@@ -771,10 +760,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Liraglutide",
                             style: TextStyle(
@@ -796,10 +785,10 @@ class _State extends State<selectpills> {
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        //  color: Colors.red,
+                          //  color: Colors.red,
                           border: Border(
                               bottom:
-                              BorderSide(color: Colors.black26, width: 1))),
+                                  BorderSide(color: Colors.black26, width: 1))),
                       child: ListTile(
                         title: Text("Dulaglutide",
                             style: TextStyle(
@@ -818,23 +807,49 @@ class _State extends State<selectpills> {
                         //trailing: Icon(Icons.where_to_vote),
                       ),
                     ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Do not take any pills",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: pill,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              pill = value!;
+                              listOPills.add('Do not take any pills');
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
                   ],
                 ),
               )),
 
           InkWell(
             onTap: () {
-              pills['pills']=listOPills;
+              pills['pills'] = listOPills;
               addPatientPills(pills).then((value) => {
-                if(value){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => editmedication2()))
-                }
-                else{
-                  print('error')
-                }
-              });
-
+                    if (value)
+                      {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => editmedication2()))
+                      }
+                    else
+                      {print('error')}
+                  });
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),

@@ -14,13 +14,13 @@ class editmedication extends StatefulWidget {
 class _State extends State<editmedication> {
   @override
   initState() {
-    if(widget.isEditAble){
+    if (widget.isEditAble) {
       loadUserMedicines();
-    }
-    else{}
+    } else {}
 
     super.initState();
   }
+
   Future<bool> loadUserMedicines() async {
     try {
       // loader = true;
@@ -32,57 +32,43 @@ class _State extends State<editmedication> {
           .doc(user!.uid)
           .get()
           .then((data) => {
+                fetchedListOMedicines = data['medicines'],
+                print(
+                    '${fetchedListOMedicines.length}---------fetchedListOMedicinesLength'),
+                medicines['medicines'] = fetchedListOMedicines,
+                print('${fetchedListOMedicines}---------fetchedListOMedicines'),
+                print('${medicines['medicines']}---------Medicines'),
 
-        fetchedListOMedicines = data['medicines'],
-        print('${fetchedListOMedicines.length}---------fetchedListOMedicinesLength'),
-        medicines['medicines']=fetchedListOMedicines,
-        print('${fetchedListOMedicines}---------fetchedListOMedicines'),
-        print('${medicines['medicines']}---------Medicines'),
+                fetchedListOMedicines.forEach((element) {
+                  if (element.contains('Humalog')) {
+                    setState(() {
+                      Humalog = true;
+                    });
+                  } else if (element.contains('Lantus')) {
+                    setState(() {
+                      Lantus = true;
+                    });
+                  } else if (element.contains('Levemir')) {
+                    setState(() {
+                      Levemir = true;
+                    });
+                  } else if (element.contains('Novorapid')) {
+                    setState(() {
+                      Novorapid = true;
+                    });
+                  } else if (element.contains('Insuman')) {
+                    setState(() {
+                      Insuman = true;
+                    });
+                  } else if (element.contains('Insulatard')) {
+                    setState(() {
+                      Insulatard = true;
+                    });
+                  }
+                })
 
-        fetchedListOMedicines.forEach((element) {
-      if  (element.contains('Humalog'))
-      {
-      setState(() {
-      Humalog = true;
-
-      });
-      }
-      else if (element.contains('Lantus'))
-        {
-          setState(() {
-            Lantus =true;
-          });
-        }
-      else if (element.contains('Levemir'))
-          {
-            setState(() {
-              Levemir = true;
-            });
-          }
-        else if (element.contains('Novorapid'))
-            {
-              setState(() {
-                Novorapid = true;
+                //
               });
-            }
-          else if (element.contains('Insuman'))
-              {
-                setState(() {
-                  Insuman = true;
-                });
-              }
-            else if (element.contains('Insulatard'))
-                {
-                  setState(() {
-                    Insulatard = true;
-                  });
-                }
-
-
-        })
-
-        //
-      });
       print('loading++++++++++++++++++++++++++++');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -101,17 +87,16 @@ class _State extends State<editmedication> {
     return true;
   }
 
-
   bool Humalog = false;
   bool Lantus = false;
   bool Levemir = false;
   bool Novorapid = false;
   bool Insuman = false;
   bool Insulatard = false;
+  bool insulin = false;
 
   Future<bool> addPatientMedicines(Map<String, dynamic> data) async {
     try {
-
       User? user = FirebaseAuth.instance.currentUser;
       DocumentReference ref =
           FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
@@ -131,12 +116,9 @@ class _State extends State<editmedication> {
   }
 
   // List<bool> value = [];
- List<dynamic> listOMedicines = [];
+  List<dynamic> listOMedicines = [];
   Map<String, dynamic> medicines = {'medicines': []};
   List<dynamic> fetchedListOMedicines = [];
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -203,14 +185,11 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Humalog = value!;
-                            if(value){
+                            if (value) {
                               listOMedicines.add('Humalog');
-
-                            }else{
+                            } else {
                               listOMedicines.remove('Humalog');
-
                             }
-
 
                             // isChecked1 = false;
                           });
@@ -237,12 +216,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Lantus = value!;
-                            if(value){
+                            if (value) {
                               listOMedicines.add('Lantus');
-
-                            }else{
+                            } else {
                               listOMedicines.remove('Lantus');
-
                             }
                           });
                         },
@@ -268,12 +245,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Levemir = value!;
-                            if(value){
+                            if (value) {
                               listOMedicines.add('Levemir');
-
-                            }else{
+                            } else {
                               listOMedicines.remove('Levemir');
-
                             }
 
                             // isChecked1 = false;
@@ -301,14 +276,11 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Novorapid = value!;
-                            if(value){
+                            if (value) {
                               listOMedicines.add('Novorapid');
-
-                            }else{
+                            } else {
                               listOMedicines.remove('Novorapid');
-
                             }
-
                           });
                         },
                       ),
@@ -333,12 +305,10 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Insuman = value!;
-                            if(value){
+                            if (value) {
                               listOMedicines.add('Insuman');
-
-                            }else{
+                            } else {
                               listOMedicines.remove('Insuman');
-
                             }
                           });
                         },
@@ -364,12 +334,39 @@ class _State extends State<editmedication> {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
                             Insulatard = value!;
-                            if(value){
+                            if (value) {
                               listOMedicines.add('Insulatard');
-
-                            }else{
+                            } else {
                               listOMedicines.remove('Insulatard');
-
+                            }
+                          });
+                        },
+                      ),
+                      //trailing: Icon(Icons.where_to_vote),
+                    ),
+                  ),
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                        //  color: Colors.red,
+                        border: Border(
+                            bottom:
+                                BorderSide(color: Colors.black26, width: 1))),
+                    child: ListTile(
+                      title: Text("Do not take Inslin",
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                          )),
+                      trailing: Checkbox(
+                        value: insulin,
+                        onChanged: (bool? value) {
+                          // This is where we update the state when the checkbox is tapped
+                          setState(() {
+                            insulin = value!;
+                            if (value) {
+                              listOMedicines.add('Do not take Inslin');
+                            } else {
+                              listOMedicines.remove('Do not take Inslin');
                             }
                           });
                         },
@@ -434,20 +431,21 @@ class _State extends State<editmedication> {
             onTap: () {
               print('$listOMedicines ==================listOfMed');
 
-              medicines['medicines']=listOMedicines.isEmpty?fetchedListOMedicines:listOMedicines;
+              medicines['medicines'] = listOMedicines.isEmpty
+                  ? fetchedListOMedicines
+                  : listOMedicines;
               print('${medicines['medicines']}===============Medicinessss MAp');
               addPatientMedicines(medicines).then((value) => {
-                if(value){
-                  Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => selectpills2()))
-                }
-                else{
-                  print('error')
-                }
-              });
-
-
-
+                    if (value)
+                      {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => selectpills2()))
+                      }
+                    else
+                      {print('error')}
+                  });
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),

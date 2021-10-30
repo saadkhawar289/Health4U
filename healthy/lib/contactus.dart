@@ -61,7 +61,7 @@ class _State extends State<contactus> {
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 20),
                 child: Text(
-                  "Monday-Friday: 8am-10am\nSaturday: 8am-10am\nSunday: 8am-10am",
+                  "Monday-Friday: 8am-6am\nSaturday: 9am-1am\nSunday: Closed",
                   style: TextStyle(fontSize: 17),
                 ),
               )

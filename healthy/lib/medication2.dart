@@ -623,10 +623,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy/forntscreen.dart';
-import 'package:healthy/selectpils2.dart';
 
 class editmedication2 extends StatefulWidget {
-
   @override
   _State createState() => _State();
 }
@@ -634,12 +632,11 @@ class editmedication2 extends StatefulWidget {
 class _State extends State<editmedication2> {
   @override
   initState() {
-
-      loadUserMedicines();
-
+    loadUserMedicines();
 
     super.initState();
   }
+
   Future<bool> loadUserMedicines() async {
     try {
       // loader = true;
@@ -651,53 +648,39 @@ class _State extends State<editmedication2> {
           .doc(user!.uid)
           .get()
           .then((data) => {
+                fetchedListOMedicines = data['medicines'],
+                print(
+                    '${fetchedListOMedicines.length}---------fetchedListOMedicines'),
+                fetchedListOMedicines.forEach((element) {
+                  if (element.contains('Humalog')) {
+                    setState(() {
+                      Humalog = true;
+                    });
+                  } else if (element.contains('Lantus')) {
+                    setState(() {
+                      Lantus = true;
+                    });
+                  } else if (element.contains('Levemir')) {
+                    setState(() {
+                      Levemir = true;
+                    });
+                  } else if (element.contains('Novorapid')) {
+                    setState(() {
+                      Novorapid = true;
+                    });
+                  } else if (element.contains('Insuman')) {
+                    setState(() {
+                      Insuman = true;
+                    });
+                  } else if (element.contains('Insulatard')) {
+                    setState(() {
+                      Insulatard = true;
+                    });
+                  }
+                })
 
-        fetchedListOMedicines = data['medicines'],
-        print('${fetchedListOMedicines.length}---------fetchedListOMedicines'),
-        fetchedListOMedicines.forEach((element) {
-          if (element.contains('Humalog'))
-          {
-            setState(() {
-              Humalog = true;
-
-            });
-          }
-          else if (element.contains('Lantus'))
-          {
-            setState(() {
-              Lantus =true;
-            });
-          }
-          else if (element.contains('Levemir'))
-          {
-            setState(() {
-              Levemir = true;
-            });
-          }
-          else if (element.contains('Novorapid'))
-          {
-            setState(() {
-              Novorapid = true;
-            });
-          }
-          else if (element.contains('Insuman'))
-          {
-            setState(() {
-              Insuman = true;
-            });
-          }
-          else if (element.contains('Insulatard'))
-          {
-            setState(() {
-              Insulatard = true;
-            });
-          }
-
-
-        })
-
-        //
-      });
+                //
+              });
       print('loading++++++++++++++++++++++++++++');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -716,20 +699,18 @@ class _State extends State<editmedication2> {
     return true;
   }
 
-
   bool Humalog = false;
   bool Lantus = false;
   bool Levemir = false;
   bool Novorapid = false;
   bool Insuman = false;
   bool Insulatard = false;
-
+  bool insulin = false;
   Future<bool> addPatientMedicines(Map<String, dynamic> data) async {
     try {
-
       User? user = FirebaseAuth.instance.currentUser;
       DocumentReference ref =
-      FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
+          FirebaseFirestore.instance.collection("Patient").doc(user!.uid);
       ref.update(data);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -749,9 +730,6 @@ class _State extends State<editmedication2> {
   List<String> listOMedicines = [];
   Map<String, dynamic> medicines = {'medicines': []};
   List<dynamic> fetchedListOMedicines = [];
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -786,7 +764,7 @@ class _State extends State<editmedication2> {
             height: 60,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              //  color: Colors.red,
+                //  color: Colors.red,
                 border: Border(
                     bottom: BorderSide(color: Colors.black26, width: 1))),
             child: Text(
@@ -803,10 +781,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Humalog",
                           style: TextStyle(
@@ -820,7 +798,6 @@ class _State extends State<editmedication2> {
                             Humalog = value!;
                             listOMedicines.add('Humalog');
 
-
                             // isChecked1 = false;
                           });
                         },
@@ -831,10 +808,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Lantus",
                           style: TextStyle(
@@ -857,10 +834,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Levemir",
                           style: TextStyle(
@@ -884,10 +861,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Novorapid",
                           style: TextStyle(
@@ -909,10 +886,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Insuman",
                           style: TextStyle(
@@ -934,10 +911,10 @@ class _State extends State<editmedication2> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      //  color: Colors.red,
+                        //  color: Colors.red,
                         border: Border(
                             bottom:
-                            BorderSide(color: Colors.black26, width: 1))),
+                                BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
                       title: Text("Insulatard",
                           style: TextStyle(
@@ -950,6 +927,31 @@ class _State extends State<editmedication2> {
                           setState(() {
                             Insulatard = value!;
                             listOMedicines.add('Insulatard');
+                          });
+                        },
+                      ),
+                      //trailing: Icon(Icons.where_to_vote),
+                    ),
+                  ),
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                        //  color: Colors.red,
+                        border: Border(
+                            bottom:
+                                BorderSide(color: Colors.black26, width: 1))),
+                    child: ListTile(
+                      title: Text("Do not take insulin ",
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                          )),
+                      trailing: Checkbox(
+                        value: insulin,
+                        onChanged: (bool? value) {
+                          // This is where we update the state when the checkbox is tapped
+                          setState(() {
+                            insulin = value!;
+                            listOMedicines.add('Do not take insulin');
                           });
                         },
                       ),
@@ -1012,19 +1014,20 @@ class _State extends State<editmedication2> {
           InkWell(
             onTap: () {
               print(listOMedicines);
-              medicines['medicines']=listOMedicines.isEmpty?fetchedListOMedicines:listOMedicines;
+              medicines['medicines'] = listOMedicines.isEmpty
+                  ? fetchedListOMedicines
+                  : listOMedicines;
               addPatientMedicines(medicines).then((value) => {
-                if(value){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => forntscreen()))
-                }
-                else{
-                  print('error')
-                }
-              });
-
-
-
+                    if (value)
+                      {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => forntscreen()))
+                      }
+                    else
+                      {print('error')}
+                  });
             },
             child: Container(
               margin: EdgeInsets.only(left: 15, right: 15),
