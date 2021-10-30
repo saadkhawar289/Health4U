@@ -290,7 +290,7 @@ class _SelectedProductState extends State<SelectedProduct> {
     int? testValue = sharedPreferences.getInt('HbA1c');
     String val = testValue.toString();
     double? h1Abc = double.tryParse(val);
-
+    var threshold;
     double sugar;
     try {
       await FirebaseFirestore.instance
@@ -307,11 +307,12 @@ class _SelectedProductState extends State<SelectedProduct> {
                     productValues['descp'] = data['descp'],
                     productValues['brand'] = data['brand'],
                     sugar = double.tryParse(data['sugar'])!,
-                    foodScore = (h1Abc! * sugar),
+                    threshold = (h1Abc!) / 6,
+                    foodScore = (threshold * sugar),
                     print('fffffffffffffffffff$foodScore'),
                     print('#############$sugar'),
                     print('#############$h1Abc'),
-                    foodScoreResult = ((foodScore!) / 6),
+                    foodScoreResult = foodScore,
                     print('oooooooooooooo$foodScoreResult')
                   }
                 else
