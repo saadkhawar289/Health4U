@@ -70,7 +70,7 @@ class PatientVisualization extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
                       //  image: _buildServiceBoxImage('assets/Doctor.png'),
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -98,7 +98,7 @@ class PatientVisualization extends StatelessWidget {
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -128,7 +128,7 @@ class PatientVisualization extends StatelessWidget {
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -158,7 +158,7 @@ class PatientVisualization extends StatelessWidget {
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color:Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -188,7 +188,7 @@ class PatientVisualization extends StatelessWidget {
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -218,7 +218,7 @@ class PatientVisualization extends StatelessWidget {
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color:Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -248,7 +248,7 @@ class PatientVisualization extends StatelessWidget {
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -278,7 +278,7 @@ class PatientVisualization extends StatelessWidget {
                     height: 43,
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(

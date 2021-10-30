@@ -96,7 +96,7 @@ class IntroScreenState extends State<IntroScreen> {
 
                 title: "\n  Input your data",
                 body:
-                    "We start by asking simple questions\n  understand how you are,what type of \n diabetes have and medicines you take",
+                    "Tell us about your diabetes and any medicines you take so we can personalise your shopping experience.",
                 image: _buildImage('SStest2.png'),
                 decoration: pageDecoration,
 
@@ -104,21 +104,21 @@ class IntroScreenState extends State<IntroScreen> {
               PageViewModel(
                 title: "\n  Shop in store or online",
                 body:
-                    "Our unique aspect of the app is the traffic \nlight feature. The traffice light predicts and \n      advises the right food for you",
+                    "Make better food choices when shopping online or at your local supermarket.",
                 image: _buildImage('c2.jpg'),
                 decoration: pageDecoration,
               ),
               PageViewModel(
                 title: "\n Traffic Light Feature",
                 body:
-                    "Our unique aspect of the app is the traffic \nlight feature. The traffice light predicts and \n      advises the right food for you",
+                    "Scan any product item using your camera and instantly know if it is recommended for you or if there is a better alternative.",
                 image: _buildImage('SStest3.png'),
                 decoration: pageDecoration,
               ),
               PageViewModel(
                 title: "\n \n Purchase History",
                 body:
-                    "We keep a history of the things you\n purchased and would then",
+                    "Keep a record of your purchases to share with your doctor and see how your sugar changes depending on your food selections",
                 image: _buildImage('c4.JPG'),
                 decoration: pageDecoration,
               ),
