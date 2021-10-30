@@ -30,7 +30,7 @@ class _State extends State<selectpills2> {
   bool Saxagliptin = false;
   bool Liraglutide = false;
   bool Dulaglutide = false;
-
+  bool pill = false;
   Future<bool> loadUserPills() async {
     try {
       // loader = true;
@@ -530,6 +530,64 @@ class _State extends State<selectpills2> {
                                 listOPills.add('Dulaglutide');
                               } else {
                                 listOPills.remove('Dulaglutide');
+                              }
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Dulaglutide",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: Dulaglutide,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              Dulaglutide = value!;
+                              if (value) {
+                                listOPills.add('Dulaglutide');
+                              } else {
+                                listOPills.remove('Dulaglutide');
+                              }
+                            });
+                          },
+                        ),
+                        //trailing: Icon(Icons.where_to_vote),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black26, width: 1))),
+                      child: ListTile(
+                        title: Text("Do not take any pills",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            )),
+                        trailing: Checkbox(
+                          value: pill,
+                          onChanged: (bool? value) {
+                            // This is where we update the state when the checkbox is tapped
+                            setState(() {
+                              pill = value!;
+                              if (value) {
+                                listOPills.add('Do not take any pills');
+                              } else {
+                                listOPills.remove('Do not take any pills');
                               }
                             });
                           },
