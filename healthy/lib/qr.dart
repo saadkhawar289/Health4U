@@ -240,6 +240,8 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:healthy/SelectProduct.dart';
 
 class QRViewExample extends StatefulWidget {
+  final String brand;
+  QRViewExample(this.brand);
   @override
   _QRState createState() => _QRState();
 }
@@ -281,7 +283,7 @@ class _QRState extends State<QRViewExample> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => SelectedProduct(barcodeScanRes)));
+                  builder: (context) => SelectedProduct(barcodeScanRes,widget.brand)));
         });
       } else {}
     } on PlatformException {

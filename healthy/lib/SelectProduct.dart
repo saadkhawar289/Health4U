@@ -249,8 +249,9 @@ class CheckOutCartTile extends StatelessWidget {
 
 class SelectedProduct extends StatefulWidget {
   final String productID;
+  final String brand;
 
-  SelectedProduct(this.productID) : super();
+  SelectedProduct(this.productID,this.brand) : super();
 
   @override
   _SelectedProductState createState() => _SelectedProductState();
@@ -298,8 +299,9 @@ class _SelectedProductState extends State<SelectedProduct> {
           .doc(id)
           .get()
           .then((data) => {
-                if (data.exists)
+                if (data.exists && widget.brand==data['brand'])
                   {
+
                     productValues['name'] = data['name'],
                     productValues['weight'] = data['weight'],
                     productValues['price'] = data['price'],

@@ -57,12 +57,12 @@ class _State extends State<aboutus> {
           ),
           Column(
             children: [
-              Text(
-                " COVID-19 pandemic, one of the key elements\n"
-                "lock-downs and reopening borders is the need\n"
-                " for a reliable,\n"
-                " trustworthy, and efficient way to validate individuals’\n health status. ",
-                style: TextStyle(fontSize: 14),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Text('Healthy4You is a telehealth platform which personalises food and drink shopping according to medical history and also provides an online GP service',
+
+                  style: TextStyle(fontSize: 14),
+                ),
               )
             ],
           ),
