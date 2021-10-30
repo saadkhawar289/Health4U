@@ -135,7 +135,7 @@ class _State extends State<purchasehistory> {
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black)),
-                                  Text('&0.80',
+                                  Text('£0.80',
                                       style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.w400,
@@ -219,7 +219,7 @@ class _State extends State<purchasehistory> {
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text('&0.80',
+                              Text('£0.80',
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.w400,

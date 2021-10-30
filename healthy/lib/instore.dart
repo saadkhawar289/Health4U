@@ -4,6 +4,8 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:healthy/SelectProduct.dart';
 
 class store extends StatefulWidget {
+  final String brand;
+  store(this.brand);
   @override
   _State createState() => _State();
 }
@@ -21,7 +23,7 @@ class _State extends State<store> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    SelectedProduct(barcodeScanRes.toString())));
+                    SelectedProduct(barcodeScanRes.toString(),widget.brand)));
       } else {}
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';

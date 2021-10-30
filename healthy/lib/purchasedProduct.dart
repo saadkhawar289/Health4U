@@ -83,7 +83,7 @@ class _State extends State<purchasehistory2> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, right: 10),
                   child: Text(
-                    "Total &5.29",
+                    "Total £5.29",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -124,7 +124,7 @@ class _State extends State<purchasehistory2> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Text('&0.80',
+                              Text('£0.80',
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
@@ -177,7 +177,7 @@ class _State extends State<purchasehistory2> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Text('&1.99',
+                              Text('£1.99',
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
@@ -230,7 +230,7 @@ class _State extends State<purchasehistory2> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Text('&2.50',
+                              Text('£2.50',
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,

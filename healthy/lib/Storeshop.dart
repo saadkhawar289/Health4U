@@ -3,6 +3,8 @@ import 'package:healthy/onlinesite.dart';
 import 'package:healthy/qr.dart';
 
 class storeshop extends StatefulWidget {
+  final String brand;
+  storeshop(this.brand);
   @override
   _State createState() => _State();
 }
@@ -60,7 +62,7 @@ class _State extends State<storeshop> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QRViewExample()));
+                      MaterialPageRoute(builder: (context) => QRViewExample(widget.brand)));
                 },
                 child: Container(
                   margin: EdgeInsets.only(top: 40),

@@ -57,8 +57,9 @@ class _State extends State<shops> {
             children: [
               InkWell(
                 onTap: () {
+
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => storeshop()));
+                      MaterialPageRoute(builder: (context) => storeshop('Morrisons')));
                 },
                 child: Container(
                   margin: EdgeInsets.only(top: 40),
@@ -105,7 +106,7 @@ class _State extends State<shops> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => storeshop()));
+                      MaterialPageRoute(builder: (context) => storeshop('Asda')));
                 },
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
@@ -152,7 +153,7 @@ class _State extends State<shops> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => storeshop()));
+                      MaterialPageRoute(builder: (context) => storeshop('M&S')));
                 },
                 child: Container(
                   margin: EdgeInsets.only(top: 20),

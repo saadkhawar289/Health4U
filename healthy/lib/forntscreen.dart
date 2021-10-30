@@ -179,7 +179,7 @@ class _State extends State<forntscreen> {
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Center(
                     child: Text(
-                      "Get started by taping",
+                      "Get started by tapping",
                       style: TextStyle(
                           fontSize: 15.sp, fontWeight: FontWeight.bold),
                     ),
