@@ -135,7 +135,11 @@ class _State extends State<purchasehistory> {
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black)),
-                                  Text('£0.80',
+                                  Text('£${context
+                                      .read<CartViewModel>()
+                                      .addedCartItems[index]
+                                      .price
+                                      .toString()}',
                                       style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.w400,

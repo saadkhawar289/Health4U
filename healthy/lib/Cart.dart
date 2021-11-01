@@ -168,7 +168,7 @@ class CartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text(product.price.toString(),
+              Text('£${product.price.toString()}',
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,

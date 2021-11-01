@@ -299,7 +299,7 @@ class _SelectedProductState extends State<SelectedProduct> {
           .doc(id)
           .get()
           .then((data) => {
-                if (data.exists && widget.brand==data['brand'])
+                if (data.exists)
                   {
 
                     productValues['name'] = data['name'],
@@ -307,7 +307,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                     productValues['price'] = data['price'],
                     productValues['image'] = data['image'],
                     productValues['descp'] = data['descp'],
-                    productValues['brand'] = data['brand'],
+                    productValues['brand'] = widget.brand,
                     sugar = double.tryParse(data['sugar'])!,
                     threshold = (h1Abc!) / 6,
                     foodScore = (threshold * sugar),
@@ -684,8 +684,8 @@ class _SelectedProductState extends State<SelectedProduct> {
                                     price: productValues['price'],
                                     // productValues['price'],
                                     weight: productValues['weight'],
-                                    descp: ' hhhj jjj jj',
-                                    brand: productValues['brand']);
+                                    descp: productValues['descp'],
+                                    brand: widget.brand);
                                 context.read<CartViewModel>().totalBill =
                                     context.read<CartViewModel>().totalBill +
                                         prod.price!;

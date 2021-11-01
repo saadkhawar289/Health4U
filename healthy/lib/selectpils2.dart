@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -96,6 +97,12 @@ class _State extends State<selectpills2> {
                       Dulaglutide = true;
                     });
                   }
+                  else if (element.contains('Do not take any pills')) {
+                    setState(() {
+                      pill = true;
+                    });
+                  }
+
                 })
 
                 //
@@ -501,35 +508,6 @@ class _State extends State<selectpills2> {
                                 listOPills.add('Liraglutide');
                               } else {
                                 listOPills.remove('Liraglutide');
-                              }
-                            });
-                          },
-                        ),
-                        //trailing: Icon(Icons.where_to_vote),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                          //  color: Colors.red,
-                          border: Border(
-                              bottom:
-                                  BorderSide(color: Colors.black26, width: 1))),
-                      child: ListTile(
-                        title: Text("Dulaglutide",
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                            )),
-                        trailing: Checkbox(
-                          value: Dulaglutide,
-                          onChanged: (bool? value) {
-                            // This is where we update the state when the checkbox is tapped
-                            setState(() {
-                              Dulaglutide = value!;
-                              if (value) {
-                                listOPills.add('Dulaglutide');
-                              } else {
-                                listOPills.remove('Dulaglutide');
                               }
                             });
                           },

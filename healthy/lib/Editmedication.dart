@@ -65,6 +65,12 @@ class _State extends State<editmedication> {
                       Insulatard = true;
                     });
                   }
+                  else if (element.contains('Do not take Insulin')) {
+                    setState(() {
+                      doNotTakeInsulin = true;
+                    });
+                  }
+
                 })
 
                 //
@@ -94,6 +100,7 @@ class _State extends State<editmedication> {
   bool Insuman = false;
   bool Insulatard = false;
   bool insulin = false;
+  bool doNotTakeInsulin =false;
 
   Future<bool> addPatientMedicines(Map<String, dynamic> data) async {
     try {
@@ -143,7 +150,7 @@ class _State extends State<editmedication> {
             height: 60,
             width: MediaQuery.of(context).size.width,
             child: Text(
-              "What medication do you take?",
+              "Which Insulin do you take?",
               style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
             ),
           ),
@@ -353,20 +360,20 @@ class _State extends State<editmedication> {
                             bottom:
                                 BorderSide(color: Colors.black26, width: 1))),
                     child: ListTile(
-                      title: Text("Do not take Inslin",
+                      title: Text("Do not take Insulin",
                           style: TextStyle(
                             fontSize: 16.sp,
                           )),
                       trailing: Checkbox(
-                        value: insulin,
+                        value: doNotTakeInsulin,
                         onChanged: (bool? value) {
                           // This is where we update the state when the checkbox is tapped
                           setState(() {
-                            insulin = value!;
+                            doNotTakeInsulin = value!;
                             if (value) {
-                              listOMedicines.add('Do not take Inslin');
+                              listOMedicines.add('Do not take Insulin');
                             } else {
-                              listOMedicines.remove('Do not take Inslin');
+                              listOMedicines.remove('Do not take Insulin');
                             }
                           });
                         },

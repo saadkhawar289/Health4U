@@ -384,7 +384,7 @@ class _CheckoutState extends State<Checkout> {
                                 style: TextStyle(
                                     fontSize: 17.sp,
                                     fontWeight: FontWeight.w400)),
-                            Text(context.read<CartViewModel>().totalBill.toString(),
+                            Text('£${context.read<CartViewModel>().totalBill.toString()}',
                                 style: TextStyle(
                                     fontSize: 20.sp,
                                     fontWeight: FontWeight.bold))
