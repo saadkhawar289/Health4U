@@ -697,7 +697,7 @@ class _SelectedProductState extends State<SelectedProduct> {
                                     MaterialPageRoute(
                                         builder: (context) => Cart(context
                                             .read<CartViewModel>()
-                                            .addedCartItems)));
+                                            .cartItems)));
                               },
                               child: Container(
                                 height: 93,

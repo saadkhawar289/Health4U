@@ -8,7 +8,7 @@ class CartViewModel extends ChangeNotifier {
 
   void addToCart(Product product) {
     cartItems.add(product);
-    addedCartItems = cartItems;
+    addedCartItems.add(product);
     notifyListeners();
   }
 }

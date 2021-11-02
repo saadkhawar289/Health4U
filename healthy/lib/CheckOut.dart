@@ -373,7 +373,7 @@ class _CheckoutState extends State<Checkout> {
                     child: Row(
                       children: [
                         Text(
-                          '${context.read<CartViewModel>().addedCartItems.length} items',
+                          '${context.read<CartViewModel>().cartItems.length} items',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -399,10 +399,10 @@ class _CheckoutState extends State<Checkout> {
                   color: const Color(0xFFF7F7F7),
                   child: ListView.builder(
                     itemBuilder: (BuildContext context, int index) => Container(
-                      child: CheckOutCartTile(index+1,model.addedCartItems[index]),
+                      child: CheckOutCartTile(index+1,model.cartItems[index]),
                     ),
                     addAutomaticKeepAlives: false,
-                    itemCount:model.addedCartItems.length,
+                    itemCount:model.cartItems.length,
                     //cacheExtent: 100.0,
                   ),
                 ),
@@ -492,7 +492,7 @@ class CheckOutCartTile extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text(product.price.toString(),
+              Text('£${product.price.toString()}',
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,

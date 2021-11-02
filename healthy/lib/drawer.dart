@@ -126,6 +126,8 @@ class CustomDrawer extends StatelessWidget {
                               pref.remove('password');
                               pref.remove('dob');
                               context.read<CartViewModel>().addedCartItems.clear();
+                              context.read<CartViewModel>().totalBill=0;
+
                               Navigator.pushReplacementNamed(
                                   context, '/homeScreen');
                             },

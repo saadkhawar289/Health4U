@@ -45,7 +45,11 @@ class _PaymentVerifiactionState extends State<PaymentVerifiaction> {
                 ),
                 InkWell(
                   onTap: () {
+
                     context.read<CartViewModel>().totalBill = 0;
+                   context.read<CartViewModel>().cartItems.clear();
+                    print(context.read<CartViewModel>().addedCartItems);
+                    print(context.read<CartViewModel>().cartItems);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => forntscreen()));
                   },
