@@ -118,6 +118,8 @@ class CustomDrawer extends StatelessWidget {
                         actions: <Widget>[
                           FlatButton(
                             onPressed: () async {
+                              context.read<CartViewModel>().addedCartItems.clear();
+
                               FirebaseAuth.instance.signOut();
                               SharedPreferences pref =
                                   await SharedPreferences.getInstance();
@@ -125,9 +127,9 @@ class CustomDrawer extends StatelessWidget {
                               pref.remove('last_name');
                               pref.remove('password');
                               pref.remove('dob');
-                              context.read<CartViewModel>().addedCartItems.clear();
-                              context.read<CartViewModel>().totalBill=0;
 
+                              context.read<CartViewModel>().totalBill=0;
+                              context.read<CartViewModel>().dellHistory();
                               Navigator.pushReplacementNamed(
                                   context, '/homeScreen');
                             },

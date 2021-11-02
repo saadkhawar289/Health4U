@@ -11,4 +11,11 @@ class CartViewModel extends ChangeNotifier {
     addedCartItems.add(product);
     notifyListeners();
   }
+  void dellHistory() {
+    print('entering purchase history');
+    addedCartItems.clear();
+    notifyListeners();
+    print('deleting purchase history');
+
+  }
 }
