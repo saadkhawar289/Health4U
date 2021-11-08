@@ -66,6 +66,8 @@ class CustomDrawer extends StatelessWidget {
               leading: Icon(Icons.account_circle),
               title: Text('Profile'),
               onTap: () {
+                print('ssssssssssssssssssssssssssss');
+
                 if (vis == 2) {
                   Navigator.push(
                       context,
@@ -118,7 +120,6 @@ class CustomDrawer extends StatelessWidget {
                         actions: <Widget>[
                           FlatButton(
                             onPressed: () async {
-                              context.read<CartViewModel>().addedCartItems.clear();
 
                               FirebaseAuth.instance.signOut();
                               SharedPreferences pref =
@@ -129,7 +130,7 @@ class CustomDrawer extends StatelessWidget {
                               pref.remove('dob');
 
                               context.read<CartViewModel>().totalBill=0;
-                              context.read<CartViewModel>().dellHistory();
+
                               Navigator.pushReplacementNamed(
                                   context, '/homeScreen');
                             },

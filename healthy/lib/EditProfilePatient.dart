@@ -227,6 +227,7 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                                 {
                                   _showSnackBar('Data saving...'),
                                   Future.delayed(Duration(seconds: 2), () {
+                                    print('sssss');
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -234,7 +235,10 @@ class _EditProfilePatientState extends State<EditProfilePatient> {
                                   })
                                 }
                               else
-                                {_showSnackBar('Data not saved')}
+                                {
+                            print('xxx'),
+
+                        _showSnackBar('Data not saved')}
                             });
                       },
                       child: Container(

@@ -6,8 +6,10 @@ import 'package:healthy/setting.dart';
 import 'package:healthy/shops.dart';
 import 'package:healthy/sugeryinformation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 import 'OnlinePractitioner.dart';
+import 'Provider/cart_view_model.dart';
 
 class forntscreen extends StatefulWidget {
   @override
@@ -102,7 +104,9 @@ class _State extends State<forntscreen> {
                         actions: <Widget>[
                           FlatButton(
                             onPressed: () => {
-                              // Navigator.push(
+                        context.read<CartViewModel>().addedCartItems.clear(),
+
+                        // Navigator.push(
                               //     context,
                               //     MaterialPageRoute(
                               //         builder: (context) => HomeScreen())),

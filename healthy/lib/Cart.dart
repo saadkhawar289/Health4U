@@ -100,7 +100,7 @@ class _CartState extends State<Cart> {
                                         style: TextStyle(
                                             fontSize: 17.sp,
                                             fontWeight: FontWeight.w400)),
-                                    Text(context.read<CartViewModel>().totalBill.toString(),
+                                    Text('£${context.read<CartViewModel>().totalBill.toString()}',
                                         style: TextStyle(
                                             fontSize: 17.sp,
                                             fontWeight: FontWeight.bold))
